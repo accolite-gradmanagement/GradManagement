@@ -6,7 +6,7 @@ public class Queries {
 			+ "(ED_ID, HM_ID, LOCATION_NAME, DEMAND_COUNT" + ", START_TIME, STATUS, COMMENTS)"
 			+ " VALUES (?,?,?,?,?,?,?)";
 
-	public final static String GET_ALL_DEMANDS = "SELECT ED_ID,HM_ID, LOCATION_NAME,"
+	public final static String GET_ALL_DEMANDS = "SELECT ED_ID, HM_ID, LOCATION_NAME,"
 			+ "DEMAND_COUNT, START_TIME, STATUS, COMMENTS FROM DEMAND_DETAILS";
 	
 }

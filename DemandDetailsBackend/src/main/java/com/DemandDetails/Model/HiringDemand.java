@@ -3,7 +3,7 @@ package com.DemandDetails.Model;
 import java.util.Date;
 import java.util.List;
 
-public class Hiring {
+public class HiringDemand {
 
 	private int serialNumber;
 	private String edName;
@@ -95,7 +95,7 @@ public class Hiring {
 				+ ", comments=" + comments + "]";
 	}
 
-	public Hiring(int serialNumber, String edName, List<Employee> hiringManagers, int totalDemand,
+	public HiringDemand(int serialNumber, String edName, List<Employee> hiringManagers, int totalDemand,
 			int demandInBangalore, Date expectedStartInBangalore, int demandInMumbai, Date expectedStartInMumbai,
 			String comments) {
 		super();
@@ -110,7 +110,7 @@ public class Hiring {
 		this.comments = comments;
 	}
 
-	public Hiring() {
+	public HiringDemand() {
 		super();
 	}
 
