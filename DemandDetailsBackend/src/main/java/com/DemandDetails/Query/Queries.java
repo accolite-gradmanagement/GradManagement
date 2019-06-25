@@ -1,0 +1,12 @@
+package com.DemandDetails.Query;
+
+public class Queries {
+
+	public final static String INSERT_DEMAND_DETAILS = "INSERT INTO DEMAND_DETAILS"
+			+ "(ED_ID, HM_ID, LOCATION_NAME, DEMAND_COUNT" + ", START_TIME, STATUS, COMMENTS)"
+			+ " VALUES (?,?,?,?,?,?,?)";
+
+	public final static String GET_ALL_DEMANDS = "SELECT ED_ID,HM_ID, LOCATION_NAME,"
+			+ "DEMAND_COUNT, START_TIME, STATUS, COMMENTS FROM DEMAND_DETAILS";
+	
+}
