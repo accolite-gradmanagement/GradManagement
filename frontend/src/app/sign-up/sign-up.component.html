@@ -1,0 +1,155 @@
+<h1>Sign Up Form</h1>
+<form [formGroup]="signUpForm">
+    <br>  
+    
+    <div class="form-group row">
+        <div  class="col-xs-2">
+          <label for="ex1">col-xs-2</label>
+          <input  class="form-control" id="ex1" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">col-xs-3</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-4">
+          <label for="ex3">col-xs-4</label>
+          <input class="form-control" id="ex3" type="text">
+        </div>
+    </div>
+
+
+    <label>Email Id:</label>
+    <input style="width: 400px" type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }" >
+    <label>   @gmail.com   </label>
+    <div *ngIf="submitted && signUpForm.controls.emailID.errors" class="invalid-feedback">
+        <div *ngIf = "signUpForm.controls.emailID.errors.required">
+                Enter your Email ID
+        </div>
+    </div>
+    <div *ngIf="signUpForm.controls.emailID.errors" class="invalid-feedback">    
+        <div *ngIf="signUpForm.controls.emailID.errors.pattern">
+            Enter a valid Email ID
+        </div>
+    </div>
+    <br>
+    <br>
+   
+
+    <label>Password:</label>
+    <br>
+    <input style="width: 400px" type = "password" placeholder = "Create a new password" class = "form-control" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.password.errors }">
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.password.errors" class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.password.errors.required">
+            Enter a Password
+        </div>
+    </div>
+    <br>
+
+
+    <label>Confirm Password:</label>
+    <br>
+    <input style="width: 400px" type = "password" placeholder = "Confirm your password" class="form-control" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.confirmPassword.errors && !pwdMatched }">
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.confirmPassword.errors" class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.confirmPassword.errors.required">
+            Enter your Password
+        </div>
+    </div> 
+    <div *ngIf="!pwdMatched" class="invalid-feedback">
+        Passwords do not match!!
+    </div>
+    <br>
+
+
+    <label>First Name:</label>
+    <br>
+    <input style="width: 400px" type = "text" placeholder = "Enter your first name" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.firstName.errors }">
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.firstName.errors" class="invalid-feedback">
+        <div *ngIf = "signUpForm.controls.firstName.errors.required">
+            Enter your first name
+        </div>
+    </div>    
+    <div *ngIf="signUpForm.controls.firstName.errors"  class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.firstName.errors.pattern">
+            Enter a valid first name
+        </div>    
+    </div>    
+    <br>
+
+
+    <label>Last Name:</label>
+    <br>
+    <input type = "text" placeholder = "Enter your last name" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.lastName.errors }">
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.lastName.errors" class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.lastName.errors.required">
+            Enter your last name
+        </div>
+    </div>    
+    <div *ngIf="signUpForm.controls.lastName.errors"  class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.lastName.errors.pattern">
+            Enter a valid last name
+        </div>
+    </div>
+    <br>
+
+
+    <label>Phone Number:</label>
+    <br>
+    <label>+91  </label>
+    <input type = "text" placeholder = "Enter your number" class = "form-control" formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.phoneNumber.errors }">
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.phoneNumber.errors" class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.phoneNumber.errors?.required">
+            Enter your phone number
+        </div>
+    </div>  
+    <div *ngIf="signUpForm.controls.phoneNumber.errors?.pattern">Enter a valid phone number</div>  
+    <br>
+
+
+    <label>Date of Birth:</label>
+    <br>
+    <input type = "date" class = "form-control" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.dateOfBirth.errors }">
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.dateOfBirth.errors" class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.dateOfBirth.errors.required">
+            Enter a valid birthdate
+        </div>
+    </div>    
+    <br>
+
+
+    <label>Gender:</label>
+    <br>
+    <select name="Gender" formControlName="gender" class="form-control" >
+        <option value="" selected disabled hidden>Choose here</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Others</option>   
+    </select>
+    <div *ngIf="signUpForm.controls.gender.errors" class="invalid-feedback">Select a valid gender</div>
+    <br>
+    <br>
+
+    <input name = "checkbox" class = "form-check" type = "checkbox"  formControlName="termsAndConditions" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.termsAndConditions.errors}">
+        I have read and agree with the
+    <a href="http://www.google.co.in">Terms and Conditions.</a>
+    <br>
+    <div *ngIf="submitted && signUpForm.controls.termsAndConditions.errors" class="invalid-feedback">
+        <div *ngIf="signUpForm.controls.termsAndConditions.errors.required">
+            Please read terms and conditions and check the agreement
+        </div>
+    </div>      
+    <br>
+
+
+
+    <button type = "button" (click) = "signUpSubmit()">Submit</button>
+    <button type = "button" (click) = "signUpClear()">Clear</button>
+    <button type = "button" (click) = "signUpCancel()">Cancel</button>
+    <br>
+
+</form> 
