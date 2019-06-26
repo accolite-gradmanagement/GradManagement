@@ -2,48 +2,43 @@ package com.DemandDetails.Model;
 
 public class Employee {
 
-	private int id;
-	private String employeeName;
-	private String employeeRole;
+	private int EMP_ID;
+	private String EMP_NAME;
+	private String ROLE;
 
-	public int getId() {
-		return id;
+	public int getEMP_ID() {
+		return EMP_ID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setEMP_ID(int eMP_ID) {
+		EMP_ID = eMP_ID;
 	}
 
-	public String getEmployeeName() {
-		return employeeName;
+	public String getEMP_NAME() {
+		return EMP_NAME;
 	}
 
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
+	public void setEMP_NAME(String eMP_NAME) {
+		EMP_NAME = eMP_NAME;
 	}
 
-	public String getEmployeeRole() {
-		return employeeRole;
+	public String getROLE() {
+		return ROLE;
 	}
 
-	public void setEmployeeRole(String employeeRole) {
-		this.employeeRole = employeeRole;
+	public void setROLE(String rOLE) {
+		ROLE = rOLE;
 	}
 
-	public Employee(int id, String employeeName, String employeeRole) {
+	public Employee(int eMP_ID, String eMP_NAME, String rOLE) {
 		super();
-		this.id = id;
-		this.employeeName = employeeName;
-		this.employeeRole = employeeRole;
+		EMP_ID = eMP_ID;
+		EMP_NAME = eMP_NAME;
+		ROLE = rOLE;
 	}
 
 	public Employee() {
 		super();
-	}
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", employeeName=" + employeeName + ", employeeRole=" + employeeRole + "]";
 	}
 
 }

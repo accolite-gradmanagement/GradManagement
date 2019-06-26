@@ -1,117 +1,112 @@
 package com.DemandDetails.Model;
 
 import java.util.Date;
-import java.util.List;
 
 public class HiringDemand {
 
-	private int serialNumber;
-	private String edName;
-	private List<Employee> hiringManagers;
-	private int totalDemand;
-	private int demandInBangalore;
-	private Date expectedStartInBangalore;
-	private int demandInMumbai;
-	private Date expectedStartInMumbai;
-	private String comments;
+	private int ED_ID;
+	private String ED_NAME;
+	private int HM_ID;
+	private String HM_NAME;
+	private int DEMAND_COUNT;
+	private Date START_TIME;
+	private int L_ID;
+	private String STATUS;
+	private String COMMENTS;
 
-	public int getSerialNumber() {
-		return serialNumber;
+	public int getED_ID() {
+		return ED_ID;
 	}
 
-	public void setSerialNumber(int serialNumber) {
-		this.serialNumber = serialNumber;
+	public void setED_ID(int eD_ID) {
+		ED_ID = eD_ID;
 	}
 
-	public String getEdName() {
-		return edName;
+	public int getHM_ID() {
+		return HM_ID;
 	}
 
-	public void setEdName(String edName) {
-		this.edName = edName;
+	public void setHM_ID(int hM_ID) {
+		HM_ID = hM_ID;
 	}
 
-	public List<Employee> getHiringManagers() {
-		return hiringManagers;
+	public String getED_NAME() {
+		return ED_NAME;
 	}
 
-	public void setHiringManagers(List<Employee> hiringManagers) {
-		this.hiringManagers = hiringManagers;
+	public void setED_NAME(String eD_NAME) {
+		ED_NAME = eD_NAME;
 	}
 
-	public int getTotalDemand() {
-		return totalDemand;
+	public String getHM_NAME() {
+		return HM_NAME;
 	}
 
-	public void setTotalDemand(int totalDemand) {
-		this.totalDemand = totalDemand;
+	public void setHM_NAME(String hM_NAME) {
+		HM_NAME = hM_NAME;
 	}
 
-	public int getDemandInBangalore() {
-		return demandInBangalore;
+	public int getDEMAND_COUNT() {
+		return DEMAND_COUNT;
 	}
 
-	public void setDemandInBangalore(int demandInBangalore) {
-		this.demandInBangalore = demandInBangalore;
+	public void setDEMAND_COUNT(int dEMAND_COUNT) {
+		DEMAND_COUNT = dEMAND_COUNT;
 	}
 
-	public Date getExpectedStartInBangalore() {
-		return expectedStartInBangalore;
+	public Date getSTART_TIME() {
+		return START_TIME;
 	}
 
-	public void setExpectedStartInBangalore(Date expectedStartInBangalore) {
-		this.expectedStartInBangalore = expectedStartInBangalore;
+	public void setSTART_TIME(Date sTART_TIME) {
+		START_TIME = sTART_TIME;
 	}
 
-	public int getDemandInMumbai() {
-		return demandInMumbai;
+	public String getSTATUS() {
+		return STATUS;
 	}
 
-	public void setDemandInMumbai(int demandInMumbai) {
-		this.demandInMumbai = demandInMumbai;
+	public void setSTATUS(String sTATUS) {
+		STATUS = sTATUS;
 	}
 
-	public Date getExpectedStartInMumbai() {
-		return expectedStartInMumbai;
+	public String getCOMMENTS() {
+		return COMMENTS;
 	}
 
-	public void setExpectedStartInMumbai(Date expectedStartInMumbai) {
-		this.expectedStartInMumbai = expectedStartInMumbai;
+	public void setCOMMENTS(String cOMMENTS) {
+		COMMENTS = cOMMENTS;
 	}
 
-	public String getComments() {
-		return comments;
+	public int getL_ID() {
+		return L_ID;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setL_ID(int l_ID) {
+		L_ID = l_ID;
 	}
 
-	@Override
-	public String toString() {
-		return "Hiring [edName=" + edName + ", hiringManager=" + hiringManagers + ", totalDemand=" + totalDemand
-				+ ", demandInBangalore=" + demandInBangalore + ", expectedStartInBangalore=" + expectedStartInBangalore
-				+ ", demandInMumbai=" + demandInMumbai + ", expectedStartInMumbai=" + expectedStartInMumbai
-				+ ", comments=" + comments + "]";
-	}
-
-	public HiringDemand(int serialNumber, String edName, List<Employee> hiringManagers, int totalDemand,
-			int demandInBangalore, Date expectedStartInBangalore, int demandInMumbai, Date expectedStartInMumbai,
-			String comments) {
+	public HiringDemand(int eD_ID, int hM_ID, int dEMAND_COUNT, int l_ID, Date sTART_TIME, String sTATUS,
+			String cOMMENTS) {
 		super();
-		this.serialNumber = serialNumber;
-		this.edName = edName;
-		this.hiringManagers = hiringManagers;
-		this.totalDemand = totalDemand;
-		this.demandInBangalore = demandInBangalore;
-		this.expectedStartInBangalore = expectedStartInBangalore;
-		this.demandInMumbai = demandInMumbai;
-		this.expectedStartInMumbai = expectedStartInMumbai;
-		this.comments = comments;
+		ED_ID = eD_ID;
+		HM_ID = hM_ID;
+		DEMAND_COUNT = dEMAND_COUNT;
+		START_TIME = sTART_TIME;
+		L_ID = l_ID;
+		STATUS = sTATUS;
+		COMMENTS = cOMMENTS;
 	}
 
 	public HiringDemand() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "HiringDemand [ED_ID=" + ED_ID + ", ED_NAME=" + ED_NAME + ", HM_ID=" + HM_ID + ", HM_NAME=" + HM_NAME
+				+ ", DEMAND_COUNT=" + DEMAND_COUNT + ", START_TIME=" + START_TIME + ", L_ID=" + L_ID + ", STATUS="
+				+ STATUS + ", COMMENTS=" + COMMENTS + "]";
 	}
 
 }
