@@ -54,7 +54,7 @@ public class UserDao implements InfUser
 		if(!temp1.isEmpty())
 			return 2;
 		
-		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"')";
+		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD,ROLE)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"','"+user.getRole()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
 		sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER,USERNAME)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"','"+user.getUserName()+"')";
