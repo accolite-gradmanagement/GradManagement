@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" (submit)="loginUser()">
+  <div *ngIf="!correctDetails && submitted">Invalid Login credentails</div>
+  <div class="form-group">
+    <!-- <input type="text" formControlName="username"  placeholder="username" id="username">
+    <div *ngIf="loginForm.controls.username.touched && !loginForm.controls.username.valid" class="alert alert-danger">username reqd</div> -->
+    <label >username</label>
+    <input  type="text" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Username is required</div>
+    </div>    
+  </div>
+
+  <div class="form-group">
+    <!-- <input type="password" formControlName="password" placeholder="password" id="password">
+    <div *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid" class="alert alert-danger">password reqd</div> -->
+    <label >Password</label>
+    <input type="password" formControlName="password"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+    </div>
+  </div>
+  <button class="form-group" type="submit" [disabled]="loading">Login </button>
+  <div *ngIf="loginForm.controls.username.touched || loginForm.controls.password.touched"></div> 
+  
+                  <button routerLink='grad'>Login as Grad</button>
+                  <button routerLink='admin'>Admin</button>
+
+</form>
