@@ -7,7 +7,21 @@ public class User
 {
 	int userId;
 	String firstName,lastName,mobileNo,emailId,gender;
+	String userName,passWord;
 	String dob;
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassWord() {
+		return passWord;
+	}
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
 	public int getUserId() {
 		return userId;
 	}

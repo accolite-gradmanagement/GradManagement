@@ -25,7 +25,10 @@ public class UserDao implements InfUser
 
 	public Boolean saveUser(User user) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"')";
+		String sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"')";
+		System.out.println(sql);
+		this.jTemplate.execute(sql);
+		sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER,USERNAME)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"','"+user.getUserName()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
 		return null;

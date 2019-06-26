@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accolite.msgrad.dao.UserDao;
 import com.accolite.msgrad.model.User;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
 @RestController
@@ -34,6 +35,12 @@ public class RestControllerClass
 	public void putUser(@RequestBody User user)
 	{
 		userdao.saveUser(user);
+	}
+	
+	@RequestMapping(value="putLoginUser",method = RequestMethod.POST)
+	public void putloginUser(@RequestBody ObjectNode obj)
+	{
+		
 	}
 
 }
