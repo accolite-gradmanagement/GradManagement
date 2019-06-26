@@ -24,7 +24,7 @@ public class UserDao implements InfUser
 		this.jTemplate = jTemplate;
 	}
 
-	public Boolean saveUser(User user) {
+	public long saveUser(User user) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT EMAIL_ID FROM USERS WHERE EMAIL_ID='"+user.getEmailId()+"';";
 		System.out.println(sql);
@@ -38,14 +38,29 @@ public class UserDao implements InfUser
 			}
 		});
 		if(!temp.isEmpty())
-			return false;
+			return 0;
+		
+		sql = "SELECT USERNAME FROM USERS WHERE USERNAME='"+user.getUserName()+"';";
+		System.out.println(sql);
+		List<User> temp1 = this.jTemplate.query(sql, new RowMapper<User>(){
+			
+			public User mapRow(ResultSet rs, int arg1) throws SQLException {
+				// TODO Auto-generated method stub
+				User m = new User();
+				m.setEmailId(rs.getString("USERNAME"));
+				return m;
+			}
+		});
+		if(!temp1.isEmpty())
+			return 2;
+		
 		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
 		sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER,USERNAME)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"','"+user.getUserName()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
-		return true;
+		return 1;
 	}
 	
 	public boolean loginUser(Login login)

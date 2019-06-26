@@ -35,9 +35,9 @@ public class RestControllerClass
 		return "xcvdxv";
 	}
 	@RequestMapping(value="putUser",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void putUser(@RequestBody User user)
+	public long putUser(@RequestBody User user)
 	{
-		userdao.saveUser(user);
+		return userdao.saveUser(user);
 	}
 	
 	@RequestMapping(value="login",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

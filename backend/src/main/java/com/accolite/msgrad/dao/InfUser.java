@@ -8,7 +8,7 @@ import com.accolite.msgrad.model.User;
 
 public interface InfUser 
 {
-	Boolean  saveUser(User user);
+	long saveUser(User user);
 	List<User> viewUser();
 
 }
