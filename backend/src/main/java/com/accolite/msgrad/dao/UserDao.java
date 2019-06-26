@@ -1,11 +1,16 @@
 package com.accolite.msgrad.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Repository;
 
 import com.accolite.msgrad.model.Login;
@@ -22,6 +27,23 @@ public class UserDao implements InfUser
 
 	public void setjTemplate(JdbcTemplate jTemplate) {
 		this.jTemplate = jTemplate;
+	}
+	
+	public static String hashPassword(String password_plaintext) {
+		String salt = BCrypt.gensalt(12);
+		String hashed_password = BCrypt.hashpw(password_plaintext, salt);
+
+		return(hashed_password);
+	}
+	public static boolean checkPassword(String password_plaintext, String stored_hash) {
+		boolean password_verified = false;
+
+		if(null == stored_hash || !stored_hash.startsWith("$2a$"))
+			throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+
+		password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
+
+		return(password_verified);
 	}
 
 	public long saveUser(User user) {
@@ -54,7 +76,9 @@ public class UserDao implements InfUser
 		if(!temp1.isEmpty())
 			return 2;
 		
-		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"')";
+		String encoded = hashPassword(user.getPassWord());
+		user.setPassWord(encoded);
+		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD,ROLE)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"','"+user.getRole()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
 		sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER,USERNAME)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"','"+user.getUserName()+"')";
@@ -65,7 +89,7 @@ public class UserDao implements InfUser
 	
 	public boolean loginUser(Login login)
 	{
-		String sql = "SELECT * FROM LOGIN WHERE USERNAME='"+login.getUsername()+"' AND "+"PASS_WORD='"+login.getPass_word()+"';";
+		String sql = "SELECT * FROM LOGIN WHERE USERNAME='"+login.getUsername()+"')";//" AND "+"PASS_WORD='"+login.getPass_word()+"';";
 		System.out.println(sql);
 		List<Login> temp = this.jTemplate.query(sql, new RowMapper<Login>(){
 			
@@ -80,7 +104,10 @@ public class UserDao implements InfUser
 		if(temp.isEmpty())
 			return false;
 		if(temp.size()==1)
-			return true;
+		{
+			if(checkPassword(login.getPass_word(),temp.get(0).getPass_word()))
+				return true;
+		}
 		return false;
 	}
 
