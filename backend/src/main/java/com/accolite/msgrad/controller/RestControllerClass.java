@@ -4,16 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accolite.msgrad.dao.UserDao;
+import com.accolite.msgrad.model.Login;
 import com.accolite.msgrad.model.User;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class RestControllerClass 
 {
@@ -37,10 +40,11 @@ public class RestControllerClass
 		userdao.saveUser(user);
 	}
 	
-	@RequestMapping(value="putLoginUser",method = RequestMethod.POST)
-	public void putloginUser(@RequestBody ObjectNode obj)
+	@RequestMapping(value="login",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public boolean putloginUser(@RequestBody Login login)
 	{
-		
+		System.out.println(login.getUsername()+" "+login.getPass_word());
+		return userdao.loginUser(login);
 	}
 
 }
