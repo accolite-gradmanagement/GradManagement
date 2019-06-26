@@ -1,0 +1,27 @@
+.ed-btn {
+    width:100%;
+    padding: 10px 10px;
+    text-align: left;
+    background-color: #d6d6d6;
+    border: none;
+    margin: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #494949;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.table-heading{
+    color: #404040;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+
+
+}
+td {
+    color: #494949;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    
+}

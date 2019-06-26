@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.DemandDetails.Model.Employee;
 import com.DemandDetails.Model.HiringDemand;
 import com.DemandDetails.Service.HiringService;
-
 @RestController
+
+@CrossOrigin(origins="*", allowedHeaders = "*")
 public class HiringController {
 
 	@Autowired
@@ -33,7 +35,7 @@ public class HiringController {
 		return hiringService.getAllDemandDetails();
 	}
 
-	@RequestMapping(value = "api/hiringDetails", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/api/hiringDetails", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(value = HttpStatus.OK)
 	public HiringDemand addHiringDetails(@RequestBody HiringDemand hd) {
 		return hiringService.addHiringDetails(hd);
