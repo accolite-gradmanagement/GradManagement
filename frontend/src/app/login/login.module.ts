@@ -7,14 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { GradComponent } from './grad/grad.component';
 import { AdminComponent } from './admin/admin.component';
 import { LogincompComponent } from './logincomp/logincomp.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
-  declarations: [ GradComponent, AdminComponent, LogincompComponent],
+  declarations: [ GradComponent,SignUpComponent, AdminComponent, LogincompComponent, SignUpComponent],
   imports: [
     CommonModule,
     FormsModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports:[]
 })

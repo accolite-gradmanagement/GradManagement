@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import {AuthenticationService} from '../../../authentication.service'
 import { RouterLink } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-logincomp',
@@ -13,97 +15,65 @@ export class LogincompComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  correctDetails =false;
+  correctDetails:boolean;
 
-  logincredentials: any=[];
-
-  constructor(private formBuilder: FormBuilder,private AuthenticationService: AuthenticationService) { }
+  constructor(private httpClient:HttpClient, private router:Router) { }
 
   ngOnInit() {
-
-    // this.loginForm = this.formBuilder.group({
-    //   username: ['', Validators.required],
-    //   password: ['', Validators.required]
-    // })
-
     this.loginForm=new FormGroup({
       username: new FormControl('',Validators.required),
       password: new FormControl('',Validators.required)
     });
-    // console.log(this.loginForm.value);
-
-
-    this.AuthenticationService.getLoginCredentials()
-      .subscribe(data =>{
-        this.logincredentials=data;
-
-     
-
-        // console.log(this.logincredentials);
-
-      })
-
-    // this.loginForm.reset({username: 'Nancy', disabled: true, password: 'Drew'});
-    // console.log(this.loginForm.value);
-
   }
   get f() { return this.loginForm.controls; }
 
 
   loginUser() {
+    
+    // console.log(this.loginForm.valid);
+    // console.log(this.loginForm);
     // event.preventDefault();
 
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-    this.loading = true;
-
-
-    for(const login in this.logincredentials)
-      {
-        console.log(this.logincredentials[login]);
-        
-        if(this.logincredentials[login].firstname == this.loginForm.value.username
-          && this.logincredentials[login].lastname == this.loginForm.value.password
-          ){
-          this.correctDetails=true;
-        }
-
-      }
-      if(this.correctDetails==true)
-      {
-        
-      }
-      else{
-        this.loading=false;
-        this.loginForm.patchValue({"username":'',"password":''})
-        return;
-      }
-      console.log(this.loginForm.valid);
-      this.signUpJsonPost();
-    // console.log(this.loginForm.value);
-
-    // const target=event.target;
-    // const username=target.querySelector('#username').value;
-    // const password=target.querySelector('#password').value;
-
-    // console.log(username);
-    // console.log(password);
+    
+    if(this.loginForm.valid)
+    {
+      this.loginpost();
+    
+    }
   }
 
-  signUpJsonPost()
-  {
-    let formObj = this.loginForm.getRawValue(); // {name: '', description: ''}
-        let serializedForm = JSON.stringify(formObj);
-        console.log(serializedForm);
+  loginpost(){
+    let dataToSend = {
+      username: this.loginForm.get('username').value,
+      pass_word: this.loginForm.get('password').value
+    }
 
-        // this.http.post("www.domain.com/api", serializedForm)
-        //     .subscribe(
-        //         data => console.log("success!", data),
-        //         error => console.error("couldn't post because", error)
-        //     );
+    let serializedForm = JSON.stringify(dataToSend);
 
+    // console.log(serializedForm);
+
+    let h = new HttpHeaders({'Content-Type':'application/json'});
+   
+    this.httpClient.post("http://localhost:8080/msgrad/login",serializedForm,{headers:h})
+    .subscribe(
+      data  => { if(data==true)
+                  {
+                  
+                  console.log("success");
+                  this.router.navigate(['login/admin']);
+                  }else
+                  {
+                    this.correctDetails=false;
+                    console.log("error");
+                  }
+
+      },
+      error  => {console.log("Error", error);}
+    )
   }
 
 }
