@@ -8,8 +8,14 @@ public class User
 	int userId;
 	String firstName,lastName,mobileNo,emailId,gender;
 	String userName,passWord;
-	String dob;
+	String dob,role;
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getUserName() {
 		return userName;
 	}
