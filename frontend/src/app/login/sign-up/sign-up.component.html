@@ -1,14 +1,19 @@
-<h1>Sign Up Form</h1>
+<h1 style="margin-left: 400px; margin-top: 40px">Sign Up Form</h1>
 <form [formGroup]="signUpForm">
-    <br>  
-      
 
-    <label>Email Id:</label>
-    <input style="width: 400px" type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }" >
-    <label>   @gmail.com   </label>
+
+    <br>  
+    <br>
+    <label style="margin-left: 400px"><b>Email Id:</b></label>
+    <div class="row">
+        <input style="margin-left: 415px; width: 400px" type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }">
+        <label style="margin-left: 10px">@gmail.com</label>
+    </div>
     <div *ngIf="submitted && signUpForm.controls.emailID.errors" class="invalid-feedback">
         <div *ngIf = "signUpForm.controls.emailID.errors.required">
+            <label style="margin-left: 400px">
                 Enter your Email ID
+            </label>
         </div>
     </div>
     <div *ngIf="signUpForm.controls.emailID.errors" class="invalid-feedback">    
@@ -17,124 +22,118 @@
         </div>
     </div>
     <br>
-    <br>
-   
+    
 
-    <label>Password:</label>
-    <br>
-    <input style="width: 400px" type = "password" placeholder = "Create a new password" class = "form-control" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.password.errors }">
-    <br>
+    <label style="margin-left: 400px"><b>Password:</b></label>
+    <input style="width: 400px; margin-left: 400px" type = "password" placeholder = "Create a new password" class = "form-control" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.password.errors }">
     <div *ngIf="submitted && signUpForm.controls.password.errors" class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.password.errors.required">
+        <div *ngIf="signUpForm.controls.password.errors.required" style="margin-left: 400px">
             Enter a Password
         </div>
     </div>
     <br>
 
 
-    <label>Confirm Password:</label>
-    <br>
-    <input style="width: 400px" type = "password" placeholder = "Confirm your password" class="form-control" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.confirmPassword.errors && !pwdMatched }">
-    <br>
+    <label style="margin-left: 400px"><b>Confirm Password:</b></label>
+    <input style="width: 400px; margin-left: 400px" type = "password" placeholder = "Confirm your password" class="form-control" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.confirmPassword.errors && !pwdMatched }">
     <div *ngIf="submitted && signUpForm.controls.confirmPassword.errors" class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.confirmPassword.errors.required">
+        <div *ngIf="signUpForm.controls.confirmPassword.errors.required" style="margin-left: 400px">
             Enter your Password
         </div>
     </div> 
-    <div *ngIf="!pwdMatched" class="invalid-feedback">
+    <div *ngIf="!pwdMatched" class="invalid-feedback" style="margin-left: 400px">
         Passwords do not match!!
     </div>
     <br>
 
 
-    <label>First Name:</label>
-    <br>
-    <input style="width: 400px" type = "text" placeholder = "Enter your first name" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.firstName.errors }">
-    <br>
+    <label style="margin-left: 400px"><b>First Name:</b></label>
+    <input style="width: 400px; margin-left: 400px" type = "text" placeholder = "Enter your first name" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.firstName.errors }">
     <div *ngIf="submitted && signUpForm.controls.firstName.errors" class="invalid-feedback">
-        <div *ngIf = "signUpForm.controls.firstName.errors.required">
+        <div *ngIf = "signUpForm.controls.firstName.errors.required" style="margin-left: 400px">
             Enter your first name
         </div>
     </div>    
     <div *ngIf="signUpForm.controls.firstName.errors"  class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.firstName.errors.pattern">
+        <div *ngIf="signUpForm.controls.firstName.errors.pattern" style="margin-left: 400px">
             Enter a valid first name
         </div>    
     </div>    
     <br>
 
 
-    <label>Last Name:</label>
+    <label style="margin-left: 400px"><b>Last Name:</b></label>
     <br>
-    <input type = "text" placeholder = "Enter your last name" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.lastName.errors }">
-    <br>
+    <input style="width: 400px; margin-left: 400px" type = "text" placeholder = "Enter your last name" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.lastName.errors }">
     <div *ngIf="submitted && signUpForm.controls.lastName.errors" class="invalid-feedback">
         <div *ngIf="signUpForm.controls.lastName.errors.required">
             Enter your last name
         </div>
     </div>    
     <div *ngIf="signUpForm.controls.lastName.errors"  class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.lastName.errors.pattern">
+        <div *ngIf="signUpForm.controls.lastName.errors.pattern" style="margin-left: 400px">
             Enter a valid last name
         </div>
     </div>
     <br>
 
 
-    <label>Phone Number:</label>
-    <br>
-    <label>+91  </label>
-    <input type = "text" placeholder = "Enter your number" class = "form-control" formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.phoneNumber.errors }">
-    <br>
+    <label style="margin-left: 400px"><b>Phone Number:</b></label>
+    <div class="row">
+        <label style="margin-left: 415px">+91</label>
+        <input style="width: 360px; margin-left: 10px" type = "text" placeholder = "Enter your number" class = "form-control" formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.phoneNumber.errors }">
+    </div>
     <div *ngIf="submitted && signUpForm.controls.phoneNumber.errors" class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.phoneNumber.errors?.required">
+        <div *ngIf="signUpForm.controls.phoneNumber.errors?.required" style="margin-left: 400px">
             Enter your phone number
         </div>
     </div>  
-    <div *ngIf="signUpForm.controls.phoneNumber.errors?.pattern">Enter a valid phone number</div>  
+    <div *ngIf="signUpForm.controls.phoneNumber.errors?.pattern" style="margin-left: 400px">
+        Enter a valid phone number
+    </div>  
     <br>
 
-
-    <label>Date of Birth:</label>
-    <br>
-    <input type = "date" class = "form-control" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.dateOfBirth.errors }">
-    <br>
+    <label style="margin-left: 400px"><b>Date of Birth:</b></label>
+    <input style="width: 400px; margin-left: 400px" type = "date" class = "form-control" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.dateOfBirth.errors }">
     <div *ngIf="submitted && signUpForm.controls.dateOfBirth.errors" class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.dateOfBirth.errors.required">
+        <div *ngIf="signUpForm.controls.dateOfBirth.errors.required" style="margin-left: 400px">
             Enter a valid birthdate
         </div>
     </div>    
     <br>
 
 
-    <label>Gender:</label>
-    <br>
-    <select name="Gender" formControlName="gender" class="form-control" >
+    <label style="margin-left: 400px"><b>Gender:</b></label>
+    <select style="width: 400px; margin-left: 400px" name="Gender" formControlName="gender" class="form-control" >
         <option value="" selected disabled hidden>Choose here</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Others</option>   
     </select>
-    <div *ngIf="signUpForm.controls.gender.errors" class="invalid-feedback">Select a valid gender</div>
-    <br>
-    <br>
-
-    <input name = "checkbox" class = "form-check" type = "checkbox"  formControlName="termsAndConditions" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.termsAndConditions.errors}">
-        I have read and agree with the
-    <a href="http://www.google.co.in">Terms and Conditions.</a>
-    <br>
-    <div *ngIf="submitted && signUpForm.controls.termsAndConditions.errors" class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.termsAndConditions.errors.required">
-            Please read terms and conditions and check the agreement
-        </div>
-    </div>      
+    <div *ngIf="signUpForm.controls.gender.errors" class="invalid-feedback" style="margin-left: 400px">
+        Select a valid gender
+    </div>
     <br>
 
 
-
-    <button type = "button" (click) = "signUpSubmit()">Submit</button>
-    <button type = "button" (click) = "signUpClear()">Clear</button>
-    <button type = "button" (click) = "signUpCancel()">Cancel</button>
+    <div class="row">
+        <input style="margin-left: 415px" name = "checkbox" class = "form-check" type = "checkbox"  formControlName="termsAndConditions" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.termsAndConditions.errors}">
+        <label style="margin-left: 10px">I have read and agree with the</label>
+        <a style="margin-left: 10px" href="http://www.google.co.in">Terms and Conditions.</a>
+    </div>  
+        <div *ngIf="submitted && signUpForm.controls.termsAndConditions.errors" class="invalid-feedback">
+            <div *ngIf="signUpForm.controls.termsAndConditions.errors.required" style="margin-left: 400px">
+                Please read terms and conditions and check the agreement
+            </div>
+        </div> 
+       
     <br>
 
-</form>
+    <button style="width: 100px; margin-left: 400px; margin-bottom: 80px" type = "button" (click) = "signUpSubmit()">Submit</button>
+    <button style="width: 100px; margin-left: 40px; margin-bottom: 80px" type = "button" (click) = "signUpClear()">Clear</button>
+    <button style="width: 100px; margin-left: 40px; margin-bottom: 80px" type = "button" (click) = "signUpCancel()">Cancel</button>
+
+
+
+</form> 
+
