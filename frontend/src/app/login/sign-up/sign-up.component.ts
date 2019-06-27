@@ -26,9 +26,10 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       firstName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
       lastName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
-      phoneNumber: ['', [Validators.required,Validators.pattern('^[0-9]+$')]],
+      phoneNumber: ['', [Validators.required,Validators.pattern('^[0-9]{10}$')]],
       dateOfBirth: ['', Validators.required],
       gender: ['',Validators.required],
+      role:['',Validators.required],
       termsAndConditions: [false, Validators.requiredTrue]
     });
   }
@@ -78,16 +79,17 @@ export class SignUpComponent implements OnInit {
 
   signUpJsonPost()
   {
+    
     let dataToSend = {
       firstName: this.signUpForm.get('firstName').value,
       lastName: this.signUpForm.get('lastName').value,
       mobileNo: this.signUpForm.get('phoneNumber').value,
       gender: this.signUpForm.get('gender').value,
-      emailId: this.signUpForm.get('emailID').value,
+      emailId: this.signUpForm.get('emailID').value+"@accoliteindia.com",  
       dob: this.signUpForm.get('dateOfBirth').value,
-      userName: this.signUpForm.get('emailID').value,
+      userName: this.signUpForm.get('emailID').value+"@accoliteindia.com",
       passWord: this.signUpForm.get('password').value,
-      role:"grad"
+      role:this.signUpForm.get('role').value
     }
 
     let serializedForm = JSON.stringify(dataToSend);
@@ -98,7 +100,17 @@ export class SignUpComponent implements OnInit {
    
     this.httpClient.post("http://localhost:8080/msgrad/putUser",serializedForm,{headers:h})
     .subscribe(
-      data  => {
+      data  => {if(data==0)
+        {
+          alert("email present" )
+          this.router.navigate(['login/signup']);
+        }
+        else if(data==2)
+        {
+          alert("username present")
+          this.router.navigate(['/login/signup']);
+        }
+        else
         this.router.navigate(['/login']);
         console.log("POST Request is successful ", data);},
       error  => {console.log("Error", error);}

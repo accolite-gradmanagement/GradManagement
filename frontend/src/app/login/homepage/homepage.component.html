@@ -1,0 +1,25 @@
+
+<div class="card text-center">
+    <div class="card-header" >
+      <ul  class="nav nav-tabs card-header-tabs">
+        <li >
+          
+          <a class="nav-link" *ngIf="admin || trainer || grad"  routerLink="" routerLinkActive="active">Grad</a>
+        </li>
+        <li  >
+          <a class="nav-link" *ngIf="admin || trainer || grad"   routerLink="" routerLinkActive="active"  >Courses Available</a>
+        </li>
+        <li >
+            <a class="nav-link" *ngIf="admin || trainer"  routerLink="" routerLinkActive="active" >Assessment and scores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="admin || trainer || grad"  routerLink="" routerLinkActive="active" >Ed</a>
+          </li>
+      </ul>
+    </div>
+    {{role}}
+  </div>  
+
+
+
+<button (click)=logout() routerLink='/login' >logout</button>
