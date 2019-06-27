@@ -51,10 +51,10 @@ export class LogincompComponent implements OnInit {
     }
   }
 
-                          noback()
-                          {
-                            window.history.forward();
-                          }
+  noback()
+  {
+    window.history.forward();
+   }
 
   loginpost(){
     let dataToSend = {
@@ -71,10 +71,11 @@ export class LogincompComponent implements OnInit {
       data  => { if(data)
                   {
              
-               localStorage.setItem('loggedIn', JSON.stringify(data));
+                  localStorage.setItem('loggedIn', JSON.stringify(data));
                     
                   this.router.navigate(['login/homepage']);
-                  }else
+                  }
+                  else
                   {
                     this.correctDetails=false;
                     console.log("error");

@@ -30,10 +30,6 @@ public class RestControllerClass
 	{
 		return userdao.viewUser();
 	}
-	@RequestMapping("test")
-	public String getString( ) {
-		return "xcvdxv";
-	}
 	@RequestMapping(value="putUser",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public long putUser(@RequestBody User user)
 	{
