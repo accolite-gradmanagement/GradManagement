@@ -12,7 +12,10 @@
 	
 	<context:annotation-config/>
 	<context:component-scan base-package="com.accolite.msgrad" />
+	  <mvc:default-servlet-handler/>
 	<mvc:annotation-driven />
+	
+	
    
 <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
 <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
