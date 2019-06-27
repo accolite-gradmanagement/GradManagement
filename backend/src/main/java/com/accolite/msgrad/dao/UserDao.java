@@ -1,16 +1,10 @@
 package com.accolite.msgrad.dao;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Repository;
 
 import com.accolite.msgrad.model.Login;
@@ -45,24 +39,10 @@ public class UserDao implements InfUser
 		if(!temp.isEmpty())
 			return 0;
 		
-		sql = "SELECT USERNAME FROM USERS WHERE USERNAME='"+user.getUserName()+"';";
-		System.out.println(sql);
-		List<User> temp1 = this.jTemplate.query(sql, new RowMapper<User>(){
-			
-			public User mapRow(ResultSet rs, int arg1) throws SQLException {
-				// TODO Auto-generated method stub
-				User m = new User();
-				m.setEmailId(rs.getString("USERNAME"));
-				return m;
-			}
-		});
-		if(!temp1.isEmpty())
-			return 2;
-		
-		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getUserName()+"','"+user.getPassWord()+"')";
+		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getEmailId()+"','"+user.getPassWord()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
-		sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER,USERNAME,ROLE)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"','"+user.getUserName()+"','"+user.getRole()+"')";
+		sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,MOBILE_NO,EMAIL_ID,DOB,GENDER,ROLE)"+" VALUES('"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getMobileNo()+"','"+user.getEmailId()+"','"+user.getDob()+"','"+user.getGender()+"','"+user.getRole()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
 		return 1;
@@ -86,7 +66,7 @@ public class UserDao implements InfUser
 			return null;
 		if(temp.size()==1)
 		{
-			sql = "SELECT * FROM USERS WHERE USERNAME='"+login.getUsername()+"';";
+			sql = "SELECT * FROM USERS WHERE EMAIL_ID='"+login.getUsername()+"';";
 			System.out.println(sql);
 			List<User> temp1 = this.jTemplate.query(sql, new RowMapper<User>(){
 				
@@ -100,7 +80,6 @@ public class UserDao implements InfUser
 					m.setEmailId(rs.getString("EMAIL_ID"));
 					m.setGender(rs.getString("GENDER"));
 					m.setRole(rs.getString("ROLE"));
-					m.setUserName(rs.getString("USERNAME"));
 					m.setUserId(rs.getInt("USER_ID"));
 					return m;
 				}

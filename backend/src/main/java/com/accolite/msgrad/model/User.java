@@ -7,7 +7,7 @@ public class User
 {
 	int userId;
 	String firstName,lastName,mobileNo,emailId,gender;
-	String userName,passWord;
+	String passWord;
 	String dob,role;
 	
 	public String getRole() {
@@ -16,12 +16,7 @@ public class User
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+	
 	public String getPassWord() {
 		return passWord;
 	}
