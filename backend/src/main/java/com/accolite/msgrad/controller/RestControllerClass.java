@@ -30,18 +30,15 @@ public class RestControllerClass
 	{
 		return userdao.viewUser();
 	}
-	@RequestMapping("test")
-	public String getString( ) {
-		return "xcvdxv";
-	}
+	
 	@RequestMapping(value="putUser",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public long putUser(@RequestBody User user)
 	{
 		return userdao.saveUser(user);
 	}
 	
-	@RequestMapping(value="login",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public boolean putloginUser(@RequestBody Login login)
+	@RequestMapping(value="login",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public User putloginUser(@RequestBody Login login)
 	{
 		System.out.println(login.getUsername()+" "+login.getPass_word());
 		return userdao.loginUser(login);
