@@ -5,13 +5,39 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DemandService {
+  
+  private demandsUrl = 'DemandDetails/api/hiringDetails';
+  employeesUrl = 'DemandDetails/api/employees';
+  locationsUrl = 'DemandDetails/api/locations'
 
-  constructor(private http: HttpClient) { }
+  employees: any = {};
+  locations: any = {};
+  constructor(private http: HttpClient) { 
+    this.http.get(this.employeesUrl).subscribe (response =>{ 
+      for (let index in response) {
+        let employee = response[index];
+        this.employees[employee['emp_ID']] = employee;
+      }
+      console.log(this.employees);
+    });
 
-  private demandsUrl = 'http://localhost:8080/DemandDetails/api/hiringDetails';
+    this.http.get(this.locationsUrl).subscribe(response =>{
+      for(let index in response) {
+        let location = response[index];
+        this.locations[location['location_ID']] = location;
+      }
+      console.log(this.locations);
 
-  /** GET heroes from the server */
-getDemands () {
-  return this.http.get(this.demandsUrl)
-}
+    })
+
+  }
+  getLocations() {
+    return this.locations;   
+  }
+  getEmployees() {
+    return this.employees;
+  }
+  getDemands () {
+    return this.http.get(this.demandsUrl)
+  }
 }

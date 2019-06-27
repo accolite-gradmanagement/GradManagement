@@ -4,7 +4,7 @@
     text-align: left;
     background-color: #d6d6d6;
     border: none;
-    margin: 5px;
+    margin: 5px 0px;
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #494949;
@@ -24,4 +24,9 @@ td {
     font-family: Arial, sans-serif;
     font-size: 12px;
     
+}
+
+span {
+    margin-right: 100px;
+    float: right;
 }

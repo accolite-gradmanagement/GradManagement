@@ -17,7 +17,7 @@ import { DemanddetailsComponent } from './demand/demanddetails/demanddetails.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

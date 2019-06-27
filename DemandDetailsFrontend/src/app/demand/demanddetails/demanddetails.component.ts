@@ -8,63 +8,68 @@ import { DemandService } from '../../provider/demand.service'
 })
 export class DemanddetailsComponent implements OnInit {
 
-  data = [
-    {ename:'sathish', hname:'sathish', location:'Mumbai', demand_count:3, start_time:"", comments: 'hdgjf'},
-    {ename:'sathish', hname:'sathish', location:'Bangalore', demand_count:4, start_time:"", comments: 'dagv'},
-    {ename:'sathish', hname:'praveen', location:'Bangalore', demand_count:2, start_time:"", comments: ''},
-    {ename:'sathish', hname:'sathish', location:'Mumbai', demand_count:3, start_time:"", comments: 'hdgjf'},
-    {ename:'sathish', hname:'sathish', location:'Bangalore', demand_count:4, start_time:"", comments: 'dagv'},
-    {ename:'sathish', hname:'praveen', location:'Bangalore', demand_count:2, start_time:"", comments: ''},
-    {ename:'mohit', hname:'sai', location:'Mumbai', demand_count:5, start_time:"", comments: ''},
-    {ename:'mohit', hname:'sai', location:'Bangalore', demand_count:5, start_time:"", comments: 'beqjgf'},
-    {ename:'mohit', hname:'sai', location:'Mumbai', demand_count:5, start_time:"", comments: ''},
-    {ename:'mohit', hname:'sai', location:'Bangalore', demand_count:5, start_time:"", comments: 'beqjgf'},
-    {ename:'praveen', hname:'sathish', location:'Mumbai', demand_count:4, start_time:"", comments: ''},
-    {ename:'sai', hname:'mohit', location:'Mumbai', demand_count:5, start_time:"", comments: ''},
-    {ename:'sai', hname:'praveen', location:'Bangalore', demand_count:3, start_time:"", comments: 'fhgwjg'},
-    {ename:'srujan', hname:'srujan', location:'Mumbai', demand_count:3, start_time:"", comments: ''},
-    {ename:'srujan', hname:'srujan', location:'Bangalore', demand_count:2, start_time:"", comments: ''}
-  ]
+  // data = [
+  //   {ename:'sathish', hname:'sathish', location:'Mumbai', demand_count:3, start_time:"", comments: 'hdgjf'},
+  //   {ename:'sathish', hname:'sathish', location:'Bangalore', demand_count:4, start_time:"", comments: 'dagv'},
+  //   {ename:'sathish', hname:'praveen', location:'Bangalore', demand_count:2, start_time:"", comments: ''},
+  //   {ename:'sathish', hname:'sathish', location:'Mumbai', demand_count:3, start_time:"", comments: 'hdgjf'},
+  //   {ename:'sathish', hname:'sathish', location:'Bangalore', demand_count:4, start_time:"", comments: 'dagv'},
+  //   {ename:'sathish', hname:'praveen', location:'Bangalore', demand_count:2, start_time:"", comments: ''},
+  //   {ename:'mohit', hname:'sai', location:'Mumbai', demand_count:5, start_time:"", comments: ''},
+  //   {ename:'mohit', hname:'sai', location:'Bangalore', demand_count:5, start_time:"", comments: 'beqjgf'},
+  //   {ename:'mohit', hname:'sai', location:'Mumbai', demand_count:5, start_time:"", comments: ''},
+  //   {ename:'mohit', hname:'sai', location:'Bangalore', demand_count:5, start_time:"", comments: 'beqjgf'},
+  //   {ename:'praveen', hname:'sathish', location:'Mumbai', demand_count:4, start_time:"", comments: ''},
+  //   {ename:'sai', hname:'mohit', location:'Mumbai', demand_count:5, start_time:"", comments: ''},
+  //   {ename:'sai', hname:'praveen', location:'Bangalore', demand_count:3, start_time:"", comments: 'fhgwjg'},
+  //   {ename:'srujan', hname:'srujan', location:'Mumbai', demand_count:3, start_time:"", comments: ''},
+  //   {ename:'srujan', hname:'srujan', location:'Bangalore', demand_count:2, start_time:"", comments: ''}
+  // ]
   
   formattedData= {};
   isViewableArray = {};
   isViewable = true;
 
   constructor(private service: DemandService) {
-    
-    this.service.getDemands().subscribe(demands => {console.log(demands)});
-    
-    let hm1 = [];
-    for(let i in this.data) {
-      let tempObj = this.data[i];
-      let edObj = this.formattedData[tempObj['ename']];
-      if(edObj == undefined) {
-        edObj = {};
-      }
-      let hmObj=edObj[tempObj['hname']];
-      if(hmObj == undefined) {
-        hmObj = [];
-      } 
-      let demandObject = this.getFormattedDemandObject(tempObj);
-      hmObj.push(demandObject);
-      edObj[tempObj['hname']] = hmObj;
-      this.formattedData[tempObj['ename']] = edObj;
-      this.isViewableArray[tempObj['ename']] = true;
-    }
-    console.log(this.isViewableArray);  
+    this.getDemands();
   }
 
   ngOnInit() {
     
-  
   }
-
-  
-  getFormattedDemandObject(demand: any) {
+  getDemands() {
+    this.service.getDemands().subscribe(demands => {
+      console.log(demands);
+      let employees =  this.service.getEmployees();
+      let locations =  this.service.getLocations();  
+      for(let i in demands) {
+        let tempObj = demands[i];
+        let edEmployee = employees[tempObj['ed_ID']];
+        let edObj = this.formattedData[edEmployee.emp_NAME];
+        if(edObj == undefined) {
+          edObj = {};
+        }
+        let hmEmployee = employees[tempObj['hm_ID']]
+        let hmObj=edObj[hmEmployee.emp_NAME];
+        if(hmObj == undefined) {
+          hmObj = [];
+        } 
+        let demandObject = this.getFormattedDemandObject(locations, tempObj);
+        hmObj.push(demandObject);
+        edObj[hmEmployee.emp_NAME] = hmObj;
+        this.formattedData[edEmployee.emp_NAME] = edObj;
+        this.isViewableArray[edEmployee.emp_NAME] = true;
+      }
+    });
+    
+  }
+  getFormattedDemandObject(locations: any, demand: any) {
       let demandObject = {};
-      demandObject['location'] = demand['location'];
-      demandObject['demand_count'] = demand['demand_count'];
-      demandObject['start_time'] = demand['start_time'];
+      let location = locations[demand['l_ID']];
+      demandObject['location'] = location.location_NAME;
+      demandObject['demand_count'] = demand['demand_COUNT'];
+      demandObject['start_time'] = new Date(demand['start_TIME']).toLocaleDateString();
+      demandObject['status']=demand['status'];
       return demandObject;
   }
 
@@ -73,6 +78,21 @@ export class DemanddetailsComponent implements OnInit {
     this.isViewableArray[edName] = !this.isViewableArray[edName];
     // this.isViewable= !this.isViewable;
 
+  }
+
+  getTotalDemands(edObj){
+    let total=0;
+    for(let employee in edObj)
+    {
+        let hmObj=edObj[employee];
+        for(let index in hmObj)
+        {
+          total+=hmObj[index].demand_count;
+        }
+
+    }
+    return total;
+    
   }
 
 }
