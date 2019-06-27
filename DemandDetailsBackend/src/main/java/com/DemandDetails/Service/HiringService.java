@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.DemandDetails.Dao.HiringDao;
 import com.DemandDetails.Model.Employee;
 import com.DemandDetails.Model.HiringDemand;
+import com.DemandDetails.Model.Location;
 
 @Service
 public class HiringService {
@@ -30,4 +31,9 @@ public class HiringService {
 	public List<Employee> getAllEmployees() {
 		return hiringDao.getAllEmployees();
 	}
+	
+	public List<Location> getAllLocations() {
+		return hiringDao.getAllLocations();
+	}
+
 }

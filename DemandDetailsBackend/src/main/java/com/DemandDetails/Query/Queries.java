@@ -13,4 +13,7 @@ public class Queries {
 	public final static String GET_ALL_EMPLOYEES = "SELECT * FROM EMPLOYEE";
 
 	public final static String UPDATE_DEMAND_DETAIL = "UPDATE DEMAND_DETAILS SET DEMAND_COUNT = ? , COMMENTS = ?, STATUS = ? WHERE ID = ?";
+	
+	public final static String GET_ALL_LOCATIONS = "SELECT * FROM LOCATION";
+
 }

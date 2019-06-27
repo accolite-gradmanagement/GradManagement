@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.DemandDetails.Model.Employee;
 import com.DemandDetails.Model.HiringDemand;
+import com.DemandDetails.Model.Location;
 import com.DemandDetails.Service.HiringService;
 @RestController
 
@@ -53,4 +54,9 @@ public class HiringController {
 		return hiringService.getAllEmployees();
 	}
 
+	@RequestMapping(value = "/api/locations", method = RequestMethod.GET, produces = "application/json")
+	@ResponseStatus(value = HttpStatus.OK)
+	public List<Location> getAllLocations() {
+		return hiringService.getAllLocations();
+	}
 }
