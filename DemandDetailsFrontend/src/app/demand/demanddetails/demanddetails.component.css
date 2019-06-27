@@ -23,15 +23,10 @@ td {
     color: #494949;
     font-family: Arial, sans-serif;
     font-size: 12px;
-<<<<<<< Updated upstream
     
 }
 
 span {
     margin-right: 100px;
-=======
-}
-.spanClass {
->>>>>>> Stashed changes
     float: right;
 }

@@ -1,0 +1,69 @@
+
+<p>Enter Demand Details</p>
+
+<form class="container-fluid"   #demandForm="ngForm">
+  <div class="row ">
+    <!-- <div class="col-sm-6">  -->
+    <div class="form-group">
+      <label>Executive Director</label>
+      <select class="custom-select" name="location" [(ngModel)]="demandModel.ED_ID" placeholder="choose location">
+                <!-- <option value=""></option> -->
+                <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.emp_ID">{{employee.value.emp_NAME}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Hiring Manager</label>
+      <select class="custom-select" name="location" [(ngModel)]="demandModel.HM_ID" placeholder="choose location">
+                <!-- <option value=""></option> -->
+        <option *ngFor="let employee of employees | keyvalue" [value]="employee.value.emp_ID">{{employee.value.emp_NAME}}</option>
+      </select>
+    </div>
+ </div>
+ <br>
+ 
+  <div class="form-group">
+      <label>Location</label>
+    <select class="custom-select" name="location" [(ngModel)]="demandModel.L_ID" placeholder="choose location">
+              <option value="">Select the location</option>
+              <option *ngFor="let location of locations | keyvalue" [value]="location.value.location_ID">{{location.value.location_NAME}}</option>
+    </select>
+  </div>
+  <div class="row ">
+     <div class="col">
+         <label>Demand</label>
+        <input type="text" class="form-control" name="hmName" [(ngModel)] = "demandModel.DEMAND_COUNT"placeholder="Enter demands">
+      </div>
+  </div>
+  <div class="row ">
+    <div class="col">
+      <label>Expected start date for   </label>
+      <input type="date" class="form-control" name="start_date" [(ngModel)] = "demandModel.START_TIME" placeholder="Enter value">
+    </div>
+  </div>
+  <br>
+  <input type="text" class="form-control" name="comments" [(ngModel)]="demandModel.COMMENTS" placeholder="comments">
+  <button type="submit" class="btn btn-primary"  (click)="onSubmitForm()">Save and add another demand</button>
+</form>
+
+<table class="table" *ngIf="disp">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Ed Name</th>
+        <th scope="col">Hiring Manager</th>
+        <th scope="col">Location</th>
+        <th scope="col">Demand</th>
+        <th scope="col">Expected date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let demand of demandDetails">
+        <td>{{demand.edName}}</td>
+        <td>{{demand.hmName}}</td>
+        <td>{{demand.location}}</td>
+        <td>{{demand.demand}}</td>
+        <td>{{demand.start_date}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+

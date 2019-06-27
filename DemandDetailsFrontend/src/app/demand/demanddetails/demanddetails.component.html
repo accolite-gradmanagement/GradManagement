@@ -2,13 +2,8 @@
   <div class="col-sm-1"></div>
   <div class="col-sm-10">
     <div *ngFor="let item of formattedData | keyvalue">
-<<<<<<< Updated upstream
       <button class="ed-btn" (click)="toggle(item.key)">{{item.key | uppercase}}
         <span>TOTAL DEMAND:{{getTotalDemands(item.value)}}</span>
-=======
-      <button class="ed-btn" (click)="toggle(item.key)">Executive Director: {{item.key | uppercase}}
-        <span class="spanClass">Total Demands: </span>
->>>>>>> Stashed changes
       </button>
       <div *ngIf="isViewableArray[item.key]">
           <table class="table">
