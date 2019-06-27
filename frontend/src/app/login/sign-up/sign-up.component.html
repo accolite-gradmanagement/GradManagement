@@ -7,7 +7,7 @@
     <label style="margin-left: 400px"><b>Email Id:</b></label>
     <div class="row">
         <input style="margin-left: 415px; width: 400px" type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }">
-        <label style="margin-left: 10px">@gmail.com</label>
+        <label style="margin-left: 10px">@accoliteindia.com</label>
     </div>
     <div *ngIf="submitted && signUpForm.controls.emailID.errors" class="invalid-feedback">
         <div *ngIf = "signUpForm.controls.emailID.errors.required">
@@ -66,7 +66,7 @@
     <br>
     <input style="width: 400px; margin-left: 400px" type = "text" placeholder = "Enter your last name" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.lastName.errors }">
     <div *ngIf="submitted && signUpForm.controls.lastName.errors" class="invalid-feedback">
-        <div *ngIf="signUpForm.controls.lastName.errors.required">
+        <div *ngIf="signUpForm.controls.lastName.errors.required"  style="margin-left: 400px"   >
             Enter your last name
         </div>
     </div>    
@@ -114,6 +114,18 @@
         Select a valid gender
     </div>
     <br>
+
+    <label style="margin-left: 400px"><b>Role:</b></label>
+    <select style="width: 400px; margin-left: 400px" name="role" formControlName="role" class="form-control" >
+        <option value="" selected disabled hidden>Choose here</option>
+        <option value="grad">grad</option>
+        <option value="trainer">trainer</option>
+    </select>
+    <div *ngIf="signUpForm.controls.role.errors" class="invalid-feedback" style="margin-left: 400px">
+        Select a valid role
+    </div>
+    <br>
+
 
 
     <div class="row">
