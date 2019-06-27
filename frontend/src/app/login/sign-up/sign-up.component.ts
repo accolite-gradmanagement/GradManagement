@@ -85,9 +85,8 @@ export class SignUpComponent implements OnInit {
       lastName: this.signUpForm.get('lastName').value,
       mobileNo: this.signUpForm.get('phoneNumber').value,
       gender: this.signUpForm.get('gender').value,
-      emailId: this.signUpForm.get('emailID').value+"@accoliteindia.com",  
+      emailId: this.signUpForm.get('emailID').value,  
       dob: this.signUpForm.get('dateOfBirth').value,
-      userName: this.signUpForm.get('emailID').value+"@accoliteindia.com",
       passWord: this.signUpForm.get('password').value,
       role:this.signUpForm.get('role').value
     }

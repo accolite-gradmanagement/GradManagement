@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-logincomp',
   templateUrl: './logincomp.component.html',
@@ -37,7 +36,6 @@ export class LogincompComponent implements OnInit {
 
   loginUser() {
     
-
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -51,10 +49,6 @@ export class LogincompComponent implements OnInit {
     }
   }
 
-  noback()
-  {
-    window.history.forward();
-   }
 
   loginpost(){
     let dataToSend = {
@@ -85,5 +79,6 @@ export class LogincompComponent implements OnInit {
       error  => {console.log("Error", error);}
     )
   }
+
 
 }

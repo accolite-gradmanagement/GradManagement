@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -9,4 +10,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'App0';
  
-}
+}  
+
+
+
+
