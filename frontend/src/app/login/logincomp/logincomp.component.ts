@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterLink, RouterStateSnapshot } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-logincomp',
@@ -12,14 +14,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LogincompComponent implements OnInit {
 
+  
+
   loginForm: FormGroup;
   loading = false;
   submitted = false;
   correctDetails:boolean;
 
-  constructor(private httpClient:HttpClient, private router:Router) { }
+  constructor(private httpClient:HttpClient, private router:Router) {
+   
+   }
 
   ngOnInit() {
+    localStorage.clear();
     this.loginForm=new FormGroup({
       username: new FormControl('',Validators.required),
       password: new FormControl('',Validators.required)
@@ -30,9 +37,6 @@ export class LogincompComponent implements OnInit {
 
   loginUser() {
     
-    // console.log(this.loginForm.valid);
-    // console.log(this.loginForm);
-    // event.preventDefault();
 
     this.submitted = true;
     if (this.loginForm.invalid) {
@@ -41,10 +45,16 @@ export class LogincompComponent implements OnInit {
     
     if(this.loginForm.valid)
     {
+      this.correctDetails=true;
       this.loginpost();
     
     }
   }
+
+                          noback()
+                          {
+                            window.history.forward();
+                          }
 
   loginpost(){
     let dataToSend = {
@@ -54,17 +64,16 @@ export class LogincompComponent implements OnInit {
 
     let serializedForm = JSON.stringify(dataToSend);
 
-    // console.log(serializedForm);
-
     let h = new HttpHeaders({'Content-Type':'application/json'});
    
     this.httpClient.post("http://localhost:8080/msgrad/login",serializedForm,{headers:h})
     .subscribe(
-      data  => { if(data==true)
+      data  => { if(data)
                   {
-                  
-                  console.log("success");
-                  this.router.navigate(['login/admin']);
+             
+               localStorage.setItem('loggedIn', JSON.stringify(data));
+                    
+                  this.router.navigate(['login/homepage']);
                   }else
                   {
                     this.correctDetails=false;
