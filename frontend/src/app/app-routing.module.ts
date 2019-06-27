@@ -6,14 +6,12 @@ import { LogincompComponent } from './login/logincomp/logincomp.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 
 const routes: Routes = [
-// {  
-  // path: 'login/admin',
-  // component: AdminComponent,
-  // canActivate: [LoginGuard]},
+
 {path:'login/signup',component:SignUpComponent},
 {path:'login/homepage',component:HomepageComponent},
 {path:'login',component:LogincompComponent},
-{path:'',redirectTo:'login',pathMatch:'full'}
+{path:'',redirectTo:'login',pathMatch:'full'},
+{path:'**',redirectTo:'login',pathMatch:'full'}
 ];
 
 @NgModule({
