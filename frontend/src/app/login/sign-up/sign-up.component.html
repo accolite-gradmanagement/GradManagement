@@ -1,23 +1,16 @@
 <h1 style="margin-left: 400px; margin-top: 40px">Sign Up Form</h1>
 <form [formGroup]="signUpForm">
 
-
+    
     <br>  
     <br>
     <label style="margin-left: 400px"><b>Email Id:</b></label>
-    <div class="row">
-        <input style="margin-left: 415px; width: 400px" type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }">
-        <label style="margin-left: 10px">@accoliteindia.com</label>
-    </div>
+    <input style="margin-left: 400px; width: 400px" type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }">
     <div *ngIf="submitted && signUpForm.controls.emailID.errors" class="invalid-feedback">
-        <div *ngIf = "signUpForm.controls.emailID.errors.required">
-            <label style="margin-left: 400px">
+        <div *ngIf = "signUpForm.controls.emailID.errors.required" style="margin-left: 400px"> 
                 Enter your Email ID
-            </label>
         </div>
-    </div>
-    <div *ngIf="signUpForm.controls.emailID.errors" class="invalid-feedback">    
-        <div *ngIf="signUpForm.controls.emailID.errors.pattern">
+        <div *ngIf="signUpForm.controls.emailID.errors.pattern" style="margin-left: 400px">
             Enter a valid Email ID
         </div>
     </div>
