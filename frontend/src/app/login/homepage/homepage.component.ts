@@ -8,7 +8,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class HomepageComponent  {
 
-  private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
+  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
   grad=false;
   admin=false;
   trainer=false;
@@ -37,7 +37,7 @@ export class HomepageComponent  {
 
   logout()
   {
-    localStorage.clear();
+    sessionStorage.clear();
   }
  
 }

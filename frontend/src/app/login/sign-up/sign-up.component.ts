@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
-      emailID: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9._]+$')]],
+      emailID: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9.]+@accoliteindia.com$')]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       firstName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
@@ -31,7 +31,6 @@ export class SignUpComponent implements OnInit {
       phoneNumber: ['', [Validators.required,Validators.pattern('^[0-9]{10}$')]],
       dateOfBirth: ['', Validators.required],
       gender: ['',Validators.required],
-      role:['',Validators.required],
       termsAndConditions: [false, Validators.requiredTrue]
     });
   }
@@ -72,10 +71,12 @@ export class SignUpComponent implements OnInit {
 
   signUpCancel()
   {
-    this.httpClient.get("http://localhost:8080/msgrad/getAll").subscribe(
-      data  => {console.log("Get Request is successful ", data);},
-      error  => {console.log("Error", error);}
-    )
+    // this.httpClient.get("http://localhost:8080/msgrad/getAll").subscribe(
+    //   data  => {console.log("Get Request is successful ", data);},
+    //   error  => {console.log("Error", error);}
+    // )
+
+    this.router.navigate(['login']);
 
   }
 
@@ -90,7 +91,7 @@ export class SignUpComponent implements OnInit {
       emailId: this.signUpForm.get('emailID').value,  
       dob: this.signUpForm.get('dateOfBirth').value,
       passWord: this.signUpForm.get('password').value,
-      role:this.signUpForm.get('role').value
+      role:"admin"
     }
 
     let serializedForm = JSON.stringify(dataToSend);

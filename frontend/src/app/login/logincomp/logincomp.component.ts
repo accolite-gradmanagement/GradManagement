@@ -14,6 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LogincompComponent implements OnInit {
 
   
+  private  loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')|| 'false');
 
   loginForm: FormGroup;
   loading = false;
@@ -26,6 +27,12 @@ export class LogincompComponent implements OnInit {
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundSize = "cover";
+
+    if(this.loggedInStatus!=false)
+    {
+      router.navigate(['login/homepage'])
+    }
+
    }
 
   ngOnInit() {
@@ -69,7 +76,7 @@ export class LogincompComponent implements OnInit {
       data  => { if(data)
                   {
              
-                  localStorage.setItem('loggedIn', JSON.stringify(data));
+                  sessionStorage.setItem('loggedIn', JSON.stringify(data));
                     
                   this.router.navigate(['login/homepage']);
                   }
