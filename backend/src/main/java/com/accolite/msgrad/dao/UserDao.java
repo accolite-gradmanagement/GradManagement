@@ -3,6 +3,10 @@ package com.accolite.msgrad.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -23,6 +27,39 @@ public class UserDao implements InfUser
 	public void setjTemplate(JdbcTemplate jTemplate) {
 		this.jTemplate = jTemplate;
 	}
+
+	public static String encrypt(String strClearText,String strKey) throws Exception{
+		String strData="";
+		
+		try {
+			SecretKeySpec skeyspec=new SecretKeySpec(strKey.getBytes(),"Blowfish");
+			Cipher cipher=Cipher.getInstance("Blowfish");
+			cipher.init(Cipher.ENCRYPT_MODE, skeyspec);
+			byte[] encrypted=cipher.doFinal(strClearText.getBytes());
+			strData=new String(encrypted);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return strData;
+	}
+	public static String decrypt(String strEncrypted,String strKey) throws Exception{
+		String strData="";
+		
+		try {
+			SecretKeySpec skeyspec=new SecretKeySpec(strKey.getBytes(),"Blowfish");
+			Cipher cipher=Cipher.getInstance("Blowfish");
+			cipher.init(Cipher.DECRYPT_MODE, skeyspec);
+			byte[] decrypted=cipher.doFinal(strEncrypted.getBytes());
+			strData=new String(decrypted);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return strData;
+	}
 	
 	public long saveUser(User user) {
 		// TODO Auto-generated method stub
@@ -40,6 +77,14 @@ public class UserDao implements InfUser
 		if(!temp.isEmpty())
 			return 0;
 		
+		String str;
+		try {
+			str = this.encrypt(user.getPassWord(), "BlowFish");
+			user.setPassWord(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getEmailId()+"','"+user.getPassWord()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
@@ -51,6 +96,13 @@ public class UserDao implements InfUser
 	
 	public User loginUser(Login login)
 	{
+		try {
+			String str = this.encrypt(login.getPass_word(), "BlowFish");
+			login.setPass_word(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String sql = "SELECT * FROM LOGIN WHERE USERNAME='"+login.getUsername()+"' AND "+"PASS_WORD='"+login.getPass_word()+"';";
 		System.out.println(sql);
 		List<Login> temp = this.jTemplate.query(sql, new RowMapper<Login>(){
@@ -114,7 +166,13 @@ public class UserDao implements InfUser
 	
 	public long addEmployee(Employee user) {
 		// TODO Auto-generated method stub
-		user.setPassword("accoliteEmployee");
+		try {
+			String str = this.encrypt("accoliteEmployee", "BlowFish");
+			user.setPassword(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String sql = "SELECT EMAIL_ID FROM USERS WHERE EMAIL_ID='"+user.getEmailId()+"';";
 		System.out.println(sql);
 		List<Employee> temp = this.jTemplate.query(sql, new RowMapper<Employee>(){
@@ -130,7 +188,7 @@ public class UserDao implements InfUser
 			return 0;
 		
 		User userobj = new User();
-		userobj.setRole("employee");
+		userobj.setRole("trainer");
 		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getEmailId()+"','"+user.getPassword()+"')";
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
