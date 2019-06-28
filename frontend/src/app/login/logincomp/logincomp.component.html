@@ -5,14 +5,14 @@
   <h2  style="margin-left: 400px; margin-top: 80px; ;margin-right: 450px;"><font  size = "10" face = "Time New Roman "color="white">Login</font></h2>
 
 <form [formGroup]="loginForm" (submit)="loginUser()">
-  <div *ngIf="!correctDetails && submitted">Invalid Login credentails</div>
+  <div *ngIf="!correctDetails && submitted"  style="margin-left: 400px"><font color = "white" size = "5">Invalid Login credentails</font></div>
   <div class="form-group">
     <!-- <input type="text" formControlName="username"  placeholder="username" id="username">
     <div *ngIf="loginForm.controls.username.touched && !loginForm.controls.username.valid" class="alert alert-danger">username reqd</div> -->
     <label for="username" style="margin-left: 400px"><font  face = "Times New Roman" size="7" color="white"><i>Username:</i></font></label>
     <input  type="text" style="margin-left: 415px; width: 400px" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-        <div *ngIf="f.username.errors.required">Username is required</div>
+        <div *ngIf="f.username.errors.required"  style="margin-left: 400px"><font size = "5">Username is required</font></div>
     </div>    
   </div>
 
@@ -22,14 +22,14 @@
     <label for="password" style="margin-left: 400px"><font  face = "Times New Roman" size="7" color="white"><i>Password:</i></font></label>
     <input type="password" style="margin-left: 415px; width: 400px" formControlName="password"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.required"  style="margin-left: 400px"><font size = "5">Password is required</font></div>
     </div>
   </div>
 
   <button class="btn btn-lg btn-primary btn-block" style="margin-left: 415px; width: 400px" type="submit" [disabled]="loading">Login </button>
   <div *ngIf="loginForm.controls.username.touched || loginForm.controls.password.touched"></div> 
   
-  <button class="btn btn-lg btn-primary btn-block" style="margin-left: 415px; width: 400px" routerLink='signup'>signup</button>
+  <button class="btn btn-lg btn-primary btn-block" style="margin-left: 415px; margin-top: 5px; width: 400px" routerLink='signup'>signup</button>
   
 
 </form>

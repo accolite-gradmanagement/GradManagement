@@ -1,10 +1,9 @@
 
 <router-outlet></router-outlet>
 <div class="card text-center">
-    <div class="card-header" >
-      <ul  class="nav nav-tabs card-header-tabs">
-        <li >
-          
+    <div class="card-header" style="background-color: black;" >
+      <ul  class="nav nav-tabs card-header-tabs" >
+        <li > 
           <a class="nav-link" *ngIf="admin || trainer || grad"  routerLink="" routerLinkActive="active">Grad</a>
         </li>
         <li  >
@@ -17,12 +16,11 @@
             <a class="nav-link" *ngIf="admin || trainer || grad"  routerLink="" routerLinkActive="active" >Ed</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" *ngIf="admin "  routerLink="/employeeData" routerLinkActive="active" > Employee</a>
-            </li>
-      </ul>
+              <a class="nav-link" *ngIf="admin "  routerLink="/employeeData" routerLinkActive="active" style="color:black;background-color: white;" > Employee</a>
+            </li> 
+            <button (click)=logout() routerLink='/login'  style="position: absolute; right: 0;margin-right: 25px;">logout</button>
+      </ul>      
     </div>
   </div>  
 
 
-
-<button (click)=logout() routerLink='/login' >logout</button>

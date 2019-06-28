@@ -4,14 +4,14 @@
       <form [formGroup]="userForm"  (submit)="addUserPost()">
         <div class="form-group">
 
-          <label for="username" style="margin-left: 400px">Add employees:</label>
+          <label for="username" style="margin-left: 410px;margin-top: 20px;">Add employees:</label>
           <input  type="text" style="margin-left: 415px; width: 400px" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
           <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
               <div *ngIf="f.username.errors.required">Username is required</div>
           </div>    
         </div>
       
-        <button class="btn btn-lg btn-primary btn-block" style="margin-left: 415px; width: 400px" type="submit" [disabled]="loading">add </button>
+        <button class="btn btn-lg btn-primary btn-block" style="margin-left: 415px; width: 400px; margin-bottom: 25px;" type="submit" [disabled]="loading">add </button>
 
       
         <div *ngIf="userForm.controls.username.touched "></div>         
@@ -22,37 +22,30 @@
 <!---->
 
 
-<div class="container">
+<div class="container" >
     <table class="table table-striped">
-      <thead>
+      <thead style="background-color: black;">
           <tr>
-              <th>dob</th>
-              <th>emailId</th>
-              <th>firstName</th>
-              <th>gender</th>
-              <th>lastName</th>
-                          <th>mobileNo</th>
-                              <th>passWord</th>
-                                  <th>role</th>
-                                      <th>userId</th>
-           
+              <th style="color:white;">UID</th>
+              <th style="color:white;">FIRSTNAME</th>
+              <th style="color:white;">LASTNAME</th>
+              <th style="color:white;">ROLE</th>
+              <th style="color:white;">GENDER</th>
+              <th style="color:white;">MAILID</th>
+              <th style="color:white;">MOBILENO</th>
+              <th style="color:white;">DOB</th>  
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of datas">
-          
-          <td>{{ data.dob }}</td>
-          <td>{{ data.emailId }}</td>
-          <td>{{ data.firstName }}</td>
-          <td>{{ data.gender }}</td>
-          <td>{{ data.lastName }}</td>
-          <td>{{data.mobileNo}}</td>
-          <td>{{ data.passWord }}</td>
-          <td>{{data.role}}</td>
+        <tr *ngFor="let data of datas" >
           <td>{{ data.userId }}</td>
-          
-
-         
+          <td>{{ data.firstName }}</td>
+          <td >{{ data.lastName }}</td>
+          <td >{{data.role}}</td>
+          <td >{{ data.gender }}</td>
+          <td >{{ data.emailId }}</td>
+          <td >{{data.mobileNo}}</td>
+          <td >{{ data.dob }}</td> 
         </tr>
       </tbody>
     </table>

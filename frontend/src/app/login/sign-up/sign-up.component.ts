@@ -91,7 +91,7 @@ export class SignUpComponent implements OnInit {
       emailId: this.signUpForm.get('emailID').value,  
       dob: this.signUpForm.get('dateOfBirth').value,
       passWord: this.signUpForm.get('password').value,
-      role:"admin"
+      role:"grad"
     }
 
     let serializedForm = JSON.stringify(dataToSend);

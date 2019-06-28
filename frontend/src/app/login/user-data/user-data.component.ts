@@ -59,14 +59,21 @@ export class UserDataComponent implements OnInit {
       data  => { if(data)
                   {
              
-                  localStorage.setItem('loggedIn', JSON.stringify(data));
-                    
-                  }
+                  if(data==1)
+                  {
+                    alert("employee added successfully")
+                    // this.router.navigate(['./employeeData'])
+                   /*  this.router.navigateByUrl('/employeeData', {skipLocationChange: true}).then(()=>
+                    this.router.navigate(["employeeData"])); */
+                   location.reload();
+                  }                  
                   else
                   {
+                    alert("employee not added");
                     this.submitted = false;
                     console.log("error");
                   }
+                }
 
       },
       error  => {console.log("Error", error);}
