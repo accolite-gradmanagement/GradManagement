@@ -6,7 +6,7 @@ import { RouterLink, Router } from '@angular/router';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent  {
 
   private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
   grad=false;
@@ -19,8 +19,6 @@ export class HomepageComponent implements OnInit {
     {
       this.router.navigate(['login']);
     }
-
-    
   }
 
   ngOnInit() {
@@ -40,7 +38,5 @@ export class HomepageComponent implements OnInit {
   {
     localStorage.clear();
   }
-
-
-
+ 
 }

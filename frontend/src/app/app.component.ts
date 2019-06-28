@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
-
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,9 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'App0';
+  
+  
+
  
 }  
 

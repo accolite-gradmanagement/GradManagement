@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accolite.msgrad.dao.UserDao;
+import com.accolite.msgrad.model.Employee;
 import com.accolite.msgrad.model.Login;
 import com.accolite.msgrad.model.User;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -42,6 +43,12 @@ public class RestControllerClass
 	{
 		System.out.println(login.getUsername()+" "+login.getPass_word());
 		return userdao.loginUser(login);
+	}
+	
+	@RequestMapping(value="addEmployee",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public long putUser(@RequestBody Employee employee)
+	{
+		return userdao.addEmployee(employee);
 	}
 
 }

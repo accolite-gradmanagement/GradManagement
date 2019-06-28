@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.accolite.msgrad.model.Employee;
 import com.accolite.msgrad.model.Login;
 import com.accolite.msgrad.model.User;
 
@@ -102,6 +103,7 @@ public class UserDao implements InfUser
 				m.setLastName(rs.getString("LAST_NAME"));
 				m.setMobileNo(rs.getString("MOBILE_NO"));
 				m.setEmailId(rs.getString("EMAIL_ID"));
+				m.setRole(rs.getString("ROLE"));
 				m.setGender(rs.getString("GENDER"));
 				m.setDob(rs.getString("DOB"));
 				return m;
@@ -109,5 +111,34 @@ public class UserDao implements InfUser
 		});
 		
 	}
+	
+	public long addEmployee(Employee user) {
+		// TODO Auto-generated method stub
+		user.setPassword("accoliteEmployee");
+		String sql = "SELECT EMAIL_ID FROM USERS WHERE EMAIL_ID='"+user.getEmailId()+"';";
+		System.out.println(sql);
+		List<Employee> temp = this.jTemplate.query(sql, new RowMapper<Employee>(){
+			
+			public Employee mapRow(ResultSet rs, int arg1) throws SQLException {
+				// TODO Auto-generated method stub
+				Employee m = new Employee();
+				m.setEmailId(rs.getString("EMAIL_ID"));
+				return m;
+			}
+		});
+		if(!temp.isEmpty())
+			return 0;
+		
+		User userobj = new User();
+		userobj.setRole("employee");
+		sql = "INSERT INTO LOGIN(USERNAME,PASS_WORD)"+" VALUES('"+user.getEmailId()+"','"+user.getPassword()+"')";
+		System.out.println(sql);
+		this.jTemplate.execute(sql);
+		sql = "INSERT INTO USERS(EMAIL_ID,ROLE)"+" VALUES('"+user.getEmailId()+"','"+userobj.getRole()+"')";
+		System.out.println(sql);
+		this.jTemplate.execute(sql);
+		return 1;
+	}
 
+	
 }

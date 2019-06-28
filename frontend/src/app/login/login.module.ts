@@ -8,9 +8,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LogincompComponent } from './logincomp/logincomp.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { UserDataComponent } from './user-data/user-data.component';
 
 @NgModule({
-  declarations: [ SignUpComponent, HomepageComponent, LogincompComponent, SignUpComponent],
+  declarations: [ SignUpComponent, HomepageComponent, LogincompComponent, SignUpComponent, UserDataComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -1,0 +1,57 @@
+<app-homepage></app-homepage>
+      <form [formGroup]="userForm"  (submit)="addUserPost()">
+        <div class="form-group">
+
+          <label for="username" style="margin-left: 400px">Add employees:</label>
+          <input  type="text" style="margin-left: 415px; width: 400px" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>    
+        </div>
+      
+        <button class="btn btn-lg btn-primary btn-block" style="margin-left: 415px; width: 400px" type="submit" [disabled]="loading">add </button>
+
+      
+        <div *ngIf="userForm.controls.username.touched "></div>         
+      
+      </form>
+
+
+<!---->
+
+
+<div class="container">
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>dob</th>
+              <th>emailId</th>
+              <th>firstName</th>
+              <th>gender</th>
+              <th>lastName</th>
+                          <th>mobileNo</th>
+                              <th>passWord</th>
+                                  <th>role</th>
+                                      <th>userId</th>
+           
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of datas">
+          
+          <td>{{ data.dob }}</td>
+          <td>{{ data.emailId }}</td>
+          <td>{{ data.firstName }}</td>
+          <td>{{ data.gender }}</td>
+          <td>{{ data.lastName }}</td>
+          <td>{{data.mobileNo}}</td>
+          <td>{{ data.passWord }}</td>
+          <td>{{data.role}}</td>
+          <td>{{ data.userId }}</td>
+          
+
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
