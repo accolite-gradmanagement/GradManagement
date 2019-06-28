@@ -1,2 +1,13 @@
-export class Hiring {
+export class Demand {
+    public edId: number;
+    public edName: string;
+    public hmId: number;
+    public hmName: string;
+    public demandCount: number;
+    public startTime: Date;
+    public lId: number;
+    public status: string;
+    public comments: string;
+    constructor(
+    ) { }
 }

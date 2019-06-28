@@ -1,9 +1,0 @@
-com\DemandDetails\Model\Hiring.class
-com\DemandDetails\Service\HiringService.class
-com\DemandDetails\Controller\HiringController.class
-com\DemandDetails\Query\Queries.class
-com\DemandDetails\Config\WebServletConfiguration.class
-com\DemandDetails\Config\SpringConfig.class
-com\DemandDetails\Dao\HiringDao.class
-com\DemandDetails\Main.class
-com\DemandDetails\Model\Employee.class
