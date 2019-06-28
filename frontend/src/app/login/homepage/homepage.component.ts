@@ -14,6 +14,7 @@ export class HomepageComponent  {
   trainer=false;
 
   constructor(private router:Router) {
+    document.body.style.backgroundImage = null;
     console.log(this.loggedInStatus);
     if(this.loggedInStatus==false)
     {

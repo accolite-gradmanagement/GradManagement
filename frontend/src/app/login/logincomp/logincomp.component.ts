@@ -21,7 +21,11 @@ export class LogincompComponent implements OnInit {
   correctDetails:boolean;
 
   constructor(private httpClient:HttpClient, private router:Router) {
-   
+    document.body.style.backgroundImage = "url('./../../../accolite.jpg')";
+    document.body.style.backgroundPosition = "center center";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundSize = "cover";
    }
 
   ngOnInit() {

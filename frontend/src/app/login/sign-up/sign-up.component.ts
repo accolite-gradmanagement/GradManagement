@@ -17,7 +17,9 @@ export class SignUpComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private httpClient : HttpClient,
     private router:Router
-    ){}
+    ){
+      document.body.style.backgroundImage = null;
+    }
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({

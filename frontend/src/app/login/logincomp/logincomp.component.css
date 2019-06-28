@@ -1,6 +1,10 @@
-body {
-	background-color: green;
-  }
+/* .bg {
+	background-image: url("./../../../accolite.jpg");
+	background-size: cover; 
+	background-position: center;
+  background-repeat: no-repeat;
+	height: 100%;
+  } */
 .wrapper {	
 	margin-top: 80px;
   margin-bottom: 80px;
@@ -12,9 +16,9 @@ body {
 	  height: auto;
 	  padding: 10px;
 		@include box-sizing(border-box);
-		&:focus {
+		/* &:focus {
 		  z-index: 2;
-		}
+		} */
 	}
 
 	input[type="text"] {
