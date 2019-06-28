@@ -12,5 +12,6 @@ public interface InfUser
 	long saveUser(User user);
 	User loginUser(Login login);
 	List<User> viewUser();
+	boolean updateUser(User login);
 
 }

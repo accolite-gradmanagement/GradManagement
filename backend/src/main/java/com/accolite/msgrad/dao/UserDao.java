@@ -197,6 +197,35 @@ public class UserDao implements InfUser
 		this.jTemplate.execute(sql);
 		return 1;
 	}
+	
+	public boolean updateUser(User login) {
+		int userId = login.getUserId();
+		String sql = "SELECT * FROM USERS WHERE USER_ID='"+userId+"';";
+		System.out.println(sql);
+		List<User> temp = this.jTemplate.query(sql, new RowMapper<User>(){
+			
+			public User mapRow(ResultSet rs, int arg1) throws SQLException {
+				// TODO Auto-generated method stub
+				User m = new User();
+				m.setEmailId(rs.getString("EMAIL_ID"));
+				m.setFirstName(rs.getString("FIRST_NAME"));
+				m.setLastName(rs.getString("LAST_NAME"));
+				m.setDob(rs.getString("DOB"));
+				m.setGender(rs.getString("GENDER"));
+				m.setMobileNo(rs.getString("MOBILE_NO"));
+				m.setRole(rs.getString("ROLE"));
+				return m;	
+			}
+		});
+		if(temp.isEmpty())
+			return false;
+		sql = "UPDATE USERS SET FIRST_NAME='"+login.getFirstName()+"' ,LAST_NAME='"+login.getLastName()+"' ,MOBILE_NO='"+login.getMobileNo()+"' WHERE USER_ID="+userId+";";
+		System.out.println(sql);
+		this.jTemplate.execute(sql);
+		return true;
+		
+	}
+
 
 	
 }

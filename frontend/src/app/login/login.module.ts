@@ -9,9 +9,10 @@ import { LogincompComponent } from './logincomp/logincomp.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserDataComponent } from './user-data/user-data.component';
+import { CurrentUserComponent } from './current-user/current-user.component';
 
 @NgModule({
-  declarations: [ SignUpComponent, HomepageComponent, LogincompComponent, SignUpComponent, UserDataComponent],
+  declarations: [ SignUpComponent, HomepageComponent, LogincompComponent, SignUpComponent, UserDataComponent, CurrentUserComponent],
   imports: [
     CommonModule,
     FormsModule,

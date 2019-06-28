@@ -51,4 +51,10 @@ public class RestControllerClass
 		return userdao.addEmployee(employee);
 	}
 
+	@RequestMapping(value="update",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public boolean updateUser(@RequestBody User user)
+	{
+		return userdao.updateUser(user);
+	}
+
 }

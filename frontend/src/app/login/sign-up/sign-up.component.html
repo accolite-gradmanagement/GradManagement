@@ -1,168 +1,315 @@
-<html>
-<body>
-    <h2 style="margin-left: 400px; margin-top: 40px; ;margin-right: 450px;">
-        <font size="10" face="Time New Roman " color="white">Sign Up</font>
-    </h2>
-    <form [formGroup]="signUpForm">
-
-
+<header>
         <br>
         <br>
-        <label style="margin-left: 400px"><b>Email Id:</b></label>
-        <input style="margin-left: 400px; width: 400px" type="text" placeholder="Enter Your Email Id"
-            class="form-control" formControlName="emailID"
-            [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }">
-        <div *ngIf="submitted && signUpForm.controls.emailID.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.emailID.errors.required" style="margin-left: 400px">
-                Enter your Email ID
-            </div>
-            <div *ngIf="signUpForm.controls.emailID.errors.pattern" style="margin-left: 400px">
-                Enter a valid Email ID
-            </div>
-        </div>
         <br>
-
-
-        <label style="margin-left: 400px"><b>Password:</b></label>
-        <input style="width: 400px; margin-left: 400px" type="password" placeholder="Create a new password"
-            class="form-control" formControlName="password"
-            [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.password.errors }">
-        <div *ngIf="submitted && signUpForm.controls.password.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.password.errors.required" style="margin-left: 400px">
-                Enter a Password
-            </div>
+    </header>
+    
+    <div class="container">
+    
+        <div class="col-md-12" style="text-align: center">
+            <h2  style="color: black; font-family: Georgia, 'Times New Roman', Times, serif">
+                Sign Up Form
+            </h2>        
         </div>
+    
+        <form [formGroup]="signUpForm">
+    
+    
+        <br>  
         <br>
-
-
-        <label style="margin-left: 400px"><b>Confirm Password:</b></label>
-        <input style="width: 400px; margin-left: 400px" type="password" placeholder="Confirm your password"
-            class="form-control" formControlName="confirmPassword"
-            [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.confirmPassword.errors && !pwdMatched }">
-        <div *ngIf="submitted && signUpForm.controls.confirmPassword.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.confirmPassword.errors.required" style="margin-left: 400px">
-                Enter your Password
-            </div>
-        </div>
-        <div *ngIf="!pwdMatched" class="invalid-feedback" style="margin-left: 400px">
-            Passwords do not match!!
-        </div>
-        <br>
-
-
-        <label style="margin-left: 400px"><b>First Name:</b></label>
-        <input style="width: 400px; margin-left: 400px" type="text" placeholder="Enter your first name"
-            class="form-control" formControlName="firstName"
-            [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.firstName.errors }">
-        <div *ngIf="submitted && signUpForm.controls.firstName.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.firstName.errors.required" style="margin-left: 400px">
-                Enter your first name
-            </div>
-        </div>
-        <div *ngIf="signUpForm.controls.firstName.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.firstName.errors.pattern" style="margin-left: 400px">
-                Enter a valid first name
-            </div>
-        </div>
-        <br>
-
-
-        <label style="margin-left: 400px"><b>Last Name:</b></label>
-        <br>
-        <input style="width: 400px; margin-left: 400px" type="text" placeholder="Enter your last name"
-            class="form-control" formControlName="lastName"
-            [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.lastName.errors }">
-        <div *ngIf="submitted && signUpForm.controls.lastName.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.lastName.errors.required" style="margin-left: 400px">
-                Enter your last name
-            </div>
-        </div>
-        <div *ngIf="signUpForm.controls.lastName.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.lastName.errors.pattern" style="margin-left: 400px">
-                Enter a valid last name
-            </div>
-        </div>
-        <br>
-
-
-        <label style="margin-left: 400px"><b>Phone Number:</b></label>
+    
+    
         <div class="row">
-            <label style="margin-left: 415px">+91</label>
-            <input style="width: 360px; margin-left: 10px" type="text" placeholder="Enter your number"
-                class="form-control" formControlName="phoneNumber"
-                [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.phoneNumber.errors }">
-        </div>
-        <div *ngIf="submitted && signUpForm.controls.phoneNumber.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.phoneNumber.errors?.required" style="margin-left: 400px">
-                Enter your phone number
+            <div class="col-lg-3"></div>
+            <div class="col-lg-1">
+                <label >
+                    <b>Email Id:</b>
+                </label>
             </div>
         </div>
-        <div *ngIf="signUpForm.controls.phoneNumber.errors?.pattern" style="margin-left: 400px">
-            Enter a valid phone number
-        </div>
-        <br>
-
-        <label style="margin-left: 400px"><b>Date of Birth:</b></label>
-        <input style="width: 400px; margin-left: 400px" type="date" class="form-control" formControlName="dateOfBirth"
-            [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.dateOfBirth.errors }">
-        <div *ngIf="submitted && signUpForm.controls.dateOfBirth.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.dateOfBirth.errors.required" style="margin-left: 400px">
-                Enter a valid birthdate
-            </div>
-        </div>
-        <br>
-
-
-        <label style="margin-left: 400px"><b>Gender:</b></label>
-        <select style="width: 400px; margin-left: 400px" name="Gender" formControlName="gender" class="form-control">
-            <option value="" selected disabled hidden>Choose here</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Others</option>
-        </select>
-        <div *ngIf="signUpForm.controls.gender.errors" class="invalid-feedback" style="margin-left: 400px">
-            Select a valid gender
-        </div>
-        <br>
-
-        <!-- <label style="margin-left: 400px"><b>Role:</b></label>
-    <select style="width: 400px; margin-left: 400px" name="role" formControlName="role" class="form-control" >
-        <option value="" selected disabled hidden>Choose here</option>
-        <option value="grad">grad</option>
-        <option value="trainer">trainer</option>
-    </select>
-    <div *ngIf="signUpForm.controls.role.errors" class="invalid-feedback" style="margin-left: 400px">
-        Select a valid role
-    </div>
-    <br> -->
-
-
-
+    
+    
         <div class="row">
-            <input style="margin-left: 415px" name="checkbox" class="form-check" type="checkbox"
-                formControlName="termsAndConditions"
-                [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.termsAndConditions.errors}">
-            <label style="margin-left: 10px">I have read and agree with the</label>
-            <a style="margin-left: 10px" href="http://www.google.co.in">Terms and Conditions.</a>
-        </div>
-        <div *ngIf="submitted && signUpForm.controls.termsAndConditions.errors" class="invalid-feedback">
-            <div *ngIf="signUpForm.controls.termsAndConditions.errors.required" style="margin-left: 400px">
-                Please read terms and conditions and check the agreement
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <input type ="text" placeholder = "Enter Your Email Id" class="form-control" formControlName="emailID" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.emailID.errors }">
+                <div *ngIf="submitted && signUpForm.controls.emailID.errors" class="invalid-feedback">
+                        <div *ngIf = "signUpForm.controls.emailID.errors.required"> 
+                            Enter your Email ID
+                        </div>
+                    </div>
+                    <div *ngIf="signUpForm.controls.emailID.errors.pattern" class="invalid-feedback">
+                        Enter a valid Email ID
+                </div>
+            </div>
+            <div class="col-lg-2">
+                
             </div>
         </div>
-
+    
+    
         <br>
-
-        <button style="width: 100px; margin-left: 400px; margin-bottom: 80px" type="button"
-            (click)="signUpSubmit()">Submit</button>
-        <button style="width: 100px; margin-left: 40px; margin-bottom: 80px" type="button"
-            (click)="signUpClear()">Clear</button>
-        <button style="width: 100px; margin-left: 40px; margin-bottom: 80px" type="button"
-            (click)="signUpCancel()">Cancel</button>
-
-
-
+        
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <label><b>Password:</b></label>
+            </div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <input type = "password" placeholder = "Create a new password" class = "form-control" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.password.errors }">
+                <div *ngIf="submitted && signUpForm.controls.password.errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.controls.password.errors.required">
+                             Enter a Password
+                        </div>
+                </div>
+            </div>
+        </div>
+           
+        
+        
+    
+    
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <label><b>Confirm Password:</b></label>
+            </div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <input type = "password" placeholder = "Confirm your password" class="form-control" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && (signUpForm.controls.confirmPassword.errors || !pwdMatched) }">
+                <div *ngIf="submitted && signUpForm.controls.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.controls.confirmPassword.errors.required">
+                            Enter your Password
+                         </div>
+                </div> 
+                <div *ngIf="!pwdMatched" class="invalid-feedback">
+                    Passwords do not match!!
+                </div>
+            </div>
+        </div>
+        
+    
+        
+    
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">       
+                <label><b>First Name:</b></label>
+            </div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <input type = "text" placeholder = "Enter your first name" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.firstName.errors }">
+                <div *ngIf="submitted && signUpForm.controls.firstName.errors" class="invalid-feedback">
+                        <div *ngIf = "signUpForm.controls.firstName.errors.required">
+                            Enter your first name
+                        </div>
+                    </div> 
+                    <div *ngIf="signUpForm.controls.firstName.errors"  class="invalid-feedback">
+                            <div *ngIf="signUpForm.controls.firstName.errors.pattern">
+                                Enter a valid first name
+                            </div>    
+                        </div> 
+           
+            </div>
+        </div>
+    
+    
+        
+    
+    
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <label><b>Last Name:</b></label>
+            </div>
+        </div>
+    
+        
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <input type = "text" placeholder = "Enter your last name" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.lastName.errors }">
+                <div *ngIf="submitted && signUpForm.controls.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.controls.lastName.errors.required">
+                            Enter your last name
+                        </div>
+                    </div> 
+                    <div *ngIf="signUpForm.controls.lastName.errors"  class="invalid-feedback">
+                            <div *ngIf="signUpForm.controls.lastName.errors.pattern">
+                                Enter a valid last name
+                            </div>
+                        </div>
+                    
+            </div>
+        </div>
+    
+    
+    
+        
+        
+        
+    
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <label><b>Phone Number:</b></label>
+            </div>
+        </div>
+        
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-1">    
+                <label>+91</label>
+            </div>
+            <div class="col-lg-5">
+                <input type = "text" placeholder = "Enter your number" class = "form-control" formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.phoneNumber.errors }">
+                <div *ngIf="submitted && signUpForm.controls.phoneNumber.errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.controls.phoneNumber.errors?.required">
+                            Enter your phone number
+                        </div>
+                    </div>  
+                    <div *ngIf="signUpForm.controls.phoneNumber.errors?.pattern">
+                            Enter a valid phone number
+                        </div>
+            </div>
+        </div>
+    
+    
+       
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <label><b>Date of Birth:</b></label>
+            </div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">    
+                <input type = "date" class = "form-control" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.dateOfBirth.errors }">
+           
+                <div *ngIf="submitted && signUpForm.controls.dateOfBirth.errors" class="invalid-feedback">
+                        <div *ngIf="signUpForm.controls.dateOfBirth.errors.required">
+                            Enter a valid birthdate
+                        </div>
+                    </div> 
+            </div>
+        </div>
+    
+    
+        
+    
+    
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">    
+                <label><b>Gender:</b></label>
+            </div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2">    
+                <select name="Gender" formControlName="gender" class="form-control"  [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.gender.errors}" >
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Others</option>   
+                </select>
+                <div *ngIf="signUpForm.controls.gender.errors" class="invalid-feedback">
+                        Select a valid gender
+                    </div>
+            </div>
+        </div>
+    
+    
+        
+    
+        <br>
+    
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-5">    
+                <input class = "form-control" style="width: 20px" type = "checkbox"  formControlName="termsAndConditions" [ngClass]="{ 'is-invalid': submitted && signUpForm.controls.termsAndConditions.errors}">
+                <div *ngIf="submitted && signUpForm.controls.termsAndConditions.errors" class="invalid-feedback">
+                    <div *ngIf="signUpForm.controls.termsAndConditions.errors.required">
+                        Please read terms and conditions and check the agreement
+                    </div>
+                </div>  
+            </div>
+        </div>
+        
+        <div class="row">
+                <div class="col-lg-3"></div>
+            <div class="col-lg-5 text-left">
+                <label>I have read and agree with the&nbsp; </label>
+                <a href="http://www.google.co.in"> Terms and Conditions.</a>
+            </div>
+        </div> 
+        
+    
+        
+        <br>
+    
+    
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2 text-center">       
+                <button style="width: 100px" type = "button" (click) = "signUpSubmit()">Submit</button>
+            </div>
+            <div class="col-lg-2 text-center">       
+                <button style="width: 100px" type = "button" (click) = "signUpClear()">Clear</button>
+            </div>
+            <div class="col-lg-2 text-center">       
+                <button style="width: 100px" type = "button" (click) = "signUpCancel()">Cancel</button>
+            </div>
+        </div>
+    
+    
     </form>
-</body>
-
-</html>
+    
+    
+    </div>
+    
+    <footer>
+        <br>
+        <br>
+        <br>
+    </footer>
