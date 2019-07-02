@@ -42,4 +42,9 @@ public class GradTestService {
 	public GradTest findByTestName(String testName) {
 		return gradTestRepository.findByTestName(testName);
 	}
+
+	public List<GradTest> findByBatchName(String batchName){
+		return  gradTestRepository.findByBatchName(batchName);
+	}
 }
+

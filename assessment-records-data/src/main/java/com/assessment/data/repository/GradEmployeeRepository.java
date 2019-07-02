@@ -12,5 +12,6 @@ public interface GradEmployeeRepository extends PagingAndSortingRepository<GradE
 	List<GradEmployee> findByEmployeeIdIn(List<Integer> employeeIds);
 	
 	List<GradEmployee> findByBatchNameAndYear(String batchName, int year);
-	
+
+	List<GradEmployee> findByYear(int year);
 }

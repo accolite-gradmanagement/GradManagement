@@ -15,7 +15,10 @@ public class GradTest {
 	private Integer testId;
 	
 	private String testName;
+	private String batchName;
+
 	private int totalQuestions;
+
 	
 	
 	public GradTest(Integer testId, String testName,int totalQuestions) {
@@ -54,8 +57,15 @@ public class GradTest {
 	public void setTotalQuestions(int totalQuestions) {
 		this.totalQuestions = totalQuestions;
 	}
-	
- 
+
+
+	public String getBatchName() {
+		return batchName;
+	}
+
+	public void setBatchName(String batchName) {
+		this.batchName = batchName;
+	}
 }
 
 

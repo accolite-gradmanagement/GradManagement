@@ -1,18 +1,16 @@
 package com.assessment.data.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import com.assessment.data.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.assessment.data.model.GradEmployee;
-import com.assessment.data.model.GradScore;
-import com.assessment.data.model.GradTest;
 import com.assessment.data.service.GradEmployeeService;
 import com.assessment.data.service.GradScoreService;
 import com.assessment.data.service.GradTestService;
@@ -38,18 +36,12 @@ public class GradScoreController {
 		List<GradScore> gradScores = gradScoreService.findByGradEmployeeInAndGradTest(gradEmployees, gradTest);
 		if(gradScores == null) {
 			System.out.println("Grad Score empty*********************************");
-//			return new ResponseEntity<List<WrapperGradEmployeeScore>>(HttpStatus.NOT_FOUND);
 			return new ResponseEntity<List<GradScore>>(HttpStatus.NOT_FOUND);
 		}
-//		List<WrapperGradEmployeeScore> wrapperGradEmployeeScores = new ArrayList<WrapperGradEmployeeScore>();
-//		WrapperGradEmployeeScore wrapperGradEmployeeScore;
-//		for (GradScore gradScore : gradScores) {
-//			System.out.println(gradScore.getScore()+"*******************************************************");
-//			wrapperGradEmployeeScore = new  WrapperGradEmployeeScore(gradScore);//, gradScore.getGradEmployee().getEmployeeName(), gradTest);
-//			wrapperGradEmployeeScores.add(wrapperGradEmployeeScore);
-//		}
-		
-//		return new ResponseEntity<List<WrapperGradEmployeeScore>>(wrapperGradEmployeeScores, HttpStatus.OK);	
+
+		if(gradScores.isEmpty()){
+			return new ResponseEntity<List<GradScore>>(HttpStatus.NO_CONTENT);
+		}
 		
 		return new ResponseEntity<List<GradScore>> (gradScores,HttpStatus.OK);
 	}
@@ -59,9 +51,49 @@ public class GradScoreController {
 //		List<Year> years = new ArrayList<Year>();
 //		List<Batch> batches = new ArrayList<Batch>();
 //		List<String> testNames = new ArrayList<String>();
-//		
+//
 //		return new ResponseEntity<List<Year>> (years,HttpStatus.OK);
 //	}
-//	
-	
+
+
+
+	@RequestMapping(value="/scores/year",method=RequestMethod.GET)
+	public ResponseEntity<List<Integer>> getYears(){
+		Set<Integer> yearSet = new HashSet<>();
+		List<GradEmployee> gradEmployees = gradEmployeeService.getAllEmployees();
+		for(GradEmployee ge: gradEmployees){
+			yearSet.add(ge.getYear());
+		}
+		List<Integer> years = new ArrayList<>();
+		years.addAll(yearSet);
+		if(years.isEmpty()){
+			return  new ResponseEntity<List<Integer>>(HttpStatus.NO_CONTENT);
+		}
+		return  new ResponseEntity<List<Integer>>(years,HttpStatus.OK);
+	}
+
+	@RequestMapping(value="/scores/{year}/batch",method=RequestMethod.GET)
+	public ResponseEntity<List<String>> getBatchOfYear(@PathVariable int year){
+		List<String> batches = new ArrayList<>();
+		List<GradEmployee> gradEmployees = gradEmployeeService.findByYear(year);
+		Set<String> batchSet = new HashSet<>();
+		for(GradEmployee ge: gradEmployees){
+			batchSet.add(ge.getBatchName());
+		}
+		batches.addAll(batchSet);
+		if (batches.isEmpty()){
+			return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<String>>(batches,HttpStatus.OK);
+	}
+
+	@RequestMapping(value="/scores/{batch}/test",method=RequestMethod.GET)
+	public ResponseEntity<List<GradTest>> getTest(@PathVariable String batch){
+		List<GradTest> gradTests = gradTestService.findByBatchName(batch);
+		if(gradTests == null){
+			return new ResponseEntity<List<GradTest>>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<GradTest>>(gradTests,HttpStatus.OK);
+	}
+
 }

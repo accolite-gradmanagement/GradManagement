@@ -50,5 +50,8 @@ public class GradEmployeeService {
 		return gradEmployeeRepository.findByBatchNameAndYear(batchName, year);
 	}
 
+	public List<GradEmployee> findByYear(int year){
+		return gradEmployeeRepository.findByYear( year);
+	}
 
 }
