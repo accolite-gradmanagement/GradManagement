@@ -33,7 +33,7 @@ public class GradScoreController {
 		
 		List<GradEmployee> gradEmployees = gradEmployeeService.findByBatchNameAndYear(batchName, year);
 		GradTest gradTest = gradTestService.findByTestName(testName);
-		List<GradScore> gradScores = gradScoreService.findByGradEmployeeInAndGradTest(gradEmployees, gradTest);
+		List<GradScore> gradScores = gradScoreService.findByGradEmployeeInAndGradTestByOrderByScoreDesc(gradEmployees, gradTest);
 		if(gradScores == null) {
 			System.out.println("Grad Score empty*********************************");
 			return new ResponseEntity<List<GradScore>>(HttpStatus.NOT_FOUND);

@@ -16,8 +16,8 @@ public class GradScoreService {
 	@Autowired
 	private GradScoreRepository gradScoreRepository;
 	
-	public List<GradScore> findByGradEmployeeInAndGradTest(List<GradEmployee> gradEmployees, GradTest gradTest){
-		return gradScoreRepository.findByGradEmployeeInAndGradTest(gradEmployees,gradTest);
+	public List<GradScore> findByGradEmployeeInAndGradTestByOrderByScoreDesc(List<GradEmployee> gradEmployees, GradTest gradTest){
+		return gradScoreRepository.findByGradEmployeeInAndGradTestOrderByScoreDesc(gradEmployees,gradTest);
 	}
 
 	public List<GradScore> findByGradEmployee(GradEmployee gradEmployee){
