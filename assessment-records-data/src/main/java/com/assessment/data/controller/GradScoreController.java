@@ -29,7 +29,7 @@ public class GradScoreController {
 	private GradEmployeeService gradEmployeeService;
 	
 	@GetMapping(value="/scores/{year}/{batchName}/{testName}")
-	public ResponseEntity<List<GradScore>> getEmployeesByYearAndBatchAndTestName(@PathVariable("year") int year, @PathVariable("batchName") String batchName, @PathVariable("testName") String testName){
+	public ResponseEntity<List<GradScore>> getEmployeesScoreByYearAndBatchAndTestName(@PathVariable("year") int year, @PathVariable("batchName") String batchName, @PathVariable("testName") String testName){
 		
 		List<GradEmployee> gradEmployees = gradEmployeeService.findByBatchNameAndYear(batchName, year);
 		GradTest gradTest = gradTestService.findByTestName(testName);
@@ -110,5 +110,16 @@ public class GradScoreController {
 			return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<String>>(testnames,HttpStatus.OK);
+	}
+
+
+	@RequestMapping(value="/scores/{employeeId}",method=RequestMethod.GET)
+	public ResponseEntity<List<GradScore>> getEmployeesScoreByYearAndBatchAndTestName(@PathVariable int employeeId) {
+		GradEmployee gradEmployee = gradEmployeeService.getGradEmployee(employeeId);
+		List<GradScore>  gradScores = gradScoreService.findByGradEmployee(gradEmployee);
+		if(gradScores == null){
+			return new ResponseEntity<List<GradScore>>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<GradScore>>(gradScores,HttpStatus.OK);
 	}
 }

@@ -19,6 +19,9 @@ public class GradScoreService {
 	public List<GradScore> findByGradEmployeeInAndGradTest(List<GradEmployee> gradEmployees, GradTest gradTest){
 		return gradScoreRepository.findByGradEmployeeInAndGradTest(gradEmployees,gradTest);
 	}
-	
+
+	public List<GradScore> findByGradEmployee(GradEmployee gradEmployee){
+		return gradScoreRepository.findByGradEmployee(gradEmployee);
+	}
 
 }

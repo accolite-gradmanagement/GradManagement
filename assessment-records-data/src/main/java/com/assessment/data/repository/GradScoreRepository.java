@@ -15,7 +15,8 @@ public interface GradScoreRepository extends PagingAndSortingRepository<GradScor
 
 	List<GradScore> findByGradEmployeeInAndGradTest(List<GradEmployee> gradEmployees, GradTest gradTest);
 
-	
+
+	List<GradScore> findByGradEmployee(GradEmployee gradEmployee);
 //	@Query("SELECT employee ")
 	
 }

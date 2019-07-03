@@ -20,7 +20,7 @@ public class GradScore {
 	@JoinColumn(name = "scoreTestId", nullable = false,referencedColumnName = "testId")
 	private GradTest gradTest;
 
-	@OrderBy("score desc")
+//	@OrderBy("score desc")
 	private int score;
 	private int correctQuestions;
 	private int incorrectQuestions;
