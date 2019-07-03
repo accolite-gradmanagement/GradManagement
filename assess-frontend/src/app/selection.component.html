@@ -39,27 +39,31 @@
             <table *ngIf="report">
                 <thead>
                     <tr>
-                        
+                        <th>StudentId</th>
                         <th>Student Name</th>
                         <th>Score</th>
-                        <th>Correct</th>
-                        <th>Incorrect</th>
-                        <!-- <th>Rank</th> -->
+                        <!-- <th>Correct</th>
+                        <th>Incorrect</th> -->
+                         <th>Rank</th> 
                         
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of report">
+                    <tr *ngFor="let product of report; let i=index" [attr.data-index]="i">
                     
                         <!-- <td>{{product.studentname}}</td>
                         <td>{{product.score}}</td>
                         <td>{{product.correct}}</td>
                         <td>{{product.incorrect}}</td>
                         <td>{{product.rank}}</td> -->
-                        <td>{{product.gradEmployee.employeeName}}</td>
+                        <a routerLink="/detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeId}}</td> </a>
+                        <td>{{product.gradEmployee.employeeName}}</td> 
                         <td>{{product.score}}</td>
-                        <td>{{product.correctQuestions}}</td>
-                        <td>{{product.incorrectQuestions}}</td>
+<!--                          
+                         <td>{{product.correct}}</td>
+                         <td>{{product.incorrect}}</td> -->
+                         
+                        <td>{{i+1}}</td>
                     </tr>
                     
                 
