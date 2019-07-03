@@ -5,6 +5,7 @@ import {IYear} from './IYear';
 import {IReport} from './IReport';
 import { Batch } from './batch';
 import { Tests } from './Tests';
+import { Student } from './student';
 
 @Injectable({
   providedIn:'root'
@@ -15,7 +16,7 @@ export class ReportService {
   private urlyear: string="/scores/year";
   private url_yearname: string="/scores/name/batch";
   private urlbname: string="/scores/batch/testname";
- 
+  private studentdetailsurl: string=" ";
 
 
  
@@ -42,6 +43,12 @@ export class ReportService {
   public getList(somelist:string):Observable<IReport[]>{
     return this.http.get<IReport []>(somelist);
   }
+  public getStudentDetails(id: number):Observable<Student[]>{
+    console.log(id);
+    this.studentdetailsurl="/scores/"+id;
+    console.log(this.studentdetailsurl);
+    return this.http.get<Student []>(this.studentdetailsurl);
+     }
 
   // public getScoreList(){
   //     return this.http.get(this.url2);

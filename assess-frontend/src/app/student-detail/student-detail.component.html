@@ -1,0 +1,45 @@
+ <p>Details to be added</p>
+ <!-- employeeId": 1,
+    "employeeName": "hjhj",
+    "batchName": "ggy",
+    "year": 2019,
+    "contactNo": 34, -->
+ <table>
+    <thead>
+        <tr>
+                <!-- <th>employeeId</th>
+                <th>employeeName</th>
+                <th>year</th>
+                <th>batchName</th>
+                <th>contactNo</th>  -->
+         <th>TestId</th>
+          <th>Test Name</th>
+            <th>Score</th>
+            
+            <th>Rank</th>
+            
+          
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of contents let i=index" [attr.data-index]="i">
+        
+                <!-- <td>{{c.gradEmployee.employeeId}}</td>
+                <td>{{c.gradEmployee.employeeName}}</td>
+                <td>{{c.gradEmployee.year}}</td>
+                <td>{{c.gradEmployee.batchName}}</td>
+                <td>{{c.gradEmployee.contactNo}}</td>
+            -->
+            <td>{{c.gradTest.testId}}</td>
+            <td>{{c.gradTest.testName}}</td>
+            <td>{{c.score}}</td>
+            
+            <td>{{i+1}}</td>
+           
+        </tr> 
+        
+    
+    </tbody>
+    
+</table> 
