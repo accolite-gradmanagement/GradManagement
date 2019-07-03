@@ -27,7 +27,15 @@
 <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
 <property name="dataSource" ref="ds"></property>  
 </bean> 
+
 <bean id="userDao" class="com.accolite.msgrad.dao.UserDao">
 <property name="jTemplate" ref="jdbcTemplate"></property>
 </bean>
+
+
+<bean id="emailsender" class="com.accolite.msgrad.services.impl.EmailServiceImpl">
+</bean>
+<bean id="xyz" class="com.accolite.msgrad.config.EmailConfig">
+</bean>
+
 </beans>
