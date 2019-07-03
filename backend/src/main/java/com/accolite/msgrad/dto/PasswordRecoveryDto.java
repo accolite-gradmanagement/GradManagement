@@ -3,16 +3,16 @@ package com.accolite.msgrad.dto;
 
 public class PasswordRecoveryDto {
 
-	@Override
-	public String toString() {
-		return "PasswordRecoveryDto [toMail=" + toMail + ", subject=" + subject + ", text=" + text + ", link=" + link
-				+ "]";
-	}
-
 	private String toMail;
 	private String subject;
 	private String text;
-	private String link;
+	private String otp;
+
+	@Override
+	public String toString() {
+		return "PasswordRecoveryDto [toMail=" + toMail + ", subject=" + subject + ", text=" + text + ", otp=" + otp
+				+ "]";
+	}
 
 	public String getToMail() {
 		return toMail;
@@ -38,12 +38,13 @@ public class PasswordRecoveryDto {
 		this.text = text;
 	}
 
-	public String getLink() {
-		return link;
+	public String getOtp() {
+		return otp;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	public void setOtp(String otp) {
+		this.otp = otp;
 	}
 
+	
 }

@@ -14,7 +14,10 @@ public interface EmailService {
 	 * @param text    body of mail
 	 * @param link    url to be included
 	 */
-	public void passwordRecovery(String to, String subject, String text, String link);
+
+	String OTP(int len);
+
+	public void passwordRecovery(String to, String subject, String text);
 
 	
 }

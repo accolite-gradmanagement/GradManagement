@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@EnableAutoConfiguration
 public class EmailConfig {
 
 	@Bean
@@ -19,8 +18,8 @@ public class EmailConfig {
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
 
-		mailSender.setUsername("msgrad.au@gmail.com");
-		mailSender.setPassword("CarPool19");
+		mailSender.setUsername("saideepabhavani.peri@accoliteindia.com");
+		mailSender.setPassword("19262416XzTvS!!");
 
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");

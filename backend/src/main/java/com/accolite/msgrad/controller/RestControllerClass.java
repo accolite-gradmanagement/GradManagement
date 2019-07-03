@@ -61,11 +61,11 @@ public class RestControllerClass
 		return userdao.updateUser(user);
 	}
 	
-//	@RequestMapping(value="passwordrecovery",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public void passwordRecovery(@RequestBody PasswordRecoveryDto passwordRecovery) {
-//		System.out.println(passwordRecovery);
-//		emailService.passwordRecovery(passwordRecovery.getToMail(), passwordRecovery.getSubject(),
-//				passwordRecovery.getText(), passwordRecovery.getLink());
-//	}
+	@RequestMapping(value="passwordrecovery",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void passwordRecovery(@RequestBody PasswordRecoveryDto passwordRecovery) {
+		System.out.println(passwordRecovery);
+		emailService.passwordRecovery(passwordRecovery.getToMail(), passwordRecovery.getSubject(),
+				passwordRecovery.getText());
+	}
 
 }
