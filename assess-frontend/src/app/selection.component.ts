@@ -1,30 +1,74 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms'
+
 import {IYear} from './IYear';
+import {Batch} from './batch';
 import { ReportService } from './report.service';
 import {IReport} from './IReport';
+import{Tests} from './Tests';
+
+
 @Component({
-  selector: 'app-selection',
-  templateUrl: './selection.component.html',
-  styleUrls: ['./selection.component.css']
+  selector:'app-selection',
+  templateUrl:'./selection.component.html',
+  styleUrls:['./selection.component.css']
 })
+
+
 export class SelectionComponent implements OnInit {
-  // selectedyear: any = "Year";
-  // selectedbatch: any ="Batch";
-  // selectedtest: any ="Test";
+ 
   selectedyear: string = "Year";
   selectedbatch: string ="Batch";
   selectedtest: string ="Test";
-  // selectedlist: string = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
-  hello: any = "year and batch";
-  batchlist: string[];
-  testlist: string[];
-  returnlist: string[];
-  //private years:IYear[];
-  private report:IReport[];
+  //selectedlist: string = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
+ 
+  
+  //  years:IYear[];
+  years: number[];
+   batches:string[];
+   tests:Tests;
+   report:IReport[];
+  createAccountForm: FormGroup;
+  //yearname: {};
+  //batchname: {};
+  //testname: {};
+
+  
   
   constructor(private reportservice:ReportService ) { }
-  ngOnInit(){}
+  ngOnInit(){
+    this.reportservice.getyear().subscribe(data => {this.years=data;
+      console.log(this.years)});
 
+  
+  this.createAccountForm = new FormGroup({
+    years: new FormControl(''),
+    batches: new FormControl(''),
+    tests: new FormControl('')
+  });
+  }
+  onChangeYear(name: number) {
+    console.log(name)
+    if (name) {
+      this.reportservice.getbatches(name).subscribe(data => {this.batches=data;
+         console.log(this.batches)});
+        }
+        else {
+      this.batches = null;
+      this.tests = null;
+    }
+  }
+
+  onChangeBatch(bname: string) {
+    console.log(bname)
+    if (bname) {
+      this.reportservice.gettests(bname).subscribe(data => {this.tests=data;
+        console.log(this.tests)});
+      }
+       else {
+      this.tests = null;
+    }
+  }
   myfunc() {
   let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
     console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
@@ -32,43 +76,12 @@ export class SelectionComponent implements OnInit {
       console.log(this.report)});
 
     }
-    assesment = {
-      "2019": {
-        "batch1": [{"name":"test1"},{"name": "test2"}]  
-      },
-      "2018" : {
-
-      }
-
-    }
-    selectOption(id: number) {
-      //getted from binding
-      console.log(this.selectedyear);
-      console.log(this.batchlist);
-
-      if(this.selectedyear === "2019"){
-        this.batchlist = ['MSAU1', 'MSAU2'];
-      }
-
-      if(this.selectedyear == "2018"){
-        this.batchlist =['MSAU1', 'MSAU2','MSAU3'];
-      }
+    
+    
   
-      if(this.selectedbatch == "MSAU1"){
-        this.testlist = ['week1','week2'];
-      }
-      if(this.selectedbatch == "MSAU2"){
-        this.testlist = ['week1','week2','week3'];
-      }
-      if(this.selectedbatch == "MSAU3"){
-        this.testlist = ['week1','week2','week3','week4'];
-      }
-     
-    }
-  
-    getselected(){
+   /* getselected(){
       return this.selectedlist;
-    }
-
+    } */
   }
+  
 

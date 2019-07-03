@@ -1,5 +1,5 @@
 export class Batch{
 
-    name : string;
-    test : string[];
+    bname : string;
+    //Test : string[];
     }

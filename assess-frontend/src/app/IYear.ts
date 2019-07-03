@@ -2,6 +2,6 @@ import { Batch } from './batch';
 
 export class IYear{
 
-    name : String;
-    batchlist:Batch[];
+    name : number;
+    //batchlist:Batch[];
 }

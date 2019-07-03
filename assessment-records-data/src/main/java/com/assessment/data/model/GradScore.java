@@ -1,14 +1,7 @@
 package com.assessment.data.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 
 @Entity
@@ -26,7 +19,8 @@ public class GradScore {
 	@OneToOne
 	@JoinColumn(name = "scoreTestId", nullable = false,referencedColumnName = "testId")
 	private GradTest gradTest;
-	
+
+	@OrderBy("score desc")
 	private int score;
 	private int correctQuestions;
 	private int incorrectQuestions;

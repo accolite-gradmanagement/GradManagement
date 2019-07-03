@@ -1,48 +1,41 @@
-<section id="main">
-    <div class="inner">
-        
-        <section>
-            
-            <form method="post" action="#">
-                   
-                      
-                <div class="row uniform 100%">
-                    <div class="6u 12u$(xsmall)">
-                        <div class="select-wrapper">
-                            <select name="demo-category" id="demo-category" (change)="selectOption($event.target.value)" [(ngModel)]="selectedyear">
-                                <option>{{selectedyear}}</option>
-                                <option  [value]="2019">AU-2019</option>
-                                <option  [value]="2018">AU-2018</option>
-                               
-                            </select>
-                        </div>
-                    </div>
-                    <div class="6u$ 12u$(xsmall)">
-                            <div class="select-wrapper">
-                                    <select name="demo-category" id="demo-category" (change)="selectOption($event.target.value)" [(ngModel)]="selectedbatch">
-                                        <option>{{selectedbatch}}</option>
-                                        <option *ngFor="let t of batchlist" [value]="t">{{t}}</option>
-                                       
-                                    </select>
-                                </div>
-                       </div>
 
-                       <div class="6u$ 12u$(xsmall)">
-                            <div class="select-wrapper">
-                                    <select name="demo-category" id="demo-category" (change)="selectOption($event.target.value)" [(ngModel)]="selectedtest">
-                                        <option>{{selectedtest}}</option>
-                                        <option *ngFor="let t of testlist" [value]="t">{{t}}</option>
-                                       
-                                    </select>
-                                </div>
-                       </div>
-                    
-                    
-                    
-                </div> 
+<div class="selection">
+         <div class="row">
+                <div class="col-sm-4">
+            <form [formGroup]="createAccountForm">
+              <div class="form-group">
+                   
+                <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
+                  <option value="">Select year...</option>
+                  <!-- <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> -->
+                  <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                </select>
+             
+            </div>
+              <br>
+              <div class="form-group">
+                   
+                <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="selectedbatch">
+                  <option value="">Select batch...</option>
+                  <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
+                </select>
+             
+              </div>
+              <br>
+              <div class="form-group">
+                   
+                <select formControlName="tests" class="form-control" [(ngModel)]="selectedtest">
+                  <option value="">Select test...</option>
+                  <option *ngFor="let test of tests" [value]="test">{{test}}</option>
+                </select>
+              </div>
             </form>
-        </section>
-        <button (click)="myfunc()">GO</button>
+        </div>
+        </div>
+      </div>
+
+
+<button (click)="myfunc()">GO</button>
             <table *ngIf="report">
                 <thead>
                     <tr>

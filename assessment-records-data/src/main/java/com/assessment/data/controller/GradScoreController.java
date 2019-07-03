@@ -96,4 +96,19 @@ public class GradScoreController {
 		return new ResponseEntity<List<GradTest>>(gradTests,HttpStatus.OK);
 	}
 
+
+	@RequestMapping(value="/scores/{batch}/testname",method=RequestMethod.GET)
+	public ResponseEntity<List<String>> getTestName(@PathVariable String batch){
+		List<String> testnames = new ArrayList<>();
+		List<GradTest> gradTests = gradTestService.findByBatchName(batch);
+		Set<String> testNameSet = new HashSet<>();
+		for(GradTest gt: gradTests){
+			testNameSet.add(gt.getTestName());
+		}
+		testnames.addAll(testNameSet);
+		if (testnames.isEmpty()){
+			return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<String>>(testnames,HttpStatus.OK);
+	}
 }
