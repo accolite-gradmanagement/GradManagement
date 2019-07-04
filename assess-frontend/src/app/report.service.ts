@@ -6,6 +6,7 @@ import {IReport} from './IReport';
 import { Batch } from './batch';
 import { Tests } from './Tests';
 import { Student } from './student';
+import { Details } from './details';
 
 @Injectable({
   providedIn:'root'
@@ -17,7 +18,7 @@ export class ReportService {
   private url_yearname: string="/scores/name/batch";
   private urlbname: string="/scores/batch/testname";
   private studentdetailsurl: string=" ";
-
+  private detailsUrl: string="";
 
  
   constructor(private http: HttpClient) { }
@@ -57,6 +58,10 @@ export class ReportService {
       console.log(this.studentdetailsurl);
       return this.http.get<Student []>(this.studentdetailsurl);
        }
+
+       addNewDetails(details: Details): Observable<Details> {
+        return this.http.post<Details>(this.detailsUrl, details);
+      }
   
   // public getScoreList(){
   //     return this.http.get(this.url2);

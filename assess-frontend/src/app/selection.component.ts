@@ -49,6 +49,7 @@ export class SelectionComponent implements OnInit {
   });
   }
   onChangeYear(name: number) {
+    console.log(this.selectedyear);
     console.log(name)
     if (name) {
       this.reportservice.getbatches(name).subscribe(data => {this.batches=data;

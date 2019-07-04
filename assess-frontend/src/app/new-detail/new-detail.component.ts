@@ -5,7 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms'
 import { ReportService } from '../report.service';
 import {IReport} from '../IReport';
 import{Tests} from '../Tests';
-
+import {Details} from '../details';
 
 @Component({
   selector: 'app-new-detail',
@@ -13,37 +13,23 @@ import{Tests} from '../Tests';
   styleUrls: ['./new-detail.component.css']
 })
 export class NewDetailComponent implements OnInit {
-
-  employeeCode: number;
-  name: string=" ";
-  gradyear: number;
-  gradbatch: string="";
-  testname: string="";
-  totalquestions: number;
-  correctquestions: number;
-  incorrectquestions: number;
-  successperc: number;
-  selectedyear: string = "Year";
-  selectedbatch: string ="Batch";
-  selectedtest: string ="Test";
-  score: number;
-  rank: number;
-  //selectedlist: string = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
- 
+  submitted=false;
+  details: Details;
   
-  //  years:IYear[];
+  selectedyear: string;
   years: number[];
    batches:string[];
    tests:Tests;
    report:IReport[];
   createAccountForm: FormGroup;
-  //yearname: {};
-  //batchname: {};
-  //testname: {};
+  
 
   
   
-  constructor(private reportservice:ReportService ) { }
+  constructor(private reportservice:ReportService ) {
+    this.details=new Details();
+   }
+
   ngOnInit(){
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});
@@ -56,7 +42,8 @@ export class NewDetailComponent implements OnInit {
   });
   }
   onChangeYear(name: number) {
-    console.log(name)
+    console.log(this.selectedyear);
+    this.details.year=name;
     if (name) {
       this.reportservice.getbatches(name).subscribe(data => {this.batches=data;
          console.log(this.batches)});
@@ -68,6 +55,7 @@ export class NewDetailComponent implements OnInit {
   }
 
   onChangeBatch(bname: string) {
+    this.details.batch=bname;
     console.log(bname)
     if (bname) {
       this.reportservice.gettests(bname).subscribe(data => {this.tests=data;
@@ -77,9 +65,19 @@ export class NewDetailComponent implements OnInit {
       this.tests = null;
     }
   }
+
+  onChangeTest(tname: string){
+    this.details.test=tname;
+  }
  
 onSubmit(){
+  this.submitted = true;
+  console.log(this.submitted);
+  console.log(this.details);
+ 
 
+  this.reportservice.addNewDetails(this.details)
+        .subscribe(data => this.details = data);
   
 }
   
