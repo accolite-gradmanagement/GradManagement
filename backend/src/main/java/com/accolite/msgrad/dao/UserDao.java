@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.accolite.msgrad.model.Employee;
+import com.accolite.msgrad.model.GoogleLogin;
 import com.accolite.msgrad.model.Login;
 import com.accolite.msgrad.model.User;
 
@@ -223,6 +224,48 @@ public class UserDao implements InfUser
 		System.out.println(sql);
 		this.jTemplate.execute(sql);
 		return true;
+		
+	}
+
+	public User googlelogin(GoogleLogin login) {
+
+		String sql = "SELECT * FROM LOGIN WHERE USERNAME='"+login.getEmail()+ "';";
+		System.out.println(sql);
+		List<GoogleLogin> temp = this.jTemplate.query(sql, new RowMapper<GoogleLogin>(){
+			
+			public GoogleLogin mapRow(ResultSet rs, int arg1) throws SQLException {
+				// TODO Auto-generated method stub
+				GoogleLogin m = new GoogleLogin();
+				m.setEmail(rs.getString("USERNAME"));
+				return m;
+			}
+		});
+		System.out.println(temp.size());
+		if(temp.isEmpty())
+			return null;
+		if(temp.size() == 1)
+		{
+			sql = "SELECT * FROM USERS WHERE EMAIL_ID='"+login.getEmail()+"';";
+			System.out.println(sql);
+			List<User> temp1 = this.jTemplate.query(sql, new RowMapper<User>(){
+				
+				public User mapRow(ResultSet rs, int arg1) throws SQLException {
+					// TODO Auto-generated method stub
+					User m = new User();
+					m.setFirstName(rs.getString("FIRST_NAME"));
+					m.setLastName(rs.getString("LAST_NAME"));
+					m.setMobileNo(rs.getString("MOBILE_NO"));
+					m.setDob(rs.getString("DOB"));
+					m.setEmailId(rs.getString("EMAIL_ID"));
+					m.setGender(rs.getString("GENDER"));
+					m.setRole(rs.getString("ROLE"));
+					m.setUserId(rs.getInt("USER_ID"));
+					return m;
+				}
+			});
+				return temp1.get(0);
+		}
+		return null;	
 		
 	}
 
