@@ -11,7 +11,6 @@ const routes: Routes = [
   {path:'course', component:CmanageComponent,pathMatch:'full'},
   {path:'trainer', component:TmanageComponent,pathMatch:'full'},
   {path:'batch', component:FormComponent,pathMatch:'full'},
-
 ];
 
 @NgModule({

@@ -13,11 +13,16 @@ import * as moment from 'moment';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { AngularDateTimePickerModule} from 'angular2-datetimepicker';
 import {HeaderComponent} from '../app/courses/header/header.component';
+import { GradService } from './grad.service';
+import { ConfirmationDialogComponent } from './gradManagement/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent, ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +37,18 @@ import {HeaderComponent} from '../app/courses/header/header.component';
    NgMultiSelectDropDownModule.forRoot(),
    MatSelectModule,
    MultiSelectAllModule,
-   AngularDateTimePickerModule
+   AngularDateTimePickerModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    AngularFontAwesomeModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+
+  exports: [ConfirmationDialogComponent],
+  providers: [GradService],
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialogComponent],
 })
 export class AppModule { }
