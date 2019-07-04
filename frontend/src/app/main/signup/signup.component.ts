@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
       phoneNumber: ['', [Validators.required,Validators.pattern('^[0-9]{10}$')]],
       dateOfBirth: ['', Validators.required],
       gender: ['',Validators.required],
-      termsAndConditions: [false, Validators.requiredTrue]
+      // termsAndConditions: [false, Validators.requiredTrue]
     });
   }
 
@@ -60,6 +60,11 @@ export class SignupComponent implements OnInit {
 
   signUpSubmit()
   {
+    // this.submitted=true;
+    // if(!this.signUpForm.valid)
+    // {
+    //   return;
+    // }
     console.log(this.signUpForm.valid);
     console.log(this.signUpForm)
     this.signUpJsonPost();

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     console.log(this.loggedInStatus);
     if(this.loggedInStatus==false)
     {
-      this.router.navigate(['login']);
+      // this.router.navigate(['login']);
     }
   }
 
