@@ -1,17 +1,64 @@
- <p>Details to be added</p>
- <!-- employeeId": 1,
-    "employeeName": "hjhj",
-    "batchName": "ggy",
-    "year": 2019,
-    "contactNo": 34, -->
- <table>
+
+ <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <div align="center">
+ <p>Name: {{contents[0].gradEmployee.employeeName}}</p>
+ <p>Emp Id: {{contents[0].gradEmployee.employeeId}}</p>
+ <p>Batch: {{contents[0].gradEmployee.batchName}}</p>
+ <p>Year: {{contents[0].gradEmployee.year}}</p>
+ <p>Contact: {{contents[0].gradEmployee.contactNo}}</p>
+ <p>Location: {{contents[0].gradEmployee.location}}</p>
+</div>
+    
+    <div class="tableFixHead panel-body" width=vw; height=vh;>
+
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>TestId</th>
+                    <th>Test Name</th>
+                      <th>Score</th>
+                      
+                      <th>Rank</th>
+                      
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of contents let i=index" [attr.data-index]="i">
+        
+                    <!-- <td>{{c.gradEmployee.employeeId}}</td>
+                    <td>{{c.gradEmployee.employeeName}}</td>
+                    <td>{{c.gradEmployee.year}}</td>
+                    <td>{{c.gradEmployee.batchName}}</td>
+                    <td>{{c.gradEmployee.contactNo}}</td>
+                -->
+                <td>{{c.gradTest.testId}}</td>
+                <td>{{c.gradTest.testName}}</td>
+                <td>{{c.score}}</td>
+                
+                <td>{{i+1}}</td>
+               
+            </tr> 
+            </tbody>
+        </table>
+    </div>
+    </body>
+ <!-- <table>
     <thead>
         <tr>
-                <!-- <th>employeeId</th>
+            <th>employeeId</th>
                 <th>employeeName</th>
                 <th>year</th>
                 <th>batchName</th>
-                <th>contactNo</th>  -->
+                <th>contactNo</th>
          <th>TestId</th>
           <th>Test Name</th>
             <th>Score</th>
@@ -25,12 +72,12 @@
     <tbody>
         <tr *ngFor="let c of contents let i=index" [attr.data-index]="i">
         
-                <!-- <td>{{c.gradEmployee.employeeId}}</td>
+                 <td>{{c.gradEmployee.employeeId}}</td>
                 <td>{{c.gradEmployee.employeeName}}</td>
                 <td>{{c.gradEmployee.year}}</td>
                 <td>{{c.gradEmployee.batchName}}</td>
                 <td>{{c.gradEmployee.contactNo}}</td>
-            -->
+            
             <td>{{c.gradTest.testId}}</td>
             <td>{{c.gradTest.testName}}</td>
             <td>{{c.score}}</td>
@@ -42,4 +89,4 @@
     
     </tbody>
     
-</table> 
+</table>  -->

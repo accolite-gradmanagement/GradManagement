@@ -16,7 +16,8 @@ import{Tests} from './Tests';
 
 
 export class SelectionComponent implements OnInit {
- 
+  
+  nameSearch: string;
   selectedyear: string = "Year";
   selectedbatch: string ="Batch";
   selectedtest: string ="Test";
@@ -69,15 +70,17 @@ export class SelectionComponent implements OnInit {
       this.tests = null;
     }
   }
-  myfunc() {
-  let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
+ 
+
+  onChangeTest(){
+    let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
     console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
     this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
       console.log(this.report)});
 
-    }
+  }
     
-    
+  
   
    /* getselected(){
       return this.selectedlist;

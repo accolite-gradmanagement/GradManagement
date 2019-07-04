@@ -1,49 +1,109 @@
-
-<div class="selection">
-         <div class="row">
-                <div class="col-sm-4">
-            <form [formGroup]="createAccountForm">
-              <div class="form-group">
-                   
-                <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
-                  <option value="">Select year...</option>
-                  <!-- <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> -->
-                  <option *ngFor="let year of years" [value]="year">{{year}}</option>
-                </select>
-             
-            </div>
-              <br>
-              <div class="form-group">
-                   
-                <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="selectedbatch">
-                  <option value="">Select batch...</option>
-                  <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
-                </select>
-             
-              </div>
-              <br>
-              <div class="form-group">
-                   
-                <select formControlName="tests" class="form-control" [(ngModel)]="selectedtest">
-                  <option value="">Select test...</option>
-                  <option *ngFor="let test of tests" [value]="test">{{test}}</option>
-                </select>
-              </div>
-            </form>
-        </div>
-        </div>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- <div class="panel panel-default"> -->
+      <div class="panel-heading">
+          <h1>Assessment</h1>
       </div>
 
+      
+      <input type="text" id="searchByName" [(ngModel)]="nameSearch" name="searchByName" placeholder="Search By employeeName">
+       <span class="spanclass">  </span>
+      <button type="button" class="btn btn-default" routerLink="/detail/name/{{nameSearch}}"> 
+          <span class="glyphicon glyphicon-search"></span> Search
+        </button>
+      <!-- <i style="font-size:24px;color:rgba(54, 53, 53, 0.644)" class="fa">&#xf002;</i> -->
+      <form [formGroup]="createAccountForm">  
+      <div class="container">
+          
+        <div class="row"> 
+           
+          <div class="col-sm-4">
+               
+              <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
+                <option [disabled]="true" [selected]= "true">Select year...</option>
+                <!-- <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> -->
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+              </select> 
+          </div>
+          <div class="col-sm-4">
+            
+            <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="selectedbatch">
+              <option [disabled]="true" [selected]= "true">Select batch...</option>
+              <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
+            </select>
+         
+          </div>
+          <div class="col-sm-4">
+            
+            <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="selectedtest">
+              <option [disabled]="true" [selected]= "true">Select test...</option>
+              <option *ngFor="let test of tests" [value]="test">{{test}}</option>
+            </select>
+          </div>
+          <!-- <div class="col-sm-3">
+              <button type="button" class="button" (click)="myfunc()" >Search</button>     
+          </div>
+           -->
+        </div>
+      
+      
+      </div>
+    </form>
+    <div class="tableFixHead panel-body" width=vw; height=vh;>
 
-<button (click)="myfunc()">GO</button>
-            <table *ngIf="report">
+      <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+              <tr>
+                <th>StudentId</th>
+                <th>Student Name</th>
+                <th>Score</th>
+                <!-- <th>Correct</th>
+                <th>Incorrect</th> -->
+                 <th>Rank</th> 
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of report; let i=index" [attr.data-index]="i">
+                    
+              <!-- <td>{{product.studentname}}</td>
+              <td>{{product.score}}</td>
+              <td>{{product.correct}}</td>
+              <td>{{product.incorrect}}</td>
+              <td>{{product.rank}}</td> -->
+              <a routerLink="/detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeId}}</td> </a>
+              <td>{{product.gradEmployee.employeeName}}</td> 
+              <td>{{product.score}}</td>
+<!--                          
+               <td>{{product.correct}}</td>
+               <td>{{product.incorrect}}</td> -->
+               
+              <td>{{i+1}}</td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+  </body>
+      
+            <!-- <table *ngIf="report">
                 <thead>
                     <tr>
                         <th>StudentId</th>
                         <th>Student Name</th>
                         <th>Score</th>
-                        <!-- <th>Correct</th>
-                        <th>Incorrect</th> -->
+                         <th>Correct</th>
+                        <th>Incorrect</th>
                          <th>Rank</th> 
                         
                     </tr>
@@ -51,11 +111,11 @@
                 <tbody>
                     <tr *ngFor="let product of report; let i=index" [attr.data-index]="i">
                     
-                        <!-- <td>{{product.studentname}}</td>
+                        <td>{{product.studentname}}</td>
                         <td>{{product.score}}</td>
                         <td>{{product.correct}}</td>
                         <td>{{product.incorrect}}</td>
-                        <td>{{product.rank}}</td> -->
+                        <td>{{product.rank}}</td>
                         <a routerLink="/detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeId}}</td> </a>
                         <td>{{product.gradEmployee.employeeName}}</td> 
                         <td>{{product.score}}</td>
@@ -63,12 +123,12 @@
                          <td>{{product.correct}}</td>
                          <td>{{product.incorrect}}</td> -->
                          
-                        <td>{{i+1}}</td>
+                        <!-- <td>{{i+1}}</td>
                     </tr>
                     
                 
                 </tbody>
                 
-            </table>
+            </table> -->
         
    

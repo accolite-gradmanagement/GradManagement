@@ -7,7 +7,8 @@ import {StudentDetailComponent} from './student-detail/student-detail.component'
 const routes: Routes = [
  {path:"check", component:SelectionComponent},
  {path:"",  redirectTo: '/check', pathMatch: 'full'},
- { path: 'detail/:id', component: StudentDetailComponent }
+ { path: 'detail/:id', component: StudentDetailComponent },
+ { path: 'detail/name/:name', component: StudentDetailComponent }
 ];
 
 @NgModule({

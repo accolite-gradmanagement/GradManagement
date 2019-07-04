@@ -43,13 +43,21 @@ export class ReportService {
   public getList(somelist:string):Observable<IReport[]>{
     return this.http.get<IReport []>(somelist);
   }
-  public getStudentDetails(id: number):Observable<Student[]>{
+  public getStudentDetails(id: string):Observable<Student[]>{
     console.log(id);
     this.studentdetailsurl="/scores/"+id;
     console.log(this.studentdetailsurl);
     return this.http.get<Student []>(this.studentdetailsurl);
      }
 
+
+     public getStudentDetailsbyName(name: string):Observable<Student[]>{
+      console.log(name);
+      this.studentdetailsurl="/scores/name/"+name;
+      console.log(this.studentdetailsurl);
+      return this.http.get<Student []>(this.studentdetailsurl);
+       }
+  
   // public getScoreList(){
   //     return this.http.get(this.url2);
   // }
