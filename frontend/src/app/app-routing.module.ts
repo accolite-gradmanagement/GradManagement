@@ -5,12 +5,14 @@ import { LoginComponent } from './main/login/login.component';
 import { HomeComponent } from './main/home/home.component';
 import { AdminComponent } from './main/admin/admin.component';
 import { ResetpasswordComponent } from './main/resetpassword/resetpassword.component';
+import { FrontpageComponent } from './main/frontpage/frontpage.component';
 
 const routes: Routes = [
 {path:'signup',component:SignupComponent},
 {path:'login',component:LoginComponent},
 {path:'home',component:HomeComponent},
 {path:'admin',component:AdminComponent},
+{path:'front',component:FrontpageComponent},
 {path:'resetpassword',component:ResetpasswordComponent},
 {path:'',redirectTo:'login',pathMatch:'full'},
 ];

@@ -38,5 +38,6 @@ export class HomeComponent implements OnInit {
   logout()
   {
     sessionStorage.clear();
+    this.router.navigate(['/front']);
   }
 }

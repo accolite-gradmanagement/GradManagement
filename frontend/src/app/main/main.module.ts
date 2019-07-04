@@ -9,8 +9,9 @@ import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
-
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { FrontpageComponent } from './frontpage/frontpage.component'
+import { RouterModule } from '@angular/router';
 
 
 const config = new AuthServiceConfig([
@@ -27,7 +28,7 @@ const config = new AuthServiceConfig([
   }
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, HomeComponent, AdminComponent, UserComponent, ResetpasswordComponent],
+  declarations: [LoginComponent, SignupComponent, HomeComponent, AdminComponent, UserComponent, ResetpasswordComponent, FrontpageComponent],
   imports: [
     CommonModule,
     SocialLoginModule,
