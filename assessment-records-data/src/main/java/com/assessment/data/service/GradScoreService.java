@@ -24,4 +24,7 @@ public class GradScoreService {
 		return gradScoreRepository.findByGradEmployee(gradEmployee);
 	}
 
+	public List<GradScore> findByGradEmployeeIn(List<GradEmployee> gradEmployees) {
+		return  gradScoreRepository.findByGradEmployeeIn(gradEmployees);
+	}
 }

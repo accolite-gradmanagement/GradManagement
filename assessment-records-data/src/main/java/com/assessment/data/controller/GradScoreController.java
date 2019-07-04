@@ -122,4 +122,15 @@ public class GradScoreController {
 		}
 		return new ResponseEntity<List<GradScore>>(gradScores,HttpStatus.OK);
 	}
+
+	@RequestMapping(value="/scores/name/{employeeName}",method=RequestMethod.GET)
+	public ResponseEntity<List<GradScore>> findEmployeesScoreFromEmployeeName(@PathVariable String employeeName) {
+		List<GradEmployee> gradEmployees = gradEmployeeService.findByEmployeeNameLikeIgnoreCase("%"+employeeName+"%");
+		List<GradScore>  gradScores = gradScoreService.findByGradEmployeeIn(gradEmployees);
+		if(gradScores == null){
+			return new ResponseEntity<List<GradScore>>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<GradScore>>(gradScores,HttpStatus.OK);
+	}
+
 }

@@ -54,4 +54,8 @@ public class GradEmployeeService {
 		return gradEmployeeRepository.findByYear( year);
 	}
 
+	public List<GradEmployee> findByEmployeeNameLikeIgnoreCase(String employeeName){
+		return  gradEmployeeRepository.findByEmployeeNameLikeIgnoreCase(employeeName);
+	}
+
 }
