@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, ParamMap, NavigationExtras } from '@angular/rou
 @Component({
   selector: 'app-grad-details',
   templateUrl: './grad-details.component.html',
-  styleUrls: ['./grad-details.component.css']
+  styleUrls: ['./grad-details.component.scss']
 })
 export class GradDetailsComponent implements OnInit {
     gradId: number;
