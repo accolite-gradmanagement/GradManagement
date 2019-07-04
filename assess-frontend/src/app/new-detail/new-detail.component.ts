@@ -1,26 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 
-import {IYear} from './IYear';
-import {Batch} from './batch';
-import { ReportService } from './report.service';
-import {IReport} from './IReport';
-import{Tests} from './Tests';
+
+import { ReportService } from '../report.service';
+import {IReport} from '../IReport';
+import{Tests} from '../Tests';
 
 
 @Component({
-  selector:'app-selection',
-  templateUrl:'./selection.component.html',
-  styleUrls:['./selection.component.css']
+  selector: 'app-new-detail',
+  templateUrl: './new-detail.component.html',
+  styleUrls: ['./new-detail.component.css']
 })
+export class NewDetailComponent implements OnInit {
 
-
-export class SelectionComponent implements OnInit {
-  
-  nameSearch: string;
+  employeeCode: number;
+  name: string=" ";
+  gradyear: number;
+  gradbatch: string="";
+  testname: string="";
+  totalquestions: number;
+  correctquestions: number;
+  incorrectquestions: number;
+  successperc: number;
   selectedyear: string = "Year";
   selectedbatch: string ="Batch";
   selectedtest: string ="Test";
+  score: number;
+  rank: number;
   //selectedlist: string = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
  
   
@@ -71,20 +78,11 @@ export class SelectionComponent implements OnInit {
     }
   }
  
+onSubmit(){
 
-  myfunc(){
-    let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
-    console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
-    this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
-      console.log(this.report)});
-
-  }
+  
+}
+  
     
-  
-  
-   /* getselected(){
-      return this.selectedlist;
-    } */
-  }
-  
 
+}
