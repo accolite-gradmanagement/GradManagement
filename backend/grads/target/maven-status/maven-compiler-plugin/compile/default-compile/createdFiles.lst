@@ -1,7 +1,0 @@
-com\accolite\grads\exception\GradNotFoundAdvice.class
-com\accolite\grads\GradsApplication.class
-com\accolite\grads\repository\GradRepository.class
-com\accolite\grads\controller\GradResourceAssembler.class
-com\accolite\grads\exception\GradNotFoundException.class
-com\accolite\grads\controller\GradController.class
-com\accolite\grads\model\Grad.class
