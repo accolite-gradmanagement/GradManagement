@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider} from 'ng4-social-login'
 import { LoginComponent } from './login/login.component';
-
+import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
 
 const config = new AuthServiceConfig([
   {
@@ -18,12 +21,12 @@ const config = new AuthServiceConfig([
   }
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SignupComponent, HomeComponent, AdminComponent, UserComponent],
   imports: [
     CommonModule,
-    SocialLoginModule
+    SocialLoginModule,
   ],
-  exports:[LoginComponent],
+  exports:[LoginComponent, SignupComponent, AdminComponent],
   providers: [{provide: AuthServiceConfig, useFactory : provideConfig}],
 })
 export class MainModule { }

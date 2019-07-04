@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       }
       console.log(info);
       sessionStorage.setItem('loggedIn', JSON.stringify(info));
-      // this.router.navigate(['login/homepage']);
+       this.router.navigate(['home']);
     })
 
     }
