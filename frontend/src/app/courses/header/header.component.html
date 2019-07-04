@@ -1,0 +1,91 @@
+<!-- <div>
+
+  <div class="card text-center" style="height: 100%">
+    <div class="card-body" style="color: black">
+      <h1 class="card-title">Course Management</h1>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <button style="color: black" [ngClass]="arg=='coursemanagement' ? 'nav-link active' : 'nav-link'"
+          (click)="course('coursemanagement')">Course Management</button>
+      </li>
+      <li class="nav-item">
+        <button style="color:rgb(14, 28, 34)" [ngClass]="arg=='trainermanagement' ? 'nav-link active' : 'nav-link'"
+          (click)="course('trainermanagement')">Trainer Management</button>
+      </li>
+      <li class="nav-item">
+        <button style="color: rgb(14, 28, 34)" [ngClass]="arg=='formaddition' ? 'nav-link active' : 'nav-link'"
+          (click)="course('formaddition')">Add Session</button>
+      </li>
+      <li class="nav-item">
+        <button style="color: rgb(14, 28, 34)" [ngClass]="arg=='viewsession' ? 'nav-link active' : 'nav-link'"
+          (click)="course('viewsession')">View Session</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+
+    <div *ngIf="arg=='coursemanagement'">
+      <app-cmanage></app-cmanage>
+    </div>
+    <div *ngIf="arg=='trainermanagement'">
+      <app-tmanage></app-tmanage>
+    </div>
+    <div *ngIf="arg=='formaddition'">
+      <app-form></app-form>
+    </div>
+    <div *ngIf="arg=='viewsession'">
+      <app-view></app-view>
+    </div>
+
+  </div>
+
+
+
+</div> -->
+
+<!-- <select
+[(ngModel)]="selectedCity"
+(ngModelChange)="onCitySelect($event)"
+class="province-menu">
+    <option [ngValue]="null" selected>City</option>
+    <option
+    *ngFor="let cities of city"
+    [ngValue]="cities"
+    [disabled]="cities.disable">
+        {{ cities.name }}
+    </option>
+</select> -->
+
+
+<!-- <select (change)="onNavigate($event.target.value)">
+  <option value="/view" [selected]="select=='View'">View</option>
+  <option value="/course"  [selected]="select=='AddCourse'">Add Course</option>
+  <option value="/trainer" [selected]="select=='AddTrainer'">Add Trainer</option>
+  <option value="/batch" [selected]="select=='AddBatch'">Add Batch</option>
+  
+</select> -->
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Course Management</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Menu
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/view">Schedules</a></li>
+            <li><a routerLink="/course">Courses</a></li>
+            <li><a routerLink="/trainer">Trainers</a></li>
+            <li><a routerLink="/batch">Batch</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
