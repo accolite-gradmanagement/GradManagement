@@ -6,6 +6,11 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { BrowserModule } from '@angular/platform-browser';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms'
+
+
 
 const config = new AuthServiceConfig([
   {
@@ -25,6 +30,10 @@ const config = new AuthServiceConfig([
   imports: [
     CommonModule,
     SocialLoginModule,
+    CommonModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[LoginComponent, SignupComponent, AdminComponent],
   providers: [{provide: AuthServiceConfig, useFactory : provideConfig}],

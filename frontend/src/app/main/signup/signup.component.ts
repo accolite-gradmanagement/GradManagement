@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class SignupComponent implements OnInit {
 
- /*  signUpForm: FormGroup;
+  signUpForm: FormGroup;
   submitted: Boolean = false;  
   pwdMatched: Boolean = true;
 
@@ -117,6 +117,6 @@ export class SignupComponent implements OnInit {
     )
     this.router.navigate(['login']);
   
-  } */
+  } 
 }  
 

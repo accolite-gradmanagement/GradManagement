@@ -1,3 +1,5 @@
+
+
 <div class="row" id="login">
     <h3> Welcome to Grad Management</h3>
     <h4>Please enter your Email ID and password to proceed</h4>
@@ -5,17 +7,37 @@
       <div class="panel panel-default">
         <div class="panel-heading">Login</div>
         <div class="panel-body">
-          <form>
-            <input type="text" class="form-control" placeholder="Email ID" title="Email ID"/><br/>
-            <input type="password" class="form-control" placeholder="Password" title="Password"><br/>
-            <button class="btn btn-primary login-btn">Submit</button><br/>
+          <form [formGroup]="loginForm" (submit)="loginUser()">
+              <div class="panel-heading" *ngIf="!correctDetails && submitted" >
+                <font  color="red" size = "3.5" >Invalid Login credentails</font></div>
+
+            <div class="form-group"> 
+            <input type="text" class="form-control" placeholder="Email ID" 
+            formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" title="Email ID"/><br/>
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required"><font color="red" size = "2.5">Username is required</font></div>
+            </div>    
+          </div>
+
+
+          <div class="form-group" >
+            <input type="password" class="form-control"
+            formControlName="password"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" title="Password"><br/>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required" ><font color="red" size = "2.5">Password is required</font></div>
+            </div>
+          </div>
+
+            <button class="btn btn-primary login-btn"   [disabled]="loading">Submit</button><br/>
+
             <div class="space-top-10">
               <p>By proceeding, You agree with our <a>Terms of Service</a> & <a>Privacy Policy</a></p>
             </div>
+          </form>
             <div class="width-per-100 space-top-10"> 
               <button class="btn btn-default login-btn login-btn-ga" (click)="googleLogin($event)"><i class="fa fa-google-plus-square" ></i> Connect with Google</button>
             </div>
-          </form>
+          
           <div class="space-top-20"></div>
         </div>
       </div>
