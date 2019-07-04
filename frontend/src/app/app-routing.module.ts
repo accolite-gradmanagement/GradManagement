@@ -6,16 +6,22 @@ import { HomeComponent } from './main/home/home.component';
 import { AdminComponent } from './main/admin/admin.component';
 import { ResetpasswordComponent } from './main/resetpassword/resetpassword.component';
 import { FrontpageComponent } from './main/frontpage/frontpage.component';
+import { CoursesModule } from './courses/courses.module';
 
 const routes: Routes = [
 {path:'signup',component:SignupComponent},
 {path:'login',component:LoginComponent},
 {path:'home',component:HomeComponent},
+{path:'', loadChildren: () => CoursesModule,pathMatch:'full'},
 {path:'admin',component:AdminComponent},
 {path:'front',component:FrontpageComponent},
 {path:'resetpassword',component:ResetpasswordComponent},
 {path:'',redirectTo:'login',pathMatch:'full'},
+
 ];
+/* const routes: Routes = [
+  {path:'', loadChildren: () => CoursesModule,pathMatch:'full'}
+]; */
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
