@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
 
   loginForm: FormGroup;
   loading = false;
@@ -19,7 +19,12 @@ export class LoginComponent implements OnInit {
   correctDetails:boolean;
 
 
-  constructor(private httpClient:HttpClient, private router:Router,private socialAuthService: AuthService) { }
+  constructor(private httpClient:HttpClient, private router:Router,private socialAuthService: AuthService) { 
+    if(this.loggedInStatus)
+    {
+          this.router.navigate(['home']);
+    }
+  }
 
   ngOnInit() {
 
@@ -60,14 +65,13 @@ export class LoginComponent implements OnInit {
 
     let h = new HttpHeaders({'Content-Type':'application/json'});
    
-    this.httpClient.post("http://localhost:8080/msgrad/login",serializedForm,{headers:h})
+    this.httpClient.post("http://10.4.14.76:8080/msgrad/login",serializedForm,{headers:h})
     .subscribe(
       data  => { if(data)
                   {
-             
-                  sessionStorage.setItem('loggedIn', JSON.stringify(data));
-                    
+                  sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
                   this.router.navigate(['home']);
+                  
                   }
                   else
                   {
@@ -80,6 +84,8 @@ export class LoginComponent implements OnInit {
     )
   }
 
+                
+  
 
 
 
@@ -94,13 +100,40 @@ export class LoginComponent implements OnInit {
       this.user= userData;
       console.log(this.user);
       let info = {
-        username: this.user.name,
+        // username: this.user.name,
         email:this.user.email
         // pass_word: this.loginForm.get('password').value
       }
       console.log(info);
-      sessionStorage.setItem('loggedIn', JSON.stringify(info));
-       this.router.navigate(['home']);
+
+      let serializedForm = JSON.stringify(info);
+
+    let h = new HttpHeaders({'Content-Type':'application/json'});
+   
+    this.httpClient.post("http://10.4.14.76:8080/msgrad/googlelogin",serializedForm,{headers:h})
+    .subscribe(
+      data  => { if(data)
+                  {
+                  sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
+                  this.router.navigate(['home']);
+                  
+                  }
+                  else
+                  {
+                    this.correctDetails=false;
+                    console.log("error");
+                  }
+
+      },
+      error  => {console.log("Error", error);}
+    )
+
+
+
+
+
+      // sessionStorage.setItem('loggedIn', JSON.stringify(info));
+      //  this.router.navigate(['home']);
     })
 
     }

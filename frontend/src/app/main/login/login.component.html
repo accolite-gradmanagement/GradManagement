@@ -27,13 +27,15 @@
                 <div *ngIf="f.password.errors.required" ><font color="red" size = "2.5">Password is required</font></div>
             </div>
           </div>
-
+            
             <button class="btn btn-primary login-btn"   [disabled]="loading">Submit</button><br/>
-
+          </form>
+          <small class=float-right>
+          <a href="resetpassword" > Forgot Password</a>
+        </small>
             <div class="space-top-10">
               <p>By proceeding, You agree with our <a>Terms of Service</a> & <a>Privacy Policy</a></p>
             </div>
-          </form>
             <div class="width-per-100 space-top-10"> 
               <button class="btn btn-default login-btn login-btn-ga" (click)="googleLogin($event)"><i class="fa fa-google-plus-square" ></i> Connect with Google</button>
             </div>

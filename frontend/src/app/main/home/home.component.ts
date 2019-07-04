@@ -16,10 +16,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private router:Router) {
     document.body.style.backgroundImage = null;
-    console.log(this.loggedInStatus);
     if(this.loggedInStatus==false)
     {
-      // this.router.navigate(['login']);
+      this.router.navigate(['login']);
     }
   }
 
