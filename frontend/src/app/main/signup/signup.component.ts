@@ -108,12 +108,12 @@ export class SignupComponent implements OnInit {
       data  => {if(data==0)
         {
           alert("email present" )
-          this.router.navigate(['login/signup']);
+          this.router.navigate(['signup']);
         }
         else if(data==2)
         {
           alert("username present")
-          this.router.navigate(['/login/signup']);
+          this.router.navigate(['/signup']);
         }
         else
         this.router.navigate(['/login']);

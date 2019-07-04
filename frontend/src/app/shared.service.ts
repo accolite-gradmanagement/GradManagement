@@ -11,7 +11,7 @@ import { TrainerAllocation, Batch } from './courses/view/RequiredClasses';
 export class SharedService {
  
 
-  private _url='http://10.4.14.76:8081/'
+  private _url='http://localhost:8081/'
   getCourses_url=this._url+'course';
   addCourse_url=this.getCourses_url+"/add"
   deleteCourse_url=this.getCourses_url+"/";

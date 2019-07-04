@@ -10,7 +10,7 @@ import { Grad } from './gradManagement/gradmanagement/Grad';
 })
 export class GradService {
 
-  private baseUrl = 'http://localhost:8080/grads';
+  private baseUrl = 'http://localhost:8082/grads';
 
   constructor(private http: HttpClient) { }
 

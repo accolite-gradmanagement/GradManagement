@@ -6,14 +6,16 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  //{path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'',redirectTo:'front',pathMatch:'full'},
   {path:'signup',component:SignupComponent},
   {path:'login',component:LoginComponent},
   {path:'home',component:HomeComponent},
-  {path:'admin',component:AdminComponent},
+  {path:'admin-user',component:AdminComponent},
   {path:'front',component:FrontpageComponent},
+  {path: 'user', component: UserComponent},
   {path:'resetpassword',component:ResetpasswordComponent},
   
   ];

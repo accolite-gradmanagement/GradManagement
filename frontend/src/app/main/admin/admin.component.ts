@@ -34,7 +34,8 @@ export class AdminComponent implements OnInit {
     /* ********************/
     this.httpClient.get("http://localhost:8080/msgrad/getAll").subscribe(
       data  => {console.log("Get Request is successful ",
-      this.datas = (data));},
+      this.datas = (data));
+    },
       error  => {console.log("Error", error);}
     )
 
