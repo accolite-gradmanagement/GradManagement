@@ -12,7 +12,7 @@ import {FormsModule} from '@angular/forms';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { FrontpageComponent } from './frontpage/frontpage.component'
 import { RouterModule } from '@angular/router';
-
+import {MainRoutingModule} from './main-routing.module'; 
 
 const config = new AuthServiceConfig([
   {
@@ -35,9 +35,9 @@ const config = new AuthServiceConfig([
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MainRoutingModule
   ],
-  exports:[LoginComponent, SignupComponent, AdminComponent],
   providers: [{provide: AuthServiceConfig, useFactory : provideConfig}],
 })
 export class MainModule { }

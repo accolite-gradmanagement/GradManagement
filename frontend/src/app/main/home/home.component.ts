@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   admin=false;
   trainer=false;
 
-  constructor(private router:Router) {
+  constructor(private router:Router) {  
     document.body.style.backgroundImage = null;
     if(this.loggedInStatus==false)
     {

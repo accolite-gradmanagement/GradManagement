@@ -103,7 +103,7 @@ export class SignupComponent implements OnInit {
     console.log(serializedForm);
 
     let h = new HttpHeaders({'Content-Type':'application/json'});
-    this.httpClient.post("http://10.4.14.76:8080/msgrad/putUser",serializedForm,{headers:h})
+    this.httpClient.post("http://localhost:8080/msgrad/putUser",serializedForm,{headers:h})
     .subscribe(
       data  => {if(data==0)
         {

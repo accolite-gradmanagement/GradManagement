@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import {BrowserModule} from '@angular/platform-browser';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { CmanageComponent } from './cmanage/cmanage.component';
 import { TmanageComponent } from './tmanage/tmanage.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
-//import { FormGroup, FormControl } from '@angular/forms';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatSelectModule} from '@angular/material/select';
@@ -31,12 +29,7 @@ import { RouterModule } from '@angular/router';
     MatSelectModule,
     MultiSelectAllModule,
     AngularDateTimePickerModule,
-    // RouterModule.forChild([
-    //   { path: 'view', component: ViewComponent },
-    //   { path: 'course', component: CmanageComponent },
-    //   { path: 'trainer', component: TmanageComponent },
-    //   { path: 'batch', component: FormComponent },
-    // ])    
+  
   ]
 })
 export class CoursesModule { }

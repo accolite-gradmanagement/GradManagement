@@ -65,12 +65,12 @@ export class LoginComponent implements OnInit {
 
     let h = new HttpHeaders({'Content-Type':'application/json'});
    
-    this.httpClient.post("http://10.4.14.76:8080/msgrad/login",serializedForm,{headers:h})
+    this.httpClient.post("http://localhost:8080/msgrad/login",serializedForm,{headers:h})
     .subscribe(
       data  => { if(data)
                   {
                   sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
-                  this.router.navigate(['home']);
+                  this.router.navigate(['/home']);
                   
                   }
                   else
@@ -110,7 +110,7 @@ export class LoginComponent implements OnInit {
 
     let h = new HttpHeaders({'Content-Type':'application/json'});
    
-    this.httpClient.post("http://10.4.14.76:8080/msgrad/googlelogin",serializedForm,{headers:h})
+    this.httpClient.post("http://localhost:8080/msgrad/googlelogin",serializedForm,{headers:h})
     .subscribe(
       data  => { if(data)
                   {
