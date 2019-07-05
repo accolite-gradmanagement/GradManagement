@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   trainer=false;
 
   constructor(private router:Router) {  
+  
     document.body.style.backgroundImage = null;
     if(this.loggedInStatus==false)
     {
@@ -35,9 +36,9 @@ export class HomeComponent implements OnInit {
     // // console.log(this.role);
   }
 
-  logout()
-  {
-    sessionStorage.clear();
-    this.router.navigate(['/front']);
-  }
+  // logout()
+  // {
+  //   sessionStorage.clear();
+  //   this.router.navigate(['/front']);
+  // }
 }

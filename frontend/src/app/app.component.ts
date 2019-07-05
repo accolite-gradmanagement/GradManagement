@@ -19,10 +19,10 @@ export class AppComponent {
     setTheme('bs3'); // or 'bs4'
 
     document.body.style.backgroundImage = null;
-    if(this.loggedInStatus==false)
-    {
-      this.router.navigate(['login']);
-    }
+    // if(this.loggedInStatus==false)
+    // {
+    //   this.router.navigate(['login']);
+    // }
   }
 
   ngOnInit() {

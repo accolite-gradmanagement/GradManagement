@@ -4,6 +4,8 @@ import { CanActivate, ActivatedRouteSnapshot, RouterLink, RouterStateSnapshot } 
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -18,7 +20,7 @@ export class AdminComponent implements OnInit {
   notvalid = false;
   datas : any;
 
-  constructor(private httpClient:HttpClient, private router:Router) {
+  constructor(private toastr:ToastrService,private httpClient:HttpClient, private router:Router) {
    
    }
 
@@ -60,11 +62,12 @@ export class AdminComponent implements OnInit {
              
                   if(data==1)
                   {
-                    alert("employee added successfully")
+                    // alert("employee added successfully")
                     // this.router.navigate(['./employeeData'])
                    /*  this.router.navigateByUrl('/employeeData', {skipLocationChange: true}).then(()=>
                     this.router.navigate(["employeeData"])); */
-                   location.reload();
+                   
+                   this.showToaster();
                   }                  
                   else
                   {
@@ -79,6 +82,13 @@ export class AdminComponent implements OnInit {
     )
   }
 
+
+  showToaster()
+  {
+    this.toastr.success('Successfully added employee!!','success');
+    this.ngOnInit();
+    
+  }
 
 
 }
