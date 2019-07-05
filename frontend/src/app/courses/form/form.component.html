@@ -1,4 +1,4 @@
-<app-header select="AddBatch"></app-header>
+<!-- <app-header select="AddBatch"></app-header> -->
 
 
 <div class="container">
@@ -117,8 +117,8 @@
         <tr *ngFor="let a of addToTable;index as t" style="text-transform: capitalize">
           <td>{{a.startTime|date:'dd/MM/yyyy'}}</td>
           <td>{{a.course_name}}</td>
-          <td>{{a.startTime|date:'HH:mm a'}}</td>
-          <td>{{a.endTime|date:'HH:mm a'}}</td>
+          <td>{{a.startTime|date:'hh:mm a'}}</td>
+          <td>{{a.endTime|date:'hh:mm a'}}</td>
           <td>{{a.trainer_name}}</td>
           <td>{{a.backup_trainer_name}}</td>
           <td>{{a.comment}}</td>

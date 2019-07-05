@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
 
 
     /* ********************/
-    this.httpClient.get("http://localhost:8080/msgrad/getAll").subscribe(
+    this.httpClient.get("http://10.4.14.76:8080/msgrad/getAll").subscribe(
       data  => {console.log("Get Request is successful ",
       this.datas = (data));
     },
@@ -53,7 +53,7 @@ export class AdminComponent implements OnInit {
 
     let h = new HttpHeaders({'Content-Type':'application/json'});
    
-    this.httpClient.post("http://localhost:8080/msgrad/addEmployee",serializedForm,{headers:h})
+    this.httpClient.post("http://10.4.14.76:8080/msgrad/addEmployee",serializedForm,{headers:h})
     .subscribe(
       data  => { if(data)
                   {
