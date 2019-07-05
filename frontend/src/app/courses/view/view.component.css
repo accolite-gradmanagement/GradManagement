@@ -29,7 +29,7 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 }
 
-.tableFixHead          { overflow-y: auto; height: 100px; }
+.tableFixHead          { overflow-y: auto; max-height: 50px; }
 .tableFixHead thead th { position: sticky; top: 0; }
 
 table  { border-collapse: collapse; width: 100%; }

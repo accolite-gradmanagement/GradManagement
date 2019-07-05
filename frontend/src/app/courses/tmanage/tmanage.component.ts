@@ -59,7 +59,7 @@ onSubmit(form: NgForm): void {
       this.toastr.success("Submitted successfully","Success!!");
     },err=>
     {
-      this.toastr.error("Tried to add Duplicate Trainer","Error!!");
+      this.toastr.error("Duplicate Trainer entry","Error!!");
       this.trainerName='';
       this.value=[];
     });
