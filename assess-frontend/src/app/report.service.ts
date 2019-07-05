@@ -27,8 +27,7 @@ export class ReportService {
   public getyear():Observable<number[]>{
   console.log(this.urlyear);
   return this.http.get<number[]>(this.urlyear);
-
-   }
+ }
 
    public getbatches(name:number):Observable<string []>{
      console.log(name);
@@ -41,9 +40,11 @@ export class ReportService {
       this.urlbname = "/scores/"+bname+"/testname";
       return this.http.get<Tests>(this.urlbname);
        }
+
   public getList(somelist:string):Observable<IReport[]>{
     return this.http.get<IReport []>(somelist);
   }
+  
   public getStudentDetails(id: string):Observable<Student[]>{
     console.log(id);
     this.studentdetailsurl="/scores/"+id;

@@ -1,13 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {ReportService} from '../report.service';
-import { Student } from '../student';
+import {ReportService} from '../../report.service';
+import { Student } from '../../student';
+
 @Component({
-  selector: 'app-student-detail',
-  templateUrl: './student-detail.component.html',
-  styleUrls: ['./student-detail.component.css']
+  selector: 'app-student-details',
+  templateUrl: './student-details.component.html',
+  styleUrls: ['./student-details.component.css']
 })
-export class StudentDetailComponent implements OnInit {
+export class StudentDetailsComponent implements OnInit {
+
   contents:Student[];
   constructor(private reportService: ReportService,
     private route:ActivatedRoute) { }
