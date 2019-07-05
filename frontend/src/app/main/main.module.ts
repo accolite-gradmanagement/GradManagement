@@ -12,6 +12,9 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { FrontpageComponent } from './frontpage/frontpage.component'
 import { RouterModule } from '@angular/router';
 import {MainRoutingModule} from './main-routing.module'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+ 
 
 const config = new AuthServiceConfig([
   {
@@ -30,11 +33,17 @@ const config = new AuthServiceConfig([
   declarations: [LoginComponent, SignupComponent, HomeComponent, AdminComponent, UserComponent, ResetpasswordComponent, FrontpageComponent],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     SocialLoginModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MainRoutingModule
+    MainRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: "toast-top-right",
+      preventDuplicates: true
+    })
   ],
   providers: [{provide: AuthServiceConfig, useFactory : provideConfig}],
 })

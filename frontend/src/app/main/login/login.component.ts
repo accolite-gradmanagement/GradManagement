@@ -71,7 +71,8 @@ export class LoginComponent implements OnInit {
                   {
                   sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
                   this.router.navigate(['/home']);
-                  
+                  // this.ngOnInit();
+                  location.reload();
                   }
                   else
                   {
@@ -116,7 +117,7 @@ export class LoginComponent implements OnInit {
                   {
                   sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
                   this.router.navigate(['home']);
-                  
+                  location.reload();
                   }
                   else
                   {
