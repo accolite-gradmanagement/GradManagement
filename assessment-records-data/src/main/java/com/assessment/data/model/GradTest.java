@@ -1,10 +1,7 @@
 package com.assessment.data.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -13,13 +10,15 @@ public class GradTest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer testId;
-	
+
+	@Column(unique = true, length = 50)
 	private String testName;
 	private String batchName;
 
 	private int totalQuestions;
 
-	
+	@ManyToOne
+	private GradScore gradScore;
 	
 	public GradTest(Integer testId, String testName,int totalQuestions) {
 		super();

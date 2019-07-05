@@ -1,9 +1,6 @@
 package com.assessment.data.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class GradEmployee {
@@ -18,7 +15,10 @@ public class GradEmployee {
 	private int year;
 	private long contactNo;
 	private String location;
-	
+
+	@ManyToOne
+	private GradScore gradScore;
+
 	public GradEmployee() {
 		
 	}

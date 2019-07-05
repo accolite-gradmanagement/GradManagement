@@ -18,7 +18,7 @@ import com.assessment.data.service.GradTestService;
 
 @CrossOrigin(origins="*", allowedHeaders="*")
 @RestController
-public class GradTestController {
+public class  GradTestController {
 	
 	@Autowired
 	private GradTestService gradTestService;

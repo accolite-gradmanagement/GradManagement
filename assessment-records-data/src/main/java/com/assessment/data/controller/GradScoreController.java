@@ -1,11 +1,15 @@
 package com.assessment.data.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.assessment.data.model.*;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +36,7 @@ public class GradScoreController {
 	public ResponseEntity<List<GradScore>> getEmployeesScoreByYearAndBatchAndTestName(@PathVariable("year") int year, @PathVariable("batchName") String batchName, @PathVariable("testName") String testName){
 		
 		List<GradEmployee> gradEmployees = gradEmployeeService.findByBatchNameAndYear(batchName, year);
-		GradTest gradTest = gradTestService.findByTestName(testName);
+		GradTest gradTest = gradTestService.findByTestNameAndBatchName(testName,batchName);
 		List<GradScore> gradScores = gradScoreService.findByGradEmployeeInAndGradTestByOrderByScoreDesc(gradEmployees, gradTest);
 		if(gradScores == null) {
 			System.out.println("Grad Score empty*********************************");
@@ -132,5 +136,43 @@ public class GradScoreController {
 		}
 		return new ResponseEntity<List<GradScore>>(gradScores,HttpStatus.OK);
 	}
+
+
+	@RequestMapping(value = "/add/score",method = RequestMethod.POST)
+	public ResponseEntity<Void> addScoreDetails(@RequestBody String json){
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			ScoreDetails scoreDetails = objectMapper.readValue(json, ScoreDetails.class);
+
+			GradScore gradScore = new GradScore();
+
+			GradEmployee gradEmployee = gradEmployeeService.getGradEmployee(scoreDetails.getEmployeeId());
+//			gradScore.getGradEmployees().add(gradEmployee);
+			gradScore.setGradEmployee(gradEmployee);
+
+
+			GradTest gradTest = gradTestService.findByTestName(scoreDetails.getTestName());
+//			gradScore.getGradTest().add(gradTest);
+			gradScore.setGradTest(gradTest);
+
+			gradScore.setScore(scoreDetails.getScore());
+			gradScore.setCorrectQuestions(scoreDetails.getCorrectQuestions());
+			gradScore.setIncorrectQuestions(scoreDetails.getIncorrectQuestions());
+
+			gradScoreService.addGradScore(gradScore);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		}
+		catch (JsonParseException e) {
+			e.printStackTrace();
+		}
+		catch (JsonMappingException e) {
+			e.printStackTrace();
+		}
+		catch (IOException ioe){
+			ioe.printStackTrace();
+		}
+		return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+	}
+
 
 }
