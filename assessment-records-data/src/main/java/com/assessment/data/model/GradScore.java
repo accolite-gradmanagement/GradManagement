@@ -42,17 +42,19 @@ public class GradScore {
 //	private Set<GradTest> gradTest =  new HashSet<>();
 
 
-	@OneToOne(optional = true)
+	@OneToOne
+	@JoinColumn(name="test_id")
 	private  GradTest gradTest;
 
 
-	@OneToOne(optional = true)
+	@OneToOne
+	@JoinColumn(name = "employee_id")
 	private  GradEmployee gradEmployee;
 
 	private int score;
 	private int correctQuestions;
 	private int incorrectQuestions;
-	private int rank;
+	private int rank1;
 
 
 
@@ -125,11 +127,11 @@ public class GradScore {
 	}
 
 	public int getRank() {
-		return rank;
+		return rank1;
 	}
 
-	public void setRank(int rank) {
-		this.rank = rank;
+	public void setRank(int rank1) {
+		this.rank1 = rank1;
 	}
 
 }
