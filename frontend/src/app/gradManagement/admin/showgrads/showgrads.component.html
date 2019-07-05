@@ -1,0 +1,70 @@
+<!-- <p>showgrads works!</p> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+    <div class="panel panel-default">
+        <!-- <div class="panel-heading">
+            <h1>Grad Management</h1>
+        </div> -->
+        <h1>Grad Management</h1>
+        <i style="font-size:24px;color:rgba(54, 53, 53, 0.644)" class="fa">&#xf002;</i>
+        <input class="filter" type="text" id="searchByName" [(ngModel)]="nameSearch" name="searchByName" placeholder="Search By Name">
+        <input class="filter" type="text" id="searchById" [(ngModel)]="empCodeSearch" name="searchById" placeholder="Search By Employee Code">
+    
+        <div class="tableFixHead panel-body" width=vw; height=vh;>
+
+            <table class="table table-striped table-bordered" matSort (matSortChange)="sortData($event)">
+                <thead class="thead-dark">
+                    <tr>
+                        <th mat-sort-header="Employee Code">Employee Code</th>
+                        <th mat-sort-header="Name">Name</th>
+                        <th>Email</th>
+                        <th mat-sort-header="College">College</th>
+                        <th mat-sort-header="Location">Location </th>
+                        <th mat-sort-header="Date of Joining">Date of Joining</th>
+                        <th>Batch</th>
+                        <th>DoJ Reconfirmation(Y/N)</th>
+                        <th>Remarks</th>
+                        <th>Course</th>
+                        <th>Branch</th>
+                        <th mat-sort-header="CGPA">CGPA</th>
+                        <th>Personal Contact</th>
+                        <th>Personal Email</th>
+                        <th mat-sort-header="DoB">DoB</th>
+                        <th>Native Place</th>
+                        <th mat-sort-header="Current Place">Current Place</th>
+                        <th>Parent Contact</th>
+                        <th>Postal Address</th>
+                        <th>CV Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let g of (sortedGrads | search: nameSearch:empCodeSearch)" scope="row">
+                        <td><a [routerLink]="['/grads',g.id]">{{g.employeeCode}}</a></td>
+                        <td>{{g.name}}</td>
+                        <td><a href="mailto:{{g.email}}">{{g.email}}</a></td>
+                        <td>{{g.college}}</td>
+                        <td>{{g.location}}</td>
+                        <td>{{g.joiningDate}}</td>
+                        <td>{{g.batch}}</td>
+                        <td>{{g.dateOfJoiningReconfirmation}}</td>
+                        <td>{{g.remarks}}</td>
+                        <td>{{g.course}}</td>
+                        <td>{{g.branch}}</td>
+                        <td>{{g.cgpa}}</td>
+                        <td>{{g.personalNumber}}</td>
+                        <td>{{g.personalEmail}}</td>
+                        <td>{{g.dob}}</td>
+                        <td>{{g.nativepPlace}}</td>
+                        <td>{{g.currentPlace}}</td>
+                        <td>{{g.parentContact}}</td>
+                        <td>{{g.postalAddress}}</td>
+                        <td>{{g.cvLink}}</td>
+                        <td><button  class="btn btn-outline-light" (click)="deleteGrad(g.id)">
+                            <i class="fa fa-trash-o" style="color:red;font-size:25px"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
