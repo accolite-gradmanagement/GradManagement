@@ -16,8 +16,8 @@ public class GradEmployee {
 	private long contactNo;
 	private String location;
 
-	@ManyToOne
-	private GradScore gradScore;
+//	@ManyToOne
+//	private GradScore gradScore;
 
 	public GradEmployee() {
 		

@@ -6,7 +6,7 @@ public class ScoreDetails {
     private int totalQuestions;
     private  int correctQuestions;
     private  int incorrectQuestions;
-    private int successPercentage;
+    private float successPercentage;
     private int year;
     private  String batchName;
     private String testName;
@@ -53,11 +53,11 @@ public class ScoreDetails {
         this.incorrectQuestions = incorrectQuestions;
     }
 
-    public int getSuccessPercentage() {
+    public float getSuccessPercentage() {
         return successPercentage;
     }
 
-    public void setSuccessPercentage(int successPercentage) {
+    public void setSuccessPercentage(float successPercentage) {
         this.successPercentage = successPercentage;
     }
 

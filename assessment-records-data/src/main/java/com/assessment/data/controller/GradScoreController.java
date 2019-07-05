@@ -147,17 +147,25 @@ public class GradScoreController {
 			GradScore gradScore = new GradScore();
 
 			GradEmployee gradEmployee = gradEmployeeService.getGradEmployee(scoreDetails.getEmployeeId());
+			if(gradEmployee == null){
+				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			}
 //			gradScore.getGradEmployees().add(gradEmployee);
 			gradScore.setGradEmployee(gradEmployee);
 
 
+
 			GradTest gradTest = gradTestService.findByTestName(scoreDetails.getTestName());
+			if(gradTest ==  null){
+				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			}
 //			gradScore.getGradTest().add(gradTest);
 			gradScore.setGradTest(gradTest);
 
 			gradScore.setScore(scoreDetails.getScore());
 			gradScore.setCorrectQuestions(scoreDetails.getCorrectQuestions());
 			gradScore.setIncorrectQuestions(scoreDetails.getIncorrectQuestions());
+			gradScore.setSuccessPercentage(scoreDetails.getSuccessPercentage());
 
 			gradScoreService.addGradScore(gradScore);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);

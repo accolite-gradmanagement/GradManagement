@@ -12,7 +12,7 @@ public class GradScore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Basic(optional = false)
-	@Column(name = "score_id",unique=true, nullable = false)
+	@Column(unique=true, nullable = false)
 	private int score_id;
 
 
@@ -52,6 +52,9 @@ public class GradScore {
 	private int score;
 	private int correctQuestions;
 	private int incorrectQuestions;
+
+//	@Transient
+	private float successPercentage;
 
 	public int getScore() {
 		return score;
@@ -108,5 +111,17 @@ public class GradScore {
 	public void setGradEmployee(GradEmployee gradEmployee) {
 		this.gradEmployee = gradEmployee;
 	}
+
+
+	public float getSuccessPercentage() {
+		return successPercentage;
+	}
+
+	public void setSuccessPercentage(float successPercentage) {
+		this.successPercentage = successPercentage;
+	}
+
+
 }
+
 

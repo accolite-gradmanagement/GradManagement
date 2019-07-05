@@ -17,8 +17,8 @@ public class GradTest {
 
 	private int totalQuestions;
 
-	@ManyToOne
-	private GradScore gradScore;
+//	@ManyToOne
+//	private GradScore gradScore;
 	
 	public GradTest(Integer testId, String testName,int totalQuestions) {
 		super();
