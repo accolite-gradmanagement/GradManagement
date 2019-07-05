@@ -166,6 +166,7 @@ public class GradScoreController {
 			gradScore.setCorrectQuestions(scoreDetails.getCorrectQuestions());
 			gradScore.setIncorrectQuestions(scoreDetails.getIncorrectQuestions());
 			gradScore.setSuccessPercentage(scoreDetails.getSuccessPercentage());
+			gradScore.setRank(scoreDetails.getRank());
 
 			gradScoreService.addGradScore(gradScore);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);

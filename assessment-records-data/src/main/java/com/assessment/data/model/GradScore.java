@@ -52,8 +52,11 @@ public class GradScore {
 	private int score;
 	private int correctQuestions;
 	private int incorrectQuestions;
+	private int rank;
 
-//	@Transient
+
+
+	//	@Transient
 	private float successPercentage;
 
 	public int getScore() {
@@ -121,6 +124,13 @@ public class GradScore {
 		this.successPercentage = successPercentage;
 	}
 
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 
 }
 
