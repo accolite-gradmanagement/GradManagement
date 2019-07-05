@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DemandService } from '../../provider/demand.service';
+import { DemandService } from '../provider/demand.service';
 
 @Component({
     selector: 'app-demanddetails',
@@ -17,6 +17,7 @@ export class DemanddetailsComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
     getDemands() {
         this.service.getDemands().subscribe(demands => {
@@ -26,20 +27,20 @@ export class DemanddetailsComponent implements OnInit {
             for (const i in demands) {
                 const tempObj = demands[i];
                 const edEmployee = employees[tempObj['edId']];
-                let edObj = this.formattedData[edEmployee.emp_NAME];
+                let edObj = this.formattedData[edEmployee.empName];
                 if (edObj == undefined) {
                     edObj = {};
                 }
                 const hmEmployee = employees[tempObj['hmId']];
-                let hmObj = edObj[hmEmployee.emp_NAME];
+                let hmObj = edObj[hmEmployee.empName];
                 if (hmObj == undefined) {
                     hmObj = [];
                 }
                 const demandObject = this.getFormattedDemandObject(locations, tempObj);
                 hmObj.push(demandObject);
-                edObj[hmEmployee.emp_NAME] = hmObj;
-                this.formattedData[edEmployee.emp_NAME] = edObj;
-                this.isViewableArray[edEmployee.emp_NAME] = true;
+                edObj[hmEmployee.empName] = hmObj;
+                this.formattedData[edEmployee.empName] = edObj;
+                this.isViewableArray[edEmployee.empName] = true;
             }
         });
 
@@ -58,8 +59,6 @@ export class DemanddetailsComponent implements OnInit {
 
     toggle(edName) {
         this.isViewableArray[edName] = !this.isViewableArray[edName];
-        // this.isViewable= !this.isViewable;
-
     }
 
     getTotalDemands(edObj) {

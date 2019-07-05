@@ -11,3 +11,12 @@ export class Demand {
     constructor(
     ) { }
 }
+
+export class Employee {
+    public empId: number;
+    public empName: string;
+    public empRole: string;
+    constructor() {
+
+    }
+}

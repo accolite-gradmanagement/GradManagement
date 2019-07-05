@@ -1,6 +1,8 @@
+
 <div class="row">
   <div class="col-sm-1"></div>
   <div class="col-sm-10">
+    <p>ED and Location wise Demand Details</p> 
     <div *ngFor="let item of formattedData | keyvalue">
       <button class="ed-btn" (click)="toggle(item.key)">{{item.key | uppercase}}
         <span>TOTAL DEMAND:{{getTotalDemands(item.value)}}</span>
@@ -35,25 +37,6 @@
   <div class="col-sm-1"></div>
 </div>
 
-
-<!-- 
-<div class="container">
-  <div class="row" *ngFor="let item of formattedData | keyvalue">
-      <button class="btn btn-primary" >{{item.key}}</button>
-      <div  *ngIf="item.value['isViewable']" class="container ">
-        <div class="container" *ngFor="let hm of item.value | keyvalue">
-            <div class="row" *ngFor="let demand of hm.value">
-                <div class="col-sm-2">{{hm.key}}</div>
-                <div class="col-sm-2">{{demand.demandCount}}</div>
-                <div class="col-sm-2">{{demand.location}}</div>
-                <div class="col-sm-2">{{demand.start_time}}</div>
-                <div class="col-sm-2">{{hm.comments}}</div>
-                <div class="col-sm-2"></div>
-            </div>
-        </div>
-      </div>
-  </div>
-</div> -->
 
 
 

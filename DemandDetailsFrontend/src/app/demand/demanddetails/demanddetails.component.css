@@ -16,17 +16,23 @@
     background-color: #f5f5f5;
     font-family: Arial, sans-serif;
     font-size: 12px;
-
-
 }
 td {
     color: #494949;
     font-family: Arial, sans-serif;
     font-size: 12px;
-    
+    max-width: 100px;
+    /* overflow:visible; */
+    white-space: initial;
 }
 
 span {
     margin-right: 100px;
     float: right;
+}
+p{
+    font-family: Arial,sans-serif;
+    font-size: 2em;
+    text-align: center;
+    /* color: #45828C; */
 }
