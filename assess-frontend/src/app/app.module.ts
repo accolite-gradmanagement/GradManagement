@@ -3,24 +3,20 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SelectionComponent } from './selection.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { StudentDetailComponent } from './student-detail/student-detail.component';
-import { NewDetailComponent } from './new-detail/new-detail.component';
+import { ReportModule } from './report/report.module';
 @NgModule({
   declarations: [
-    AppComponent,
-    SelectionComponent,
-    StudentDetailComponent,
-    NewDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReportModule
   ],
   providers: [],
   bootstrap: [AppComponent]

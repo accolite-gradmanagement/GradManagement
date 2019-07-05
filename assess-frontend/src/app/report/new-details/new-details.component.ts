@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { ReportService } from '../../report.service';
 import { FormGroup, FormControl } from '@angular/forms'
-
-
-import { ReportService } from '../report.service';
-import {IReport} from '../IReport';
-import{Tests} from '../Tests';
-import {Details} from '../details';
+import {IReport} from '../../IReport';
+import{Tests} from '../../Tests';
+import {Details} from '../../details';
 
 @Component({
-  selector: 'app-new-detail',
-  templateUrl: './new-detail.component.html',
-  styleUrls: ['./new-detail.component.css']
+  selector: 'app-new-details',
+  templateUrl: './new-details.component.html',
+  styleUrls: ['./new-details.component.css']
 })
-export class NewDetailComponent implements OnInit {
+export class NewDetailsComponent implements OnInit {
   submitted=false;
   details: Details;
   
