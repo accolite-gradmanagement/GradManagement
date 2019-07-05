@@ -59,7 +59,7 @@ onSubmit(form: NgForm): void {
       this.toastr.success("Submitted successfully","Success!!");
     },err=>
     {
-      this.toastr.warning("Tried to add Duplicate Trainer","Error!!");
+      this.toastr.error("Tried to add Duplicate Trainer","Error!!");
       this.trainerName='';
       this.value=[];
     });
@@ -74,7 +74,7 @@ deleteTrainer(tid: number) {
  
   },err=>
   {
-    this.toastr.warning("Trainer is already allocated in timesheet","Warning!!");
+    this.toastr.error("Trainer is already allocated in timesheet","Error!!");
   });
 }
 

@@ -46,7 +46,6 @@ export class CmanageComponent implements OnInit {
       this.service.addCourse(this.courseObj).subscribe(data => {
         this.ngOnInit();
         this.courseName = "";
-        alert("Submitted successfully");
         this.toastr.success("Submitted successfully...","Success!!");
       },err=>
       {

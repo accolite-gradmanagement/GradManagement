@@ -190,14 +190,15 @@ export class FormComponent implements OnInit {
       trainer_id:this.TrainerAllocationForm.value.trainer_id,
       backup_trainer_id:this.TrainerAllocationForm.value.backup_trainer_id,
       comment:this.TrainerAllocationForm.value.comment,
-      startTime:this.datePipe.transform(this.TrainerAllocationForm.value.startTime, 'yyyy-MM-dd hh:mm:ss'),
-      endTime:this.datePipe.transform(this.TrainerAllocationForm.value.endTime, 'yyyy-MM-dd hh:mm:ss'),
+      startTime:this.datePipe.transform(this.TrainerAllocationForm.value.startTime, 'yyyy-MM-dd HH:mm:ss'),
+      endTime:this.datePipe.transform(this.TrainerAllocationForm.value.endTime, 'yyyy-MM-dd HH:mm:ss'),
       batch_id:this.existingBatchSelected?this.selectedBatch:this.batch.batchId,
       course_name: course_name1,
       trainer_name: trainer_name1,
       backup_trainer_name: backup_trainer_name1
       }
-
+      console.log(trainerAllocation.startTime);
+      console.log(trainerAllocation.endTime);
       this.addToTable.push(trainerAllocation);
       if(this.addToTable.length>0)
       {
