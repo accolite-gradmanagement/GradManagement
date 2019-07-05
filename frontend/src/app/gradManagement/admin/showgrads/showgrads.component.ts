@@ -9,7 +9,7 @@ import {Sort} from '@angular/material/sort';
 @Component({
   selector: "app-showgrads",
   templateUrl: "./showgrads.component.html",
-  styleUrls: ["./showgrads.component.css"]
+  styleUrls: ["./showgrads.component.scss"]
 })
 export class ShowgradsComponent implements OnInit {
 

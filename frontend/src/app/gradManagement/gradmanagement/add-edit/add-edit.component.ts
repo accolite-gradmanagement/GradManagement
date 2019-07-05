@@ -6,7 +6,7 @@ import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit',
   templateUrl: './add-edit.component.html',
-  styleUrls: ['./add-edit.component.css']
+  styleUrls: ['./add-edit.component.scss']
 })
 export class AddEditComponent implements OnInit {
   private loggedInStatus = JSON.parse(sessionStorage.getItem('loggedIn') || 'false');

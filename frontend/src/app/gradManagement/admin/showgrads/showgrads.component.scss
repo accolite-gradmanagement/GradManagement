@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(230, 234, 240);
+  background-color: #eee;
     font-family: 'Times New Roman', Times, serif;
     /* overflow: scroll; */
 }
@@ -10,11 +10,13 @@ table  { border-collapse: collapse; width: 100%; }
 th, td { padding: 8px 16px; }
 th     { background:#eee; }
 
-#searchByName, #searchById {
+input {
     width: 18%;
-    padding: 3px 3px;
     margin: 5px 3px;
     box-sizing:border-box;
-    border: 4px ;
-    border-radius: 5px; 
+    border: 1px solid rgb(202, 200, 200);
+    border-radius: 5px;
+    padding: 3px;
+
+    
 }
