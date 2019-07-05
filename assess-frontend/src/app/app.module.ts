@@ -7,11 +7,13 @@ import { SelectionComponent } from './selection.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
+import { NewDetailComponent } from './new-detail/new-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     SelectionComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    NewDetailComponent
   ],
   imports: [
     BrowserModule,

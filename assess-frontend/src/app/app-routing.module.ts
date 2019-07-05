@@ -2,12 +2,15 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SelectionComponent } from './selection.component';
 import {StudentDetailComponent} from './student-detail/student-detail.component';
+import { NewDetailComponent } from './new-detail/new-detail.component';
 
 
 const routes: Routes = [
- {path:"check", component:SelectionComponent},
- {path:"",  redirectTo: '/check', pathMatch: 'full'},
- { path: 'detail/:id', component: StudentDetailComponent }
+ {path:"", component:SelectionComponent},
+ 
+ { path: 'detail/:id', component: StudentDetailComponent },
+ { path: 'detail/name/:name', component: StudentDetailComponent },
+ { path: 'newDetails', component: NewDetailComponent }
 ];
 
 @NgModule({

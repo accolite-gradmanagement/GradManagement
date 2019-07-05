@@ -13,14 +13,34 @@ export class StudentDetailComponent implements OnInit {
     private route:ActivatedRoute) { }
 
   ngOnInit() {
-   this.getDetails();
+  const id = this.route.snapshot.paramMap.get('id');
+  const name = this.route.snapshot.paramMap.get('name');
+  console.log(id);
+  console.log(name);
+  if(id)
+  {
+    this.getDetails(id);
   }
-  getDetails(){
-    const id = +this.route.snapshot.paramMap.get('id');
+  else 
+  {
+    this.getDetailsbyName(name);
+  }
+   
+   
+  }
+  getDetails(id:string){
+    
     this.reportService.getStudentDetails(id)
       .subscribe(data=> this.contents = data);
 
       console.log(this.contents);
+  }
+  getDetailsbyName(name:string){
+    
+    this.reportService.getStudentDetailsbyName(name)
+    .subscribe(data=> this.contents = data);
+
+    console.log(this.contents);
   }
 
 }
