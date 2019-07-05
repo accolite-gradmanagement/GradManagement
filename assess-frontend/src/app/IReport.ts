@@ -16,4 +16,5 @@ score:number;
 correctQuestions:number;
 incorrectQuestions:number;
 successPercentage: number;
+rankGrad: number;
 }

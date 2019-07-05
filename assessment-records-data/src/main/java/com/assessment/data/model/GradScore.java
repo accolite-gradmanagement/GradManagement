@@ -2,8 +2,6 @@ package com.assessment.data.model;
 
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -42,21 +40,20 @@ public class GradScore {
 //	private Set<GradTest> gradTest =  new HashSet<>();
 
 
-	@OneToOne(optional = true)
+	@OneToOne
+	@JoinColumn(name="test_id")
 	private  GradTest gradTest;
 
 
-	@OneToOne(optional = true)
+	@OneToOne
+	@JoinColumn(name="employee_id")
 	private  GradEmployee gradEmployee;
 
 	private int score;
 	private int correctQuestions;
 	private int incorrectQuestions;
-	private int rank;
+	private int rankGrad;
 
-
-
-	//	@Transient
 	private float successPercentage;
 
 	public int getScore() {
@@ -123,13 +120,17 @@ public class GradScore {
 	public void setSuccessPercentage(float successPercentage) {
 		this.successPercentage = successPercentage;
 	}
-
-	public int getRank() {
-		return rank;
+	public int getScore_id() {
+		return score_id;
 	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
+	public void setScore_id(int score_id) {
+		this.score_id = score_id;
+	}
+	public int getRankGrad() {
+		return rankGrad;
+	}
+	public void setRankGrad(int rankGrad) {
+		this.rankGrad = rankGrad;
 	}
 
 }
