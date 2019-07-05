@@ -52,7 +52,8 @@ public class HiringController {
 	public List<Location> getAllLocations() {
 		return hiringService.getAllLocations();
 	}
-	@PostMapping(value="/api/employee", consumes="application/json") 
+
+	@PostMapping(value = "/api/employee", consumes = "application/json")
 	public Employee addEmployee(@RequestBody Employee employee) {
 		return this.hiringService.addEmployee(employee);
 	}

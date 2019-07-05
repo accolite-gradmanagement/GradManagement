@@ -18,6 +18,7 @@ public class Queries {
 	public static final String UPDATE_DEMAND_DETAIL = "UPDATE DEMAND_DETAILS SET DEMAND_COUNT = ? , COMMENTS = ?, STATUS = ? WHERE ID = ?";
 
 	public static final String GET_ALL_LOCATIONS = "SELECT * FROM LOCATION";
+
 	public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(EMP_ID, EMP_NAME,ROLE) VALUES(?,?,?)";
 
 }

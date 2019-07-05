@@ -6,7 +6,6 @@ public class Employee {
 	private String empName;
 	private String empRole;
 
-
 	public int getEmpId() {
 		return empId;
 	}

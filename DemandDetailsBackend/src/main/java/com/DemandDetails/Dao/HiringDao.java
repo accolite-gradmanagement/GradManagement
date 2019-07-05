@@ -55,11 +55,12 @@ public class HiringDao {
 
 		});
 	}
+
 	public Employee addEmployee(Employee employee) {
-		Object[] employeeParams = {employee.getEmpId(), employee.getEmpName(), employee.getEmpRole()};
-		int[] employeeDataTypes = {Types.INTEGER, Types.VARCHAR, Types.VARCHAR };
+		Object[] employeeParams = { employee.getEmpId(), employee.getEmpName(), employee.getEmpRole() };
+		int[] employeeDataTypes = { Types.INTEGER, Types.VARCHAR, Types.VARCHAR };
 		jdbcTemplate.update(Queries.INSERT_EMPLOYEE, employeeParams, employeeDataTypes);
 		return employee;
-		
+
 	}
 }
