@@ -47,7 +47,7 @@ export class UserComponent implements OnInit {
 
    let h = new HttpHeaders({'Content-Type':'application/json'});
    this.id = this.loggedInStatus.userId; 
-   this.httpClient.post("http://localhost:8080/msgrad/update",serializedForm,{headers:h})
+   this.httpClient.post("http://10.4.14.76:8080/msgrad/update",serializedForm,{headers:h})
    .subscribe(
      data  => { if(data)
                  {
