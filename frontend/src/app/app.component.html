@@ -14,10 +14,10 @@
               Course
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a routerLink="/view">Schedules</a></li>
-                <li><a routerLink="/course">Courses</a></li>
-                <li><a routerLink="/trainer">Trainers</a></li>
-                <li><a routerLink="/batch">Batch</a></li>
+                <li><a *ngIf="admin" routerLink="/view">Timesheets</a></li>
+                <li><a *ngIf="admin " routerLink="/course">Courses</a></li>
+                <li><a *ngIf="admin" routerLink="/trainer">Trainers</a></li>
+                <li><a *ngIf="admin" routerLink="/batch">Batches</a></li>
             </div>
           </li>     <li><a  *ngIf="admin || trainer"  style="color:white">Score</a></li>
         <li><a style="color:white">Ed</a></li>

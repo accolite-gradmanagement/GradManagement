@@ -33,14 +33,14 @@
       <div class="col-md-8" style="margin-left: 120px">
         <h2></h2><br>
         <div class="form-group">
-          <label style="font-size: medium">Course Name:</label>
-          <div class="input-group">
-            <input type="text" class="form-control" [(ngModel)]="courseName" placeholder="Enter the Course Name"><br><br>
-            <!-- <span class="input-group-btn"> -->
-              <button type="button" [disabled]="!courseName" class="btn btn-success btn-sm" (click)="submit()">Add course
-                </button>
-            <!-- </span> -->
-          </div>
+          <label style="font-size: medium">Course Name:</label><br>
+          <!-- <div class="input-group"> -->
+          <input type="text" class="form-control" [(ngModel)]="courseName" placeholder="Enter the Course Name"><br>
+          <!-- <span class="input-group-btn"> -->
+          <button type="button" [disabled]="!courseName" class="btn btn-primary btn-sm" (click)="submit()">Add course
+          </button>
+          <!-- </span> -->
+          <!-- </div> -->
 
         </div>
       </div>

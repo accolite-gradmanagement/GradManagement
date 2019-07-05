@@ -7,6 +7,8 @@ import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
 import { TrainerAllocation, Batch } from '../view/RequiredClasses';
 import { element } from 'protractor';
+import { ToastrService } from 'ngx-toastr';
+
 
 const dateFormat = 'dd/MM/yyyy';
 
@@ -20,7 +22,7 @@ export class FormComponent implements OnInit {
   datePipe = new DatePipe('en-US');
   batchName:string='';
   public TrainerAllocationForm: FormGroup;
-  constructor(private fb: FormBuilder, private service: SharedService) { }
+  constructor(private toastr: ToastrService,private fb: FormBuilder, private service: SharedService) { }
   courses: Course[] = [];
   trainers: Trainer[];
   trainersDummy: Trainer[] = [];
@@ -125,14 +127,15 @@ export class FormComponent implements OnInit {
     this.service.addBatchName(this.batchName).subscribe(data=>
       {
         this.batch=data;
-        alert(data.batchName+" Batch Added Successfully!!");
+        this.toastr.success("Batch Added Successfully...","Success!!");
           
           this.var1=false;
           this.var2=true;
         
       },err=>{
         console.log(err.status);
-        alert("Batch Is already Present");
+        this.toastr.warning("Batch Is already Present","Warning!!");
+        this.batchName='';
       })
   }
   convertToDisplayFormat(trainerAllocation:TrainerAllocation[])
@@ -187,8 +190,8 @@ export class FormComponent implements OnInit {
       trainer_id:this.TrainerAllocationForm.value.trainer_id,
       backup_trainer_id:this.TrainerAllocationForm.value.backup_trainer_id,
       comment:this.TrainerAllocationForm.value.comment,
-      startTime:this.datePipe.transform(this.TrainerAllocationForm.value.startTime, 'yyyy-MM-dd HH:mm:ss'),
-      endTime:this.datePipe.transform(this.TrainerAllocationForm.value.endTime, 'yyyy-MM-dd HH:mm:ss'),
+      startTime:this.datePipe.transform(this.TrainerAllocationForm.value.startTime, 'yyyy-MM-dd hh:mm:ss'),
+      endTime:this.datePipe.transform(this.TrainerAllocationForm.value.endTime, 'yyyy-MM-dd hh:mm:ss'),
       batch_id:this.existingBatchSelected?this.selectedBatch:this.batch.batchId,
       course_name: course_name1,
       trainer_name: trainer_name1,
@@ -209,6 +212,7 @@ export class FormComponent implements OnInit {
         comment: ''
       });
       this.trainers=[];
+      this.toastr.info("Session added temporarily in the table below","Info!!");
       // this.cid=null;
       // this.tid=null;
   
@@ -265,7 +269,7 @@ export class FormComponent implements OnInit {
         {
           this.ngOnInit();
           this.existingBatchSelected=false;
-          alert("Time Sheet Updated sucessfully for batch "+this.batchName);
+          this.toastr.success("Timesheet updated successfully","Success!!");
         });
     }
     else
@@ -273,7 +277,7 @@ export class FormComponent implements OnInit {
       this.service.addSession(this.addToTable).subscribe(data=>
         {
           this.ngOnInit();
-          alert(" Timesheet Submitted successfully for batch "+this.batch.batchName);
+          this.toastr.success("Timesheet submitted successfully","Success!!");
         });
   
     }
