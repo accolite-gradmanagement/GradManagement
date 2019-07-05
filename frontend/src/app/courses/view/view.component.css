@@ -34,4 +34,4 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 table  { border-collapse: collapse; width: 100%; }
 th, td { padding: 8px 16px; }
-th     { background: black; color: white }
+th     { background:#337ab7; color: white }
