@@ -2,39 +2,40 @@ package com.DemandDetails.Model;
 
 public class Employee {
 
-	private int EMP_ID;
-	private String EMP_NAME;
-	private String ROLE;
+	private int empId;
+	private String empName;
+	private String empRole;
 
-	public int getEMP_ID() {
-		return EMP_ID;
+
+	public int getEmpId() {
+		return empId;
 	}
 
-	public void setEMP_ID(int eMP_ID) {
-		EMP_ID = eMP_ID;
+	public void setEmpId(int empId) {
+		this.empId = empId;
 	}
 
-	public String getEMP_NAME() {
-		return EMP_NAME;
+	public String getEmpName() {
+		return empName;
 	}
 
-	public void setEMP_NAME(String eMP_NAME) {
-		EMP_NAME = eMP_NAME;
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
 
-	public String getROLE() {
-		return ROLE;
+	public String getEmpRole() {
+		return empRole;
 	}
 
-	public void setROLE(String rOLE) {
-		ROLE = rOLE;
+	public void setEmpRole(String empRole) {
+		this.empRole = empRole;
 	}
 
-	public Employee(int eMP_ID, String eMP_NAME, String rOLE) {
+	public Employee(int empId, String empName, String empRole) {
 		super();
-		EMP_ID = eMP_ID;
-		EMP_NAME = eMP_NAME;
-		ROLE = rOLE;
+		this.empId = empId;
+		this.empName = empName;
+		this.empRole = empRole;
 	}
 
 	public Employee() {

@@ -15,7 +15,7 @@ public class HiringService {
 
 	@Autowired
 	HiringDao hiringDao;
-
+	
 	public List<HiringDemand> getAllDemandDetails() {
 		return hiringDao.getAllDemandDetails();
 	}
@@ -24,16 +24,15 @@ public class HiringService {
 		return hiringDao.addHiringDetails(hd);
 	}
 	
-//	public HiringDemand updateHiringDetail(int id, HiringDemand hd) {
-//		return hiringDao.updateHiringDetail(id, hd);
-//	}
-	
 	public List<Employee> getAllEmployees() {
 		return hiringDao.getAllEmployees();
 	}
 	
 	public List<Location> getAllLocations() {
 		return hiringDao.getAllLocations();
+	}
+	public Employee addEmployee(Employee employee) {
+		return this.hiringDao.addEmployee(employee);
 	}
 
 }
