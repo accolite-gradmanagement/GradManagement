@@ -3,13 +3,30 @@ import { Routes, RouterModule } from '@angular/router';
 import { DemanddetailsComponent } from './demand/demanddetails/demanddetails.component';
 import { DemandformComponent } from './demand/demandform/demandform.component';
 
+
+import { CoursesModule } from './courses/courses.module';
+import { MainModule } from './main/main.module';
+
 const routes: Routes = [
-  { path : 'demanddetails', component: DemanddetailsComponent},
-  { path: 'demandform', component: DemandformComponent}
+{path:'', loadChildren: () => MainModule,pathMatch:'full'},
+{path:'', loadChildren: () => CoursesModule,pathMatch:'full'},
+{
+  path : 'grads',
+  loadChildren: () => import('./gradManagement/gradmanagement/gradmanagement.module').then(mod => mod.GradmanagementModule),
+},
+{
+  path : 'admin',
+  loadChildren: () => import('./gradManagement/Admin/Admin.module').then(mod => mod.AdminModule),
+},
+{ path : 'demanddetails', component: DemanddetailsComponent},
+{ path: 'demandform', component: DemandformComponent}
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
