@@ -54,6 +54,7 @@ public class GradScore {
 	private int incorrectQuestions;
 	private int rankGrad;
 
+
 	private float successPercentage;
 
 	public int getScore() {
@@ -120,6 +121,7 @@ public class GradScore {
 	public void setSuccessPercentage(float successPercentage) {
 		this.successPercentage = successPercentage;
 	}
+
 	public int getScore_id() {
 		return score_id;
 	}
@@ -131,6 +133,7 @@ public class GradScore {
 	}
 	public void setRankGrad(int rankGrad) {
 		this.rankGrad = rankGrad;
+
 	}
 
 }
