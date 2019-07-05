@@ -1,13 +1,13 @@
 export class Details{
     employeeId: number;
-    name: string;
-    totalquestions: number;
-    correctquestions: number;
-    incorrectquestions: number;
-    successperc: number;
+    employeeName: string;
+    totalQuestions: number;
+    correctQuestions: number;
+    incorrectQuestions: number;
+    successPercentage: number;
     year: number;
-    batch: string;
-    test: string;
+    batchName: string;
+    testName: string;
     score: number;
     rank: number;
 

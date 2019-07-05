@@ -78,7 +78,7 @@
                <div class="form-group row">
                 <label for="Name" class="col-sm-3 col-form-label">Name*</label>
                 <div class="col-sm-9">
-                    <input placeholder="Name" type="text" class="form-control" id="Name" [(ngModel)]="details.name"
+                    <input placeholder="Name" type="text" class="form-control" id="Name" [(ngModel)]="details.employeeName"
                         name="Name" required />
                 </div>
             </div>
@@ -127,7 +127,7 @@
               <label for="totalquestions" class="col-sm-3 col-form-label">Total Questions</label>
               <div class="col-sm-9">
                   <input placeholder="Total Questions" type="text" class="form-control" id="totalquestions"
-                      [(ngModel)]="details.totalquestions" name="testname" required />
+                      [(ngModel)]="details.totalQuestions" name="testname" required />
               </div>
           </div>
              <!-- correct ques -->
@@ -135,7 +135,7 @@
               <label for="correctquestions" class="col-sm-3 col-form-label">Correct Questions</label>
               <div class="col-sm-9">
                   <input placeholder="Correct Questions" type="text" class="form-control" id="correctquestions"
-                      [(ngModel)]="details.correctquestions" name="testname"  required />
+                      [(ngModel)]="details.correctQuestions" name="testname"  required />
               </div>
           </div>
             
@@ -144,7 +144,7 @@
             <label for="incorrectquestions" class="col-sm-3 col-form-label">Incorrect Questions</label>
             <div class="col-sm-9">
                 <input placeholder="Incorrect Questions" type="text" class="form-control" id="incorrectquestions"
-                    [(ngModel)]="details.incorrectquestions" name="testname"  required />
+                    [(ngModel)]="details.incorrectQuestions" name="testname"  required />
             </div>
         </div>
          <!-- success % -->
@@ -152,7 +152,7 @@
           <label for="successperc" class="col-sm-3 col-form-label">Success Percentage</label>
           <div class="col-sm-9">
               <input placeholder="Success Percentage" type="text" class="form-control" id="successperc"
-                  [(ngModel)]="details.successperc" name="testname"  required />
+                  [(ngModel)]="details.successPercentage" name="testname"  required />
           </div>
       </div>
   
@@ -180,7 +180,7 @@
                 </div>
             </div>
         </form>
-        <div class="alert alert-default" role="alert"  *ngIf="!submitted">
+        <div class="alert alert-info" role="alert"  *ngIf="submitted">
             Submitted
         </div>
 

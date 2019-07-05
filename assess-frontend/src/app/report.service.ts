@@ -18,7 +18,7 @@ export class ReportService {
   private url_yearname: string="/scores/name/batch";
   private urlbname: string="/scores/batch/testname";
   private studentdetailsurl: string=" ";
-  private detailsUrl: string="";
+  private detailsUrl: string="/add/score";
 
  
   constructor(private http: HttpClient) { }
@@ -60,8 +60,10 @@ export class ReportService {
       return this.http.get<Student []>(this.studentdetailsurl);
        }
 
-       addNewDetails(details: Details): Observable<Details> {
+       public addNewDetails(details: Details): Observable<Details> {
+        console.log(details);
         return this.http.post<Details>(this.detailsUrl, details);
+        
       }
   
   // public getScoreList(){

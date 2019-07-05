@@ -53,7 +53,7 @@ export class NewDetailsComponent implements OnInit {
   }
 
   onChangeBatch(bname: string) {
-    this.details.batch=bname;
+    this.details.batchName=bname;
     console.log(bname)
     if (bname) {
       this.reportservice.gettests(bname).subscribe(data => {this.tests=data;
@@ -65,7 +65,7 @@ export class NewDetailsComponent implements OnInit {
   }
 
   onChangeTest(tname: string){
-    this.details.test=tname;
+    this.details.testName=tname;
   }
  
 onSubmit(){

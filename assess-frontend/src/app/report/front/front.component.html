@@ -38,7 +38,7 @@
                 <div class="col-sm-3">
                      
                     <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
-                      <option >Select year...</option>
+                      <option [disabled]="true" [selected]= "true">Select year...</option>
                       <!-- <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> -->
                       <option *ngFor="let year of years" [value]="year">{{year}}</option>
                     </select> 
@@ -85,7 +85,8 @@
                     <a routerLink="/detail/name/{{product.gradEmployee.employeeName}}"> <td>{{product.gradEmployee.employeeName}}</td> </a>
                     <td>{{product.score}}</td>
                    
-                    <td>{{((product.gradTest.correctQuestions*100)/(product.gradTest.correctQuestions+ product.gradTest.incorrectQuestions))}}</td>
+                    <!-- <td>{{  ( (((i+1)*25)-1)/99 )*100      }}</td> -->
+                    <td>{{product.successPercentage}}</td>
                     <td>{{i+1}}</td>
               
                     <!-- <a routerLink="/detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeId}}</td> </a>

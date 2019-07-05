@@ -15,4 +15,5 @@ gradTest:{};
 score:number;
 correctQuestions:number;
 incorrectQuestions:number;
+successPercentage: number;
 }
