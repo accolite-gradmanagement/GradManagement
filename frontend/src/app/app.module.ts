@@ -1,10 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MainModule } from './main/main.module';
+import { AppRoutingModule } from './app-routing.module';
+import { CoursesModule } from './courses/courses.module';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MatSelectModule } from '@angular/material/select';
+import * as moment from 'moment';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { AngularDateTimePickerModule} from 'angular2-datetimepicker';
+import {HeaderComponent} from '../app/courses/header/header.component';
 import { GradService } from './grad.service';
 import { ConfirmationDialogComponent } from './gradManagement/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -19,6 +27,17 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MainModule,
+    HttpClientModule,
+    CoursesModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+   NgMultiSelectDropDownModule.forRoot(),
+   MatSelectModule,
+   MultiSelectAllModule,
+   AngularDateTimePickerModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
