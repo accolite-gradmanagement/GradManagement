@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HomeComponent } from './component/home/home.component';
+import { ViewdetailsComponent } from './component/viewdetails/viewdetails.component';
+import { DemanddetailsComponent } from './demand/demanddetails/demanddetails.component';
+import { DemandformComponent } from './demand/demandform/demandform.component';
+import { DemandService } from './provider/demand.service';
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,15 +28,21 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent, ConfirmationDialogComponent,
+   
+    HomeComponent,
+    ViewdetailsComponent,
+    DemanddetailsComponent,
+    DemandformComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     MainModule,
     HttpClientModule,
     CoursesModule,
     ReactiveFormsModule,
-    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
    NgMultiSelectDropDownModule.forRoot(),
@@ -39,16 +50,15 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
    MultiSelectAllModule,
    AngularDateTimePickerModule,
     ReactiveFormsModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
     AngularFontAwesomeModule
   ],
-
-  exports: [ConfirmationDialogComponent],
-  providers: [GradService],
+  providers: [DemandService, GradService],
   bootstrap: [AppComponent],
+  exports: [ConfirmationDialogComponent],
+
   entryComponents: [ConfirmationDialogComponent],
 })
 export class AppModule { }

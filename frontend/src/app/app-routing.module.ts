@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DemanddetailsComponent } from './demand/demanddetails/demanddetails.component';
+import { DemandformComponent } from './demand/demandform/demandform.component';
+
+
 import { CoursesModule } from './courses/courses.module';
 import { MainModule } from './main/main.module';
 
@@ -14,6 +18,8 @@ const routes: Routes = [
   path : 'admin',
   loadChildren: () => import('./gradManagement/Admin/Admin.module').then(mod => mod.AdminModule),
 },
+{ path : 'demanddetails', component: DemanddetailsComponent},
+{ path: 'demandform', component: DemandformComponent}
 
 ];
 
@@ -22,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
