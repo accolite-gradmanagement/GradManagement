@@ -75,7 +75,13 @@ onSubmit(){
  
 
   this.reportservice.addNewDetails(this.details)
-        .subscribe(data => this.details = data);
+        .subscribe(data =>{
+          this.details = data;
+          alert("Submitted successfully");
+        },err=>
+          {
+            alert("Error in creating entry.")
+          });
   
 }
   

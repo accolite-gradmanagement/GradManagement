@@ -138,11 +138,55 @@ public class GradScoreController {
 	}
 
 
+//	@RequestMapping(value = "/add/score",method = RequestMethod.POST)
+//	public ResponseEntity<Void> addScoreDetails(@RequestBody String json){
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		try {
+//			ScoreDetails scoreDetails = objectMapper.readValue(json, ScoreDetails.class);
+//			System.out.println(scoreDetails.getBatchName() +" "+scoreDetails.getEmployeeId()+" "+scoreDetails.getScore());
+//
+//			GradScore gradScore = new GradScore();
+//
+//			GradEmployee gradEmployee = gradEmployeeService.getGradEmployee(scoreDetails.getEmployeeId());
+//			if(gradEmployee == null){
+//				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+//			}
+////			gradScore.getGradEmployees().add(gradEmployee);
+//			gradScore.setGradEmployee(gradEmployee);
+//
+//
+//
+//			GradTest gradTest = gradTestService.findByTestName(scoreDetails.getTestName());
+//			if(gradTest ==  null){
+//				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+//			}
+////			gradScore.getGradTest().add(gradTest);
+//			gradScore.setGradTest(gradTest);
+//
+//			gradScore.setScore(scoreDetails.getScore());
+//			gradScore.setCorrectQuestions(scoreDetails.getCorrectQuestions());
+//			gradScore.setIncorrectQuestions(scoreDetails.getIncorrectQuestions());
+//			gradScore.setSuccessPercentage(scoreDetails.getSuccessPercentage());
+//			gradScore.setRankGrad(scoreDetails.getRank());
+//
+//			gradScoreService.addGradScore(gradScore);
+//			return new ResponseEntity<Void>(HttpStatus.CREATED);
+//		}
+//		catch (JsonParseException e) {
+//			e.printStackTrace();
+//		}
+//		catch (JsonMappingException e) {
+//			e.printStackTrace();
+//		}
+//		catch (IOException ioe){
+//			ioe.printStackTrace();
+//		}
+//		return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+//	}
+	
 	@RequestMapping(value = "/add/score",method = RequestMethod.POST)
-	public ResponseEntity<Void> addScoreDetails(@RequestBody String json){
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			ScoreDetails scoreDetails = objectMapper.readValue(json, ScoreDetails.class);
+	public ResponseEntity<Void> addScoreDetails(@RequestBody ScoreDetails scoreDetails){
+			System.out.println(scoreDetails.getBatchName() +" "+scoreDetails.getEmployeeId()+" "+scoreDetails.getScore());
 
 			GradScore gradScore = new GradScore();
 
@@ -164,23 +208,11 @@ public class GradScoreController {
 
 			gradScore.setScore(scoreDetails.getScore());
 			gradScore.setCorrectQuestions(scoreDetails.getCorrectQuestions());
-			gradScore.setIncorrectQuestions(scoreDetails.getIncorrectQuestions());
 			gradScore.setSuccessPercentage(scoreDetails.getSuccessPercentage());
-			gradScore.setRankGrad(scoreDetails.getRank());
 
 			gradScoreService.addGradScore(gradScore);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
-		}
-		catch (JsonParseException e) {
-			e.printStackTrace();
-		}
-		catch (JsonMappingException e) {
-			e.printStackTrace();
-		}
-		catch (IOException ioe){
-			ioe.printStackTrace();
-		}
-		return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+
 	}
 
 

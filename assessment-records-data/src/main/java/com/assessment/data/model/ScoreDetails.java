@@ -5,13 +5,12 @@ public class ScoreDetails {
     private String  employeeName;
     private int totalQuestions;
     private  int correctQuestions;
-    private  int incorrectQuestions;
     private float successPercentage;
     private int year;
     private  String batchName;
     private String testName;
     private int score;
-    private  int rank;
+   
 
     public int getEmployeeId() {
         return employeeId;
@@ -45,13 +44,7 @@ public class ScoreDetails {
         this.correctQuestions = correctQuestions;
     }
 
-    public int getIncorrectQuestions() {
-        return incorrectQuestions;
-    }
-
-    public void setIncorrectQuestions(int incorrectQuestions) {
-        this.incorrectQuestions = incorrectQuestions;
-    }
+   
 
     public float getSuccessPercentage() {
         return successPercentage;
@@ -93,11 +86,5 @@ public class ScoreDetails {
         this.score = score;
     }
 
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
+    
 }

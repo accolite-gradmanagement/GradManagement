@@ -3,12 +3,12 @@ export class Details{
     employeeName: string;
     totalQuestions: number;
     correctQuestions: number;
-    incorrectQuestions: number;
+    // incorrectQuestions: number;
     successPercentage: number;
     year: number;
     batchName: string;
     testName: string;
     score: number;
-    rank: number;
+    
 
 }
