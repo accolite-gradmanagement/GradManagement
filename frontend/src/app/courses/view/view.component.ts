@@ -38,6 +38,8 @@ export class ViewComponent implements OnInit {
             this.batches=data;
             console.log(this.batches);
         })
+        this.selectedBatch=50;
+        this.loadSessions();
         // this.service.viewSessions().subscribe(data => {
         //     this.sessions = data;
         //     // console.log(this.sessions);
@@ -85,6 +87,11 @@ export class ViewComponent implements OnInit {
 
     
     }
+    public config:any = {
+        paging: true,
+        filtering: {filterString: ''},
+        className: ['table-striped', 'table-bordered']
+      };
 
     // public sortSessionsByDate(): void {
     //     this.sessions.sort((a: TrainerAllocation, b: TrainerAllocation) => {

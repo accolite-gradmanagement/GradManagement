@@ -4,35 +4,60 @@
 <div class="container">
 
   <div>
-    <div *ngIf="var4" class="select">
-      <h3>Select your Option</h3><br>
-      <button class="btn btn-sm btn-success" (click)='newBatch()'>New Batch</button><br><br>
-      <button class="btn btn-sm btn-primary" (click)='existingBatch()'>Existing Batch</button>
+    <div *ngIf="var4" class="optionIcons">
+        <h2 style="text-align: center">Batches</h2><br>
+        <a (click)='newBatch()'>
+        <div class="polaroid1">
+            <img class="iconImage" src="../../../assets/Images/add.svg" alt="Add Batch" style="width:100%">
+            <div class="textContainer">
+            <p>Add A New Batch</p>
+            </div>
+        </div>
+        </a>
+        <a (click)='existingBatch()'>
+        <div class="polaroid2">
+            <img class="iconImage"  src="../../../assets/Images/modify.svg" alt="Norther Lights" style="width:100%">
+            <div class="textContainer">
+            <p>Modify Existing Batch</p>
+            </div>
+        </div>
+        </a>
+
+      <!-- <h3>Select your Option</h3><br> -->
+      <!-- <a (click)='newBatch()'><img src="../../../assets/Images/add.png"></a>
+      <a (click)='existingBatch()'><img src="../../../assets/Images/modify.svg"></a> -->
+      <!-- <button class="btn btn-sm center-block btn-success" (click)='newBatch()'>New Batch</button><br>
+      <button class="btn btn-sm center-block btn-primary" (click)='existingBatch()'>Existing Batch</button> -->
     </div>
 
-    <div *ngIf="var5" class="col-sm-4" class="select">
-      <h3>Select Batch</h3><br>
+    <div  class="col-sm-4" style="margin-top: 60px; margin-left: 380px">
+    <div *ngIf="var5">
+      <h3 style="text-align: center">Select Batch</h3><br>
       <select class="form-control" [(ngModel)]="selectedBatch" (change)='add()'>
         <option value="" selected disabled>Select Batch</option>
         <option *ngFor="let x of batches;index as i" [value]="x.batchId">{{x.batchName}}</option>
       </select><br>
-      <button class="btn btn-sm btn-danger" (click)='back1()'>Back</button>
+      <button class="btn btn-sm btn-danger center-block " (click)='back1()'>Back</button>
 
     </div>
-    <div *ngIf="var1" class="col-sm-4" class="select">
-      <h3>Batch Name</h3><br>
+  </div>
+  <div  class="col-sm-4" style="margin-top: -30px; margin-left: 400px">
+    <div *ngIf="var1">
+      <h3 style="text-align: center">Batch Name</h3><br>
       <input class="form-control" type="text" id="batchName" [(ngModel)]="batchName"><br>
-      <button class="btn btn-sm btn-success" [disabled]='!batchName' (click)='addBatch()'>Add Batch</button><br><br>
-      <button class="btn btn-sm btn-danger" (click)='back()'>Back</button>
+      <button class="btn btn-sm center-block btn-success" [disabled]='!batchName' (click)='addBatch()'>Add Batch</button><br>
+      <button class="btn btn-sm center-block btn-danger" (click)='back()'>Back</button>
     </div>
+  </div>
   </div>
 
   <div *ngIf="var2">
     <form [formGroup]="TrainerAllocationForm">
-      <div class="row">
+      <div class="row" style=" margin-top: -200px"> 
         <div class="col-sm-4">
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="margin-top: -70px">
+          <h2 style="text-align: center">Batch : {{this.batchName}}</h2>
           <h3 style="text-align: center">Add Session</h3>
 
           <label>Course Name</label>
@@ -60,9 +85,12 @@
 
           <label>Comments</label>
           <textarea formControlName="comment" class="md-textarea form-control" rows="3"></textarea><br><br>
-
-          <button class="btn btn-primary" style="margin-left: 130px" [disabled]="!(cid && tid && date && date1)" (click)='addRow()'>Add</button>
-          <button class="btn btn-danger" (click)='back2()'>Back</button>
+          <div class="btn-group">
+          <button class="btn btn-primary" style="margin-left: 120px" 
+          [disabled]="(TrainerAllocationForm.value.course_id=='' || tid==0)" 
+          (click)='addRow()'>Add</button>
+          <button class="btn btn-danger" style="margin-left: 10px" (click)='back2()'>Back</button>
+        </div>
         </div>
 
         <div class="col-sm-4">
@@ -70,9 +98,9 @@
       </div>
     </form>
   </div>
-  <div *ngIf="var3">
-    <h2>Available Sessions</h2>
-    <table class="table table-bordered table-dark">
+  <div *ngIf="var3 && addToTable">
+    <h3  style="text-align: center">Available Sessions</h3>
+    <table class="table table-bordered table-responsive tableFixHead">
       <thead>
         <tr>
           <th>Date</th>
@@ -86,7 +114,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let a of addToTable;index as t">
+        <tr *ngFor="let a of addToTable;index as t" style="text-transform: capitalize">
           <td>{{a.startTime|date:'dd/MM/yyyy'}}</td>
           <td>{{a.course_name}}</td>
           <td>{{a.startTime|date:'HH:mm a'}}</td>
@@ -99,7 +127,7 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-danger"   [disabled]="!TrainerAllocationForm.valid" (click)='callSubmit()'>Submit</button>
+    <button class="btn btn-success center-block "   [disabled]="!TrainerAllocationForm.valid" (click)='callSubmit()'>Submit</button>
 
   </div>
 </div>

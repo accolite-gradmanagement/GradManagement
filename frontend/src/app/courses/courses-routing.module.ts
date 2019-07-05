@@ -7,10 +7,12 @@ import { FormComponent } from './form/form.component';
 import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
+  {path:'', redirectTo:'view',pathMatch:'full'},
   {path:'view', component:ViewComponent,pathMatch:'full'},
   {path:'course', component:CmanageComponent,pathMatch:'full'},
   {path:'trainer', component:TmanageComponent,pathMatch:'full'},
   {path:'batch', component:FormComponent,pathMatch:'full'},
+
 ];
 
 @NgModule({

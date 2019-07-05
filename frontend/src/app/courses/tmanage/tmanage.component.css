@@ -1,4 +1,4 @@
-#multiselect-diacritics.control-section{
+/* #multiselect-diacritics.control-section{
   width: 80%;
   margin: 0 auto;
   min-width: 185px;
@@ -6,9 +6,9 @@
 
 .e-bigger #multiselect-diacritics.control-section {
   width: 100%;
-}
+} */
 
-.tableFixHead          { overflow-y: auto; height: 100px; }
+.tableFixHead          { overflow-y: auto }
 .tableFixHead thead th { position: sticky; top: 0; }
 
 table  { border-collapse: collapse; width: 100%; }
