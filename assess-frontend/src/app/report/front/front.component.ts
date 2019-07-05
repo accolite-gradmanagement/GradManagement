@@ -63,7 +63,13 @@ myfunc(){
   let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
   console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
   this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
+    
     console.log(this.report)});
 
+    // if(this.report==null){
+    //   alert("No details to show");
+    // }
+
 }
+
 }

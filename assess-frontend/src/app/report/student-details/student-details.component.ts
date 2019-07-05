@@ -41,7 +41,8 @@ export class StudentDetailsComponent implements OnInit {
     
     this.reportService.getStudentDetailsbyName(name)
     .subscribe(data=> this.contents = data);
-
+  //   if(this.contents==null) { alert("Employee doesnt exist");
+  // }
     console.log(this.contents);
   }
 
