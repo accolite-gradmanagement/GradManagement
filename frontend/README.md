@@ -1,2 +1,3 @@
-# aums
-AU Management System
+
+
+    use  ng serve --proxy-config proxy.conf.json  
