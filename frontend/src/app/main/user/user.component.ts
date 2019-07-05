@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
+  private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
   loginForm: FormGroup;
    id :any;
  constructor(private httpClient:HttpClient, private router:Router) {
@@ -23,7 +23,6 @@ export class UserComponent implements OnInit {
   //get f() { return this.loginForm.controls; }
  ngOnInit() {
 
-   localStorage.clear();
    this.loginForm=new FormGroup({
      first_name: new FormControl('',Validators.required),
      last_name: new FormControl('',Validators.required),

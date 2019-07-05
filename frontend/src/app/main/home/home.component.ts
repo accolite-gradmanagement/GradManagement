@@ -9,7 +9,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
+  private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
   grad=false;
   admin=false;
   trainer=false;

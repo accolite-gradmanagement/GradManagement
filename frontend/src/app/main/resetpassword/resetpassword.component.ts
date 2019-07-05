@@ -3,6 +3,7 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-resetpassword',
@@ -14,7 +15,7 @@ export class ResetpasswordComponent implements OnInit {
   ResetPasswordForm: FormGroup;
   otpbackend:any;
   details:boolean=false;
-  constructor(private httpClient:HttpClient, private router:Router) { }
+  constructor(private toastr:ToastrService,private httpClient:HttpClient, private router:Router) { }
 
   ngOnInit() {
     this.ResetPasswordForm=new FormGroup({
@@ -31,6 +32,10 @@ verifyOtp()
   if(this.otpbackend==this.ResetPasswordForm.get('otp').value)
   {
       this.details=true;
+      this.toastr.success("Otp verified","Success");
+  }
+  else{
+      this.toastr.error("Otp Invalid","Error");
   }
 }
 
@@ -52,6 +57,7 @@ verifyOtp()
       data  => { if(data)
                   {
                     console.log(data);
+                    this.toastr.success("Otp sent to mail","Success");
                       this.otpbackend=data;
                   }
                   else
@@ -81,6 +87,7 @@ verifyOtp()
         data  => { if(data)
                     {
                       console.log(data);
+                      this.toastr.success("Password reset successful","Success");
                       this.router.navigate(['login'])
                     }
                     else

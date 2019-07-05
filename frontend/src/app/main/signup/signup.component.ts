@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
   submitted: Boolean = false;  
   pwdMatched: Boolean = true;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private toastr:ToastrService,private formBuilder: FormBuilder,
     private httpClient : HttpClient,
     private router:Router
     ){}
@@ -107,12 +108,12 @@ export class SignupComponent implements OnInit {
     .subscribe(
       data  => {if(data==0)
         {
-          alert("email present" )
+          this.toastr.warning("Email already present","Warning");
           this.router.navigate(['signup']);
         }
         else if(data==2)
         {
-          alert("username present")
+          this.toastr.warning("Username already present","Warning");
           this.router.navigate(['/signup']);
         }
         else

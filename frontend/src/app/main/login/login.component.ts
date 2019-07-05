@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
+  private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
 
   loginForm: FormGroup;
   loading = false;
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    localStorage.clear();
+    // localStorage.clear();
     this.loginForm=new FormGroup({
       username: new FormControl('',Validators.required),
       password: new FormControl('',Validators.required)
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data  => { if(data)
                   {
-                  sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
+                  localStorage.setItem('loggedIn', JSON.stringify(data)); 
                   this.router.navigate(['/home']);
                   // this.ngOnInit();
                   location.reload();
@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit {
   googleLogin(event){
   
     event.preventDefault();
-      console.log("wnegvhe")
+      // console.log("wnegvhe")
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) =>{
       this.user= userData;
       console.log(this.user);
@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data  => { if(data)
                   {
-                  sessionStorage.setItem('loggedIn', JSON.stringify(data)); 
+                  localStorage.setItem('loggedIn', JSON.stringify(data)); 
                   this.router.navigate(['home']);
                   location.reload();
                   }

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class FrontpageComponent implements OnInit {
 
-  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
+  private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
   constructor(private router : Router) {
     if(this.loggedInStatus)
     {

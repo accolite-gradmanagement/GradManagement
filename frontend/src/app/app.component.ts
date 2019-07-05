@@ -10,7 +10,7 @@ import { RouterLink, Router } from '@angular/router';
 export class AppComponent {
 
   title = 'aums';
-  private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn')||'false');
+  private loggedInStatus=JSON.parse(localStorage.getItem('loggedIn')||'false');
   grad=false;
   admin=false;
   trainer=false;
@@ -40,7 +40,7 @@ export class AppComponent {
 
   logout()
   {
-    sessionStorage.clear();
+    localStorage.clear();
     this.loggedInStatus = false;
     this.router.navigate(['/front']);
   }
