@@ -4,6 +4,8 @@ import { FormGroup, FormControl } from '@angular/forms'
 import {IReport} from '../../IReport';
 import{Tests} from '../../Tests';
 import {Details} from '../../details';
+import { Student } from 'src/app/student';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-details',
@@ -13,6 +15,7 @@ import {Details} from '../../details';
 export class NewDetailsComponent implements OnInit {
   submitted=false;
   details: Details;
+  formDetails: Student[];
   
   selectedyear: string;
   years: number[];
@@ -24,7 +27,7 @@ export class NewDetailsComponent implements OnInit {
 
   
   
-  constructor(private reportservice:ReportService ) {
+  constructor(private reportservice:ReportService, private toastr: ToastrService ) {
     this.details=new Details();
    }
 
@@ -85,6 +88,21 @@ onSubmit(){
   
 }
   
+onChangeId(id: number){
+  this.reportservice.getDetailsinForm(id)
+        .subscribe(data =>{
+          this.formDetails = data;
+          console.log("here:", this.formDetails);
+          if(this.formDetails== null)
+      {
+        this.toastr.error('error','No record found for this input');
+        alert('No such data present');
+      }
+    
+          
+        });
+
+}
     
 
 }

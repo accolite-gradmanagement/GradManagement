@@ -18,6 +18,7 @@ export class ReportService {
   private url_yearname: string="/scores/name/batch";
   private urlbname: string="/scores/batch/testname";
   private studentdetailsurl: string=" ";
+  private formDetailsUrl:string;
   private detailsUrl: string="/add/score";
 
  
@@ -59,6 +60,14 @@ export class ReportService {
       console.log(this.studentdetailsurl);
       return this.http.get<Student []>(this.studentdetailsurl);
        }
+
+
+       public getDetailsinForm(id: number):Observable<Student[]>{
+        console.log(id);
+        this.formDetailsUrl="/employee/"+id;
+        console.log(this.studentdetailsurl);
+        return this.http.get<Student []>(this.studentdetailsurl);
+         }
 
        public addNewDetails(details: Details): Observable<Details> {
         console.log(details);
