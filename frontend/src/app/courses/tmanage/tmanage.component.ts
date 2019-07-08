@@ -6,6 +6,8 @@ import { Query } from '@syncfusion/ej2-data';
 import { EmitType } from '@syncfusion/ej2-base';
 import { FilteringEventArgs } from '@syncfusion/ej2-dropdowns';
 import { __values } from 'tslib';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-tmanage',
@@ -22,30 +24,9 @@ export class TmanageComponent implements OnInit {
   trainer:Trainer;
   sel:any=[];
   public value: number[] = [];
-//   public data: { [key: string]: Object; }[] = [
-//     { Name: 'Australia', Code: 'AU' },
-//     { Name: 'Bermuda', Code: 'BM' },
-//     { Name: 'Canada', Code: 'CA' },
-//     { Name: 'Cameroon', Code: 'CM' },
-//     { Name: 'Denmark', Code: 'DK' },
-//     { Name: 'France', Code: 'FR' },
-//     { Name: 'Finland', Code: 'FI' },
-//     { Name: 'Germany', Code: 'DE' },
-//     { Name: 'Greenland', Code: 'GL' },
-//     { Name: 'Hong Kong', Code: 'HK' },
-//     { Name: 'India', Code: 'IN' },
-//     { Name: 'Italy', Code: 'IT' },
-//     { Name: 'Japan', Code: 'JP' },
-//     { Name: 'Mexico', Code: 'MX' },
-//     { Name: 'Norway', Code: 'NO' },
-//     { Name: 'Poland', Code: 'PL' },
-//     { Name: 'Switzerland', Code: 'CH' },
-//     { Name: 'United Kingdom', Code: 'GB' },
-//     { Name: 'United States', Code: 'US' }
-// ];
 
   
-  constructor(private fb: FormBuilder, private service: SharedService) { }
+  constructor(private toastr: ToastrService,private fb: FormBuilder, private service: SharedService) { }
   ngOnInit() {
     this.service.getCourses().subscribe(data=>{this.courses=data;
     });
@@ -75,10 +56,10 @@ onSubmit(form: NgForm): void {
       this.ngOnInit();
       this.trainerName="";
       this.value=[];
-      alert("Submitted successfully");  
+      this.toastr.success("Submitted successfully","Success!!");
     },err=>
     {
-      alert("Duplicate Trainer.Can't Add.");
+      this.toastr.error("Duplicate Trainer entry","Error!!");
       this.trainerName='';
       this.value=[];
     });
@@ -89,10 +70,11 @@ onSubmit(form: NgForm): void {
 deleteTrainer(tid: number) {
   this.service.deleteTrainer(tid).subscribe(data => {
     this.ngOnInit();
-    alert("Deleted successfully");
+    this.toastr.success("Deleted successfully","Success!!");
+ 
   },err=>
   {
-    alert("Trainer is alreaady set as Backup trainer.Hence We can't delete it.")
+    this.toastr.error("Trainer is already allocated in timesheet","Error!!");
   });
 }
 

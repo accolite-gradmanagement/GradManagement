@@ -44,8 +44,8 @@
   <div  class="col-sm-4" style="margin-top: -30px; margin-left: 400px">
     <div *ngIf="var1">
       <h3 style="text-align: center">Batch Name</h3><br>
-      <input class="form-control" type="text" id="batchName" [(ngModel)]="batchName"><br>
-      <button class="btn btn-sm center-block btn-success" [disabled]='!batchName' (click)='addBatch()'>Add Batch</button><br>
+      <input class="form-control" type="text" id="batchName" [(ngModel)]="batchName" placeholder="Enter the batch name"><br>
+      <button class="btn btn-sm center-block btn-primary" [disabled]='!batchName' (click)='addBatch()'>Add Batch</button><br>
       <button class="btn btn-sm center-block btn-danger" (click)='back()'>Back</button>
     </div>
   </div>
@@ -62,17 +62,17 @@
 
           <label>Course Name</label>
           <select class="form-control" formControlName="course_id" [(ngModel)]="cid" (change)='loadTrainers()'>
-            <option *ngFor="let x of courses" [value]=x.course_id>{{x.course_name}}</option>
+            <option *ngFor="let x of courses" [value]=x.course_id>{{x.course_name|titlecase}}</option>
           </select>
 
           <label>Trainer Name</label>
           <select class="form-control" formControlName="trainer_id" [(ngModel)]="tid" (change)='loadBackUp()'>
-            <option *ngFor="let t of trainers" [value]=t.trainerId>{{t.trainerName}}</option>
+            <option *ngFor="let t of trainers" [value]=t.trainerId>{{t.trainerName|titlecase}}</option>
           </select>
 
           <label>Back-up Trainer</label>
           <select class="form-control" formControlName="backup_trainer_id">
-            <option *ngFor="let b of trainersDummy" [value]=b.trainerId>{{b.trainerName}}</option>
+            <option *ngFor="let b of trainersDummy" [value]=b.trainerId>{{b.trainerName|titlecase}}</option>
           </select>
 
           <label>Start Time</label>
@@ -127,7 +127,8 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-success center-block "   [disabled]="!TrainerAllocationForm.valid" (click)='callSubmit()'>Submit</button>
+    <button class="btn btn-primary center-block "   [disabled]="!TrainerAllocationForm.valid" 
+    (click)='callSubmit()'>Submit</button><br><br>
 
   </div>
 </div>
