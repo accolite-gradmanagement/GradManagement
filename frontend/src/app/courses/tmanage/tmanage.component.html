@@ -40,7 +40,7 @@
     <div class="col-sm-5">
         <h3 style="text-align: center"></h3><br>
 
-      <div style="margin-left: 150px; margin-top: 80px">
+      <div style="margin-left: 150px">
         <div class="form-group col-xs-8">
 
           <label style="font-size: medium">Trainer Name:</label>
@@ -53,7 +53,7 @@
                 <ejs-multiselect id='multiselect-filtering' name='name' [(ngModel)]='value' popupHeight="200px"
                   [dataSource]='courses' [fields]='fields' (filtering)='onFiltering($event)' [allowFiltering]='true'
                   [placeholder]='watermarks' [value]='value'></ejs-multiselect><br>
-                <button type="submit" [disabled]="trainerName==''||value.length==0" class="btn btn-success btn-sm"
+                <button type="submit" [disabled]="trainerName==''||value.length==0" class="btn btn-primary btn-sm"
                   ejs-button>Add Trainer</button>
               </div>
             </div>

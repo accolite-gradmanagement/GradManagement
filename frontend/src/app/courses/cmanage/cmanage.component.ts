@@ -4,7 +4,7 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../shared.service';
 import { Course } from './interfaces_req';
 import { element } from 'protractor';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cmanage',
@@ -18,7 +18,7 @@ export class CmanageComponent implements OnInit {
   courseName: string = null;
   alreadyPresent = false;
   toDelete: boolean = true;
-  constructor(private fb: FormBuilder, private service: SharedService) { }
+  constructor(public toastr: ToastrService,private fb: FormBuilder, private service: SharedService) { }
 
   ngOnInit() {
     this.service.getCourses().subscribe(data => {
@@ -28,12 +28,14 @@ export class CmanageComponent implements OnInit {
 
   deleteCourse(cid: number) {
     this.service.deleteCourse(cid).subscribe(data => {
-      console.log("Delete Response"+data)
       this.ngOnInit();
-      alert("Deleted successfully");
+      // alert("Deleted Successfully");
+      this.toastr.success("Deleted successfully...","Success!!");
     },err=>{
-      console.log(err.status)
-      alert("Course Associated with Trainer.Can't Delete Course");    
+      // alert("Course is associated with Trainer. Cant Delete the Course");
+      this.toastr.error("Course is associated with Trainer... Cant Delete the Course","Error!!");
+
+      // alert("Course Associated with Trainer.Can't Delete Course");    
     });
   }
 
@@ -44,10 +46,11 @@ export class CmanageComponent implements OnInit {
       this.service.addCourse(this.courseObj).subscribe(data => {
         this.ngOnInit();
         this.courseName = "";
-        alert("Submitted successfully");
+        this.toastr.success("Submitted successfully...","Success!!");
       },err=>
       {
-        alert("Duplicate Course");
+        this.toastr.error("Tried to add Duplicate Course","Error!!");
+        // alert("Duplicate Course");
         this.courseName='';
       });
 

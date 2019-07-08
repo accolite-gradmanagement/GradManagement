@@ -16,6 +16,8 @@ import * as moment from 'moment';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,6 +33,15 @@ import { RouterModule } from '@angular/router';
     MatSelectModule,
     MultiSelectAllModule,
     AngularDateTimePickerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut:3000,
+        positionClass:'toast-top-right'
+
+      })
+
+    // )
     // RouterModule.forChild([
     //   { path: 'view', component: ViewComponent },
     //   { path: 'course', component: CmanageComponent },

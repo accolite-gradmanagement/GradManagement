@@ -38,7 +38,7 @@ export class ViewComponent implements OnInit {
             this.batches=data;
             console.log(this.batches);
         })
-        this.selectedBatch=50;
+        this.selectedBatch=46;
         this.loadSessions();
         // this.service.viewSessions().subscribe(data => {
         //     this.sessions = data;
@@ -52,14 +52,16 @@ export class ViewComponent implements OnInit {
 
     loadSessions()
     {
+        // console.log(this.selectedBatch);
         
         this.datewiseSessions = new Map<string, TrainerAllocation[]>();
         this.service.getTimesheetForBatch(this.selectedBatch).subscribe(data=>
             {
                 this.oneBatch=data;
                 this.sessions=this.oneBatch.trainerAllocation;
+                console.log(this.sessions);
                 this.sessions.sort((a: TrainerAllocation, b: TrainerAllocation) => {
-                    return <any>a.start_time - <any>b.start_time;
+                    return <any>new Date(a.start_time) - <any>new Date(b.start_time);
                 });
                 console.log(this.sessions);
                 
@@ -71,6 +73,7 @@ export class ViewComponent implements OnInit {
                         this.datewiseSessions.set(this.datePipe.transform(element.start_time, dateFormat), [element]);
                     }
                 });
+                console.log(this.datewiseSessions.keys());
 
                 if(this.sessions.length!=0)
                 {
