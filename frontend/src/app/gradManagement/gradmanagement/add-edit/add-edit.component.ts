@@ -9,7 +9,7 @@ import { ParamMap, ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-edit.component.scss']
 })
 export class AddEditComponent implements OnInit {
-  private loggedInStatus = JSON.parse(sessionStorage.getItem('loggedIn') || 'false');
+  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   gradRole = false;
   adminRole = false;
   trainerRole = false;
@@ -20,6 +20,7 @@ export class AddEditComponent implements OnInit {
 
   constructor(private gradService: GradService, private route: ActivatedRoute, private router: Router) {
     this.grad = new Grad();
+    console.log("from add edit: "+ JSON.stringify(sessionStorage));
   }
 
   ngOnInit() {
