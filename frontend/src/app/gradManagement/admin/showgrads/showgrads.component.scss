@@ -1,14 +1,21 @@
-body{
-  background-color: #eee;
-    font-family: 'Times New Roman', Times, serif;
-    /* overflow: scroll; */
-}
-.tableFixHead          { overflow-y: auto; height: 500px; }
+// body{
+//   background-color: #eee;
+//     font-family: 'Times New Roman', Times, serif;
+//     /* overflow: scroll; */
+// }
+.tableFixHead          { overflow-y: auto; }
 .tableFixHead thead th { position: sticky; top: 0; }
 
-table  { border-collapse: collapse; width: 100%; }
+table  { border-collapse: collapse; width: 100%;
+  font-family: 'Times New Roman', Times, serif; 
+}
 th, td { padding: 8px 16px; }
-th     { background:#eee; }
+th{
+  color:white;
+}
+thead {
+background-color: #337ab7;
+}
 
 input {
     width: 18%;
