@@ -40,10 +40,19 @@ export class StudentDetailsComponent implements OnInit {
   getDetailsbyName(name:string){
     
     this.reportService.getStudentDetailsbyName(name)
-    .subscribe(data=> this.contents = data);
-  //   if(this.contents==null) { alert("Employee doesnt exist");
-  // }
-    console.log(this.contents);
+    .subscribe(data=>{ 
+      this.contents = data;
+      console.log(this.contents);
+      // if(this.contents.length==0) 
+      // { 
+       
+      //   this.toastr.error('error','No record found for this input');
+      //   console.log(this.contents);
+      // }
+      
+    }
+      );
+
   }
 
 }

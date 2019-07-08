@@ -3,8 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ReportService } from '../../report.service';
 import {IReport} from '../../IReport';
 import{Tests} from '../../Tests';
-
-
+import {Router} from '@angular/router'
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-front',
@@ -22,7 +22,7 @@ export class FrontComponent implements OnInit {
   report:IReport[];
   createAccountForm: FormGroup;
 
-  constructor(private reportservice:ReportService ) { }
+  constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService ) { }
   ngOnInit(){
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});
@@ -70,6 +70,21 @@ myfunc(){
     //   alert("No details to show");
     // }
 
+}
+onSearch()
+{
+  this.reportservice.getStudentDetailsbyName(this.nameSearch).subscribe(data=>
+    {
+      if(data.length==0)
+      {
+        //this.toastr.error("No record for this data ");
+        alert('No such data present');
+      }
+      else
+      {
+        this.router.navigate(["/detail/name",this.nameSearch]);
+      }
+    })
 }
 
 }
