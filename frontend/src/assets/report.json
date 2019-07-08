@@ -1,0 +1,91 @@
+[  {
+       
+    "studentname":"Arjun",
+    "score":"897",
+    "correct": "40",
+    "incorrect":"10",
+    "rank":"1"
+
+},
+{
+
+ "studentname":"Sameer",
+ "score":"840",
+ "correct": "39",
+ "incorrect":"11",
+ "rank":"2"
+
+},
+{
+
+ "studentname":"Akshay",
+ "score":"804",
+ "correct": "35",
+ "incorrect":"15",
+ "rank":"3"
+
+},
+{
+
+ "studentname":"Kanchan",
+ "score":"780",
+ "correct": "33",
+ "incorrect":"17",
+ "rank":"4"
+
+},
+{
+
+"studentname":"Rahul",
+"score":"755",
+"correct": "31",
+"incorrect":"19",
+"rank":"5"
+
+},
+{
+
+"studentname":"Rohit",
+"score":"750",
+"correct": "30",
+"incorrect":"20",
+"rank":"6"
+
+},
+{
+
+"studentname":"Riya",
+"score":"735",
+"correct": "27",
+"incorrect":"23",
+"rank":"7"
+
+},
+{
+
+"studentname":"Shreya",
+"score":"730",
+"correct": "26",
+"incorrect":"24",
+"rank":"8"
+
+},
+{
+
+"studentname":"Aarohi",
+"score":"720",
+"correct": "24",
+"incorrect":"26",
+"rank":"9"
+
+},
+{
+
+"studentname":"Ayushi",
+"score":"700",
+"correct": "22",
+"incorrect":"28",
+"rank":"10"
+
+}
+]
