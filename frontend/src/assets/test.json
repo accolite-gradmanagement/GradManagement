@@ -1,0 +1,55 @@
+
+[
+    {
+      "name": "2019",
+      "batch": [
+        {
+          "bname": "MS AU-B1",
+          "Test": [
+            "week1",
+            "week2"
+          ]
+        },
+        {
+          "bname": "MS AU-B2",
+          "Test": [
+            "week1"
+          ]
+        },
+        {
+          "bname": "MS AU-B3",
+          "Test": [
+            "week1",
+            "week2",
+            "week3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2018",
+      "batch": [
+        {
+          "bname": "MS AU-B1",
+          "Test": [
+            "week1",
+            "week2"
+          ]
+        },
+        {
+          "bname": "MS AU-B2",
+          "Test": [
+            "week1"
+          ]
+        },
+        {
+          "bname": "MS AU-B3",
+          "Test": [
+            "week1",
+            "week2",
+            "week3"
+          ]
+        }
+      ]
+    }
+  ]
