@@ -1,19 +1,19 @@
 <!-- <p>showgrads works!</p> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
-    <div class="panel panel-default">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<!-- <body> -->
+    <!-- <div class="panel panel-default"> -->
         <!-- <div class="panel-heading">
             <h1>Grad Management</h1>
         </div> -->
-        <h1>Grad Management</h1>
+        <!-- <h1>Grad Management</h1> -->
         <i style="font-size:24px;color:rgba(54, 53, 53, 0.644)" class="fa">&#xf002;</i>
         <input class="filter" type="text" id="searchByName" [(ngModel)]="nameSearch" name="searchByName" placeholder="Search By Name">
         <input class="filter" type="text" id="searchById" [(ngModel)]="empCodeSearch" name="searchById" placeholder="Search By Employee Code">
     
-        <div class="tableFixHead panel-body" width=vw; height=vh;>
+        <div class="tableFixHead panel-body" >
 
-            <table class="table table-striped table-bordered" matSort (matSortChange)="sortData($event)">
-                <thead class="thead-dark">
+            <table class="table table-striped" matSort (matSortChange)="sortData($event)">
+                <thead >
                     <tr>
                         <th mat-sort-header="Employee Code">Employee Code</th>
                         <th mat-sort-header="Name">Name</th>
@@ -66,5 +66,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</body>
+    <!-- </div> -->
+<!-- </body> -->
