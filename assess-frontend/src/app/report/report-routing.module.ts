@@ -4,7 +4,6 @@ import {StudentDetailsComponent} from './student-details/student-details.compone
 import {NewDetailsComponent} from './new-details/new-details.component';
 import {FrontComponent} from './front/front.component';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 const routes: Routes = [
  { path: '', component: FrontComponent },
  { path: 'detail/:id', component: StudentDetailsComponent },
@@ -15,9 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes),
-    FormsModule,
-    ToastrModule.forRoot({ positionClass: 'inline' }),
-    ToastContainerModule
+    FormsModule
      ],
   exports: [RouterModule]
 })

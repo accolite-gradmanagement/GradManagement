@@ -6,7 +6,6 @@ import{Tests} from '../../Tests';
 import {Router} from '@angular/router'
 import {ToastrService} from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-front',
   templateUrl: './front.component.html',
@@ -23,7 +22,7 @@ export class FrontComponent implements OnInit {
   report:IReport[];
   createAccountForm: FormGroup;
 
-  constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService, ) { }
+  constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService ) { }
   ngOnInit(){
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});
@@ -78,7 +77,7 @@ onSearch()
     {
       if(data.length==0)
       {
-        this.toastr.error('error','No record found for this input');
+        //this.toastr.error("No record for this data ");
         alert('No such data present');
       }
       else

@@ -8,6 +8,8 @@ import { FrontComponent } from './front/front.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { NewDetailsComponent } from './new-details/new-details.component';
 
+//import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [FrontComponent, StudentDetailsComponent, NewDetailsComponent],
   imports: [
@@ -15,6 +17,8 @@ import { NewDetailsComponent } from './new-details/new-details.component';
     ReportRoutingModule,
     FormsModule  ,
     ReactiveFormsModule,  
+    //BrowserAnimationsModule,
+	  
   ]
 })
 export class ReportModule { }
