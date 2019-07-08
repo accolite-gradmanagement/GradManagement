@@ -1,2 +1,0 @@
-# aums
-AU Management System
