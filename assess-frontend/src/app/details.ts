@@ -9,6 +9,7 @@ export class Details{
     batchName: string;
     testName: string;
     score: number;
+    gradRank:number;
     
 
 }

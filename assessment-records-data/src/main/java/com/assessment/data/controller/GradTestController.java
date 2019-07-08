@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.assessment.data.model.GradTest;
+import com.assessment.data.entity.GradTest;
 import com.assessment.data.service.GradTestService;
 
 @CrossOrigin(origins="*", allowedHeaders="*")

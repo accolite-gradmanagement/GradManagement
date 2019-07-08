@@ -75,6 +75,8 @@ export class NewDetailsComponent implements OnInit {
 onSubmit(){
   this.submitted = true;
   console.log(this.submitted);
+  
+  this.details.successPercentage=(this.details.correctQuestions*100)/this.details.totalQuestions;
   console.log(this.details);
  
 
