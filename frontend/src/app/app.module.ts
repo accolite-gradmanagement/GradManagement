@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
+import { AppRoutingModule } from './app-routing.module';
 import { CoursesModule } from './courses/courses.module';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatSelectModule } from '@angular/material/select';
 import * as moment from 'moment';
@@ -13,14 +17,7 @@ import { ConfirmationDialogComponent } from './gradManagement/confirmation-dialo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ReportModule } from './report/report.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -44,12 +41,6 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     MatButtonModule,
     AngularFontAwesomeModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ReportModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
     
   ],
 
