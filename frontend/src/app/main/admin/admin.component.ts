@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
    }
 
   ngOnInit() {
-    localStorage.clear();
+    //localStorage.clear();
     this.userForm=new FormGroup({
       username: new FormControl('',Validators.required),
     });

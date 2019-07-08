@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   loginForm: FormGroup;
    id :any;
  constructor(private httpClient:HttpClient, private router:Router) {
-    console.log(this.loggedInStatus);
+       console.log("logged in status: " +this.loggedInStatus);
 
   }
 

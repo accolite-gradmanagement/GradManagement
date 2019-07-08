@@ -12,7 +12,7 @@ export class FrontpageComponent implements OnInit {
   constructor(private router : Router) {
     if(this.loggedInStatus)
     {
-      this.router.navigate(['home']);
+      this.router.navigate(['/home']);
     }
 
    }
