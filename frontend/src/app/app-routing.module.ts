@@ -14,7 +14,7 @@ const routes: Routes = [
   path : 'admin',
   loadChildren: () => import('./gradManagement/Admin/Admin.module').then(mod => mod.AdminModule),
 },
-
+  
 ];
 
 

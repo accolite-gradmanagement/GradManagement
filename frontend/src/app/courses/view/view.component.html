@@ -11,6 +11,7 @@
   </div><br>
 
   <div *ngIf="var1" style="margin-top: 50px">
+    <div style="overflow-y:auto; max-height: 350px; margin-top: 80px">
     <table class="table table-bordered table-responsive tableFixHead">
       <thead>
         <tr>
@@ -24,44 +25,47 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let recipient of datewiseSessions | keyvalue" style="text-transform: capitalize">
-          <td rowspan="recipient.value.length">{{recipient.key}}</td>
+        <tr *ngFor="let key of datewiseSessions.keys()" style="text-transform: capitalize">
+          <td rowspan="datewiseSessions.get(key).length">{{key}}</td>
           <td>
-        <tr *ngFor="let data of recipient.value; let i= index;">
-          <td>{{recipient.value[i].course.course_name}}</td>
+        <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+          <td>{{data.course.course_name}}</td>
         </tr>
         </td>
         <td>
-          <tr *ngFor="let data of recipient.value; let i= index;">
-            <td>{{recipient.value[i].start_time|date:'h:mm a'}}</td>
+          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+            <td>{{data.start_time|date:'h:mm a'}}</td>
           </tr>
         </td>
         <td>
-          <tr *ngFor="let data of recipient.value; let i= index;">
-            <td>{{recipient.value[i].end_time|date:'h:mm a'}}</td>
+          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+            <td>{{data.end_time|date:'h:mm a'}}</td>
           </tr>
         </td>
         <td>
-          <tr *ngFor="let data of recipient.value; let i= index;">
-            <td>{{recipient.value[i].trainer.trainer_name}}</td>
+          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+            <td>{{data.trainer.trainer_name}}</td>
           </tr>
         </td>
         <td>
-          <tr *ngFor="let data of recipient.value; let i= index;">
-            <td *ngIf="recipient.value[i].backup_trainer!=undefined;">{{recipient.value[i].backupTrainer.trainer_name}}</td>
-            <td *ngIf="recipient.value[i].backup_trainer==undefined;">NA</td>
+          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+            <td *ngIf="data.backup_trainer!=undefined;">{{data.backupTrainer.trainer_name}}</td>
+            <td *ngIf="data.backup_trainer==undefined;">--</td>
 
           </tr>
         </td>
         <td>
-          <tr *ngFor="let data of recipient.value; let i= index;">
-            <td>{{recipient.value[i].comment}}</td>
+          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+            <td *ngIf="data.comment!=''">{{data.comment}}</td>
+            <td *ngIf="data.comment==''">--</td>
+
           </tr>
         </td>
         </tr>
       </tbody>
 
-    </table>
+    </table><br>
+  </div>
   </div>
 
   <div *ngIf="var2">

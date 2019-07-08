@@ -34,6 +34,7 @@
     "ng4-social-login": "^1.4.2",
     "ngx-bootstrap": "^5.0.0",
     "ngx-bootstrap-datetime-popup": "^4.3.0",
+    "ngx-toaster": "^1.0.1",
     "ngx-toastr": "^10.0.4",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.2",

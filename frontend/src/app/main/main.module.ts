@@ -33,9 +33,8 @@ const config = new AuthServiceConfig([
   declarations: [LoginComponent, SignupComponent, HomeComponent, AdminComponent, UserComponent, ResetpasswordComponent, FrontpageComponent],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    SocialLoginModule,
-    CommonModule,
+/*     BrowserAnimationsModule,
+ */    SocialLoginModule,
     ReactiveFormsModule,
     FormsModule,
     MainRoutingModule,
