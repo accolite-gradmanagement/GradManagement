@@ -7,6 +7,7 @@ import { Batch } from './batch';
 import { Tests } from './Tests';
 import { Student } from './student';
 import { Details } from './details';
+import {Employee} from './employee';
 
 @Injectable({
   providedIn:'root'
@@ -62,11 +63,11 @@ export class ReportService {
        }
 
 
-       public getDetailsinForm(id: number):Observable<Student[]>{
+       public getDetailsinForm(id: number):Observable<Employee>{
         console.log(id);
         this.formDetailsUrl="/employee/"+id;
         console.log(this.studentdetailsurl);
-        return this.http.get<Student []>(this.studentdetailsurl);
+        return this.http.get<Employee>(this.formDetailsUrl);
          }
 
        public addNewDetails(details: Details): Observable<Details> {

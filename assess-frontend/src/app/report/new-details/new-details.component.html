@@ -69,7 +69,7 @@
                 <div class="form-group row">
                     <label for="employeeCode"  class="col-sm-3 col-form-label">Employee Id*</label>
                     <div class="col-sm-9">
-                        <input placeholder="Employee Code" type="text"  class="form-control" id="employeeCode"
+                        <input placeholder="Employee Code" type="text" (change)="onChangeId($event.target.value)"class="form-control" id="employeeCode"
                             [(ngModel)]="details.employeeId" name="employeeCode"  required />
                     </div>
                 </div>
@@ -78,39 +78,27 @@
                <div class="form-group row">
                 <label for="Name" class="col-sm-3 col-form-label">Name*</label>
                 <div class="col-sm-9">
-                    <input placeholder="Name" type="text" class="form-control" id="Name" [(ngModel)]="details.employeeName"
-                        name="Name" required />
+                    <input placeholder="Name"  type="text" class="form-control" id="Name" [(ngModel)]="details.employeeName"
+                        name="Name" id="Name" required />
                 </div>
             </div>
-            <!-- year -->
+
             <div class="form-group row">
-              <label for="year" class="col-sm-3 col-form-label">Year</label>
-              <div class="col-sm-9">
-                    <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
-                            <option >Select year...</option>
-                            
-                            <option *ngFor="let year of years" [value]="year">{{year}}</option>
-                          </select>   
-                <!-- <input placeholder="Year" type="text" class="form-control" id="year"
-                      [(ngModel)]="gradyear" name="doj" /> -->
-              </div>
-          </div>
-          <!-- batch -->
-          <div class="form-group row">
-            <label for="batch" class="col-sm-3 col-form-label">Batch</label>
-            <div class="col-sm-9">
-                    <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="details.batch">
-                            <option [disabled]="true" [selected]= "true">Select batch...</option>
-                            <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
-                          </select>
-                <!-- <input placeholder="Batch" type="text" class="form-control" id="batch"
-                    [(ngModel)]="gradbatch" name="batch"  /> -->
+                <label for="year" class="col-sm-3 col-form-label">Year*</label>
+                <div class="col-sm-9">
+                    <input  type="text" class="form-control" [(ngModel)]="details.year"
+                      name="year" id="year" required />
+                </div>
             </div>
-        </div>
-        
-  
-           
-            <!-- test name -->
+
+            <div class="form-group row">
+                <label for="year" class="col-sm-3 col-form-label">Batch*</label>
+                <div class="col-sm-9">
+                    <input  type="text" class="form-control" [(ngModel)]="details.batchName"
+                        name="batch" id="batch" required />
+                </div>
+            </div>
+
             <div class="form-group row">
                 <label for="testname" class="col-sm-3 col-form-label">Test Name</label>
                 <div class="col-sm-9">
@@ -118,10 +106,45 @@
                                 <option [disabled]="true" [selected]= "true">Select test...</option>
                                 <option *ngFor="let test of tests" [value]="test">{{test}}</option>
                               </select>
-                    <!-- <input placeholder="Test name" type="text" class="form-control" id="testname"
-                        [(ngModel)]="testname" name="testname"  required /> -->
+                   
                 </div>
             </div>
+           
+            <!-- <div class="form-group row">
+              <label for="year" class="col-sm-3 col-form-label">Year</label>
+              <div class="col-sm-9">
+                    <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
+                            <option >Select year...</option>
+                            
+                            <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                          </select>   
+               
+              </div>
+          </div>
+         
+          <div class="form-group row">
+            <label for="batch" class="col-sm-3 col-form-label">Batch</label>
+            <div class="col-sm-9">
+                    <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="details.batch">
+                            <option [disabled]="true" [selected]= "true">Select batch...</option>
+                            <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
+                          </select>
+                
+            </div>
+        </div>
+        
+  
+           
+            <div class="form-group row">
+                <label for="testname" class="col-sm-3 col-form-label">Test Name</label>
+                <div class="col-sm-9">
+                        <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="details.test">
+                                <option [disabled]="true" [selected]= "true">Select test...</option>
+                                <option *ngFor="let test of tests" [value]="test">{{test}}</option>
+                              </select>
+                   
+                </div>
+            </div> -->
             <!-- total ques -->
             <div class="form-group row">
               <label for="totalquestions" class="col-sm-3 col-form-label">Total Questions</label>

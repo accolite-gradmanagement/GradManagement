@@ -6,6 +6,7 @@ import{Tests} from '../../Tests';
 import {Details} from '../../details';
 import { Student } from 'src/app/student';
 import {ToastrService} from 'ngx-toastr';
+import {Employee} from '../../employee';
 
 @Component({
   selector: 'app-new-details',
@@ -15,7 +16,7 @@ import {ToastrService} from 'ngx-toastr';
 export class NewDetailsComponent implements OnInit {
   submitted=false;
   details: Details;
-  formDetails: Student[];
+  formDetails: Employee;
   
   selectedyear: string;
   years: number[];
@@ -55,11 +56,11 @@ export class NewDetailsComponent implements OnInit {
     }
   }
 
-  onChangeBatch(bname: string) {
-    this.details.batchName=bname;
-    console.log(bname)
-    if (bname) {
-      this.reportservice.gettests(bname).subscribe(data => {this.tests=data;
+  onChangeBatch() {
+    this.details.batchName=this.formDetails.batchName;
+   
+    if (this.details.batchName) {
+      this.reportservice.gettests(this.details.batchName).subscribe(data => {this.tests=data;
         console.log(this.tests)});
       }
        else {
@@ -79,7 +80,9 @@ onSubmit(){
 
   this.reportservice.addNewDetails(this.details)
         .subscribe(data =>{
+          console.log("sentDetails:", this.details);
           this.details = data;
+          console.log("sentDetails:", this.details);
           alert("Submitted successfully");
         },err=>
           {
@@ -92,7 +95,13 @@ onChangeId(id: number){
   this.reportservice.getDetailsinForm(id)
         .subscribe(data =>{
           this.formDetails = data;
+          this.details.year=this.formDetails.year;
+          this.details.batchName=this.formDetails.batchName;
+          this.details.employeeName=this.formDetails.employeeName;
+          
+          
           console.log("here:", this.formDetails);
+          this.onChangeBatch();
           if(this.formDetails== null)
       {
         this.toastr.error('error','No record found for this input');
