@@ -1,4 +1,4 @@
-package com.assessment.data.model;
+package com.assessment.data.entity;
 
 import javax.persistence.*;
 
@@ -15,9 +15,6 @@ public class GradEmployee {
 	private int year;
 	private long contactNo;
 	private String location;
-
-//	@ManyToOne
-//	private GradScore gradScore;
 
 	public GradEmployee() {
 		

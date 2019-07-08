@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.assessment.data.model.GradEmployee;
+import com.assessment.data.entity.GradEmployee;
 import com.assessment.data.service.GradEmployeeService;
 
 

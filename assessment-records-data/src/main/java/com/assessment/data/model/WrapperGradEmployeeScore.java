@@ -1,5 +1,7 @@
 package com.assessment.data.model;
 
+import com.assessment.data.entity.GradScore;
+
 public class WrapperGradEmployeeScore {
 
 	private GradScore gradScore;
