@@ -8,7 +8,7 @@
     <!--Card content-->
 
     <div class="card-body px-lg-5">
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-info" role="alert">
             Fields marked with (*) are compulsory
         </div>
         
@@ -176,10 +176,10 @@
                         name="cvLink" [readonly]="!adminRole&&!gradRole" required />
                 </div>
             </div>
-
-            <div class="alert alert-primary" role="alert">
-                Fields marked with (*) are compulsory
-            </div>
+            <div class="alert alert-info" role="alert">
+                    Fields marked with (*) are compulsory
+                </div>
+            
 
             <div class="form-group row">
                 <div class="col-sm-8">
@@ -187,6 +187,7 @@
                 </div>
             </div>
         </form>
+        
         <div class="alert alert-success" role="alert" [hidden]="!submitted">
             You submitted successfully!
         </div>
