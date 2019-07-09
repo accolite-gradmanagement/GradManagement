@@ -37,7 +37,7 @@
 .profile-head h6{
     color: #0062cc;
 }
-.profile-edit-btn{
+.profile-edit-btn,.back-btn{
     border: none;
     border-radius: 1.5rem;
     width: 70%;
@@ -45,6 +45,9 @@
     font-weight: 600;
     color: #6c757d;
     cursor: pointer;
+}
+.back-btn{
+    margin-top: 5px;
 }
 .proile-rating{
     font-size: 12px;

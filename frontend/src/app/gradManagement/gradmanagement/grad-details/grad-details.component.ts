@@ -9,6 +9,10 @@ import { ActivatedRoute, Router, ParamMap, NavigationExtras } from '@angular/rou
   styleUrls: ['./grad-details.component.scss']
 })
 export class GradDetailsComponent implements OnInit {
+  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
+  gradRole = false;
+  adminRole = false;
+  trainerRole = false;
     gradId: number;
     graduate: Grad;
     isLoaded: boolean = false;
@@ -17,6 +21,13 @@ export class GradDetailsComponent implements OnInit {
     }
   
     ngOnInit() {
+      const role = this.loggedInStatus.role;
+      if (role == "grad")
+        this.gradRole = true;
+      else if (role == "admin")
+        this.adminRole = true;
+      else
+        this.trainerRole = true;
       console.log("Init called");
       this.route.paramMap.subscribe((params: ParamMap)=>
       {

@@ -1,0 +1,43 @@
+
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <p>ED and Location wise Demand Details</p> 
+    <div *ngFor="let item of formattedData | keyvalue">
+      <button class="ed-btn" (click)="toggle(item.key)">{{item.key | uppercase}}
+        <span>TOTAL DEMAND:{{getTotalDemands(item.value)}}</span>
+      </button>
+      <div *ngIf="isViewableArray[item.key]">
+          <table class="table">
+              <thead class="table-heading" >
+                <th>HIRING MANAGER</th>
+                <th>DEMAND</th>
+                <th>LOCATION</th>
+                <th>EXPECTED START</th>
+                <!-- <th>STATUS</th> -->
+                <th>COMMENTS</th>
+              </thead>
+              <tbody *ngFor="let hm of item.value | keyvalue">
+                  <tr *ngFor="let demand of hm.value" >
+                    <td>{{hm.key}}</td>
+                    <td>{{demand.demandCount}}</td>
+                    <td>{{demand.location}}</td>
+                    <td>{{demand.start_time}}</td>
+                    <!-- <td>{{demand.status}}</td> -->
+                    <td>{{demand.comments}}</td>
+                  </tr>
+              </tbody>
+              <tfoot>
+
+              </tfoot>
+            </table>
+          </div>
+      </div >  
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+
+
+
+
+
