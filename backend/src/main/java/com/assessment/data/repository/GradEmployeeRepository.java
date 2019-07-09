@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.assessment.data.model.GradEmployee;
+import com.assessment.data.entity.GradEmployee;
 
 public interface GradEmployeeRepository extends PagingAndSortingRepository<GradEmployee, Integer>{
 

@@ -1,4 +1,4 @@
-package com.assessment.data.model;
+package com.assessment.data.entity;
 
 
 import javax.persistence.*;
@@ -11,14 +11,11 @@ public class GradTest {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer testId;
 
-	@Column(unique = true, length = 50)
+//	@Column(unique = true, length = 50)
 	private String testName;
 	private String batchName;
 
 	private int totalQuestions;
-
-//	@ManyToOne
-//	private GradScore gradScore;
 	
 	public GradTest(Integer testId, String testName,int totalQuestions) {
 		super();

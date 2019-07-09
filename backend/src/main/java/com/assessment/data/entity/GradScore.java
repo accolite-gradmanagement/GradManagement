@@ -1,4 +1,4 @@
-package com.assessment.data.model;
+package com.assessment.data.entity;
 
 
 import javax.persistence.*;
@@ -42,20 +42,29 @@ public class GradScore {
 
 	@OneToOne
 	@JoinColumn(name="test_id")
-	private  GradTest gradTest;
+	private GradTest gradTest;
 
 
 	@OneToOne
 	@JoinColumn(name="employee_id")
-	private  GradEmployee gradEmployee;
+	private GradEmployee gradEmployee;
+
+	public int getGradRank() {
+		return gradRank;
+	}
+
+	public void setGradRank(int gradRank) {
+		this.gradRank = gradRank;
+	}
 
 	private int score;
 	private int correctQuestions;
-	
-	
-
-
 	private float successPercentage;
+
+
+
+	@Transient
+	private  int gradRank;
 
 	public int getScore() {
 		return score;
@@ -69,8 +78,8 @@ public class GradScore {
 	public void setCorrectQuestions(int correctQuestions) {
 		this.correctQuestions = correctQuestions;
 	}
-	
-	
+
+
 //	public Integer getScore_id() {
 //		return score_id;
 //	}
