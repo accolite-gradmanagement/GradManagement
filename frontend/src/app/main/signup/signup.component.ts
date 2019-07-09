@@ -116,8 +116,10 @@ export class SignupComponent implements OnInit {
           this.toastr.warning("Username already present","Warning");
           this.router.navigate(['/signup']);
         }
-        else
-        this.router.navigate(['/login']);
+        else{
+          this.router.navigate(['/login']);
+          this.toastr.success("Signed in successfully","Success");
+        }
         console.log("POST Request is successful ", data);},
       error  => {console.log("Error", error);}
     )

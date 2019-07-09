@@ -24,8 +24,12 @@ export class FrontComponent implements OnInit {
 
   constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService ) { }
   ngOnInit(){
-    this.reportservice.getyear().subscribe(data => {this.years=data;
-      console.log(this.years)});
+    this.reportservice.getyear().subscribe(data => {
+      this.years=data;
+      console.log(this.years);
+      this.batches=[];
+      this.tests=null;
+    });
 
   
   this.createAccountForm = new FormGroup({
@@ -39,6 +43,7 @@ onChangeYear(name: number) {
   console.log(name)
   if (name) {
     this.reportservice.getbatches(name).subscribe(data => {
+      this.tests=null;
        this.batches=data;
        console.log(this.batches)});
       //  this.onChangeBatch(this.batches[0]);
@@ -67,9 +72,9 @@ myfunc(){
   this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
     
     console.log(this.report)});
-    this.selectedyear="Select year...";
-    this.selectedbatch="Select batch...";
-    this.selectedtest="Select test...";
+    // this.selectedyear="Select year...";
+    // this.selectedbatch="Select batch...";
+    // this.selectedtest="Select test...";
 
     // if(this.report==null){
     //   alert("No details to show");

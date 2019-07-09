@@ -8,7 +8,7 @@ body{
 
 table  { border-collapse: collapse; width: 100%; }
 th, td { padding: 8px 16px; }
-th     { background:#eee; }
+th     {  background:#337ab7; color: white }
 
 input {
     width: 18%;

@@ -1,30 +1,30 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3"></div>
-    <div class="col-sm-6 col-sm-offset-4">
-        <div class="card">
-            <div class="card-title">
+    <div class="col-sm-6 ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 Demand Form
             </div>
-            <div class="card-body">
+            <div class="panel-body">
                 <form>
                     <div class="row ">
                       <!-- <div class="col-sm-6">  -->
                       <div class="col-sm-5">
                         <label>Executive Director</label>
-                        <select class="custom-select" name="ed" [(ngModel)]="demandModel.edId" [value]="Ed" required>
-                            <option [value]="Ed" selected name="ed">Choose ED </option>       
+                        <select class="custom-select" class="form-control" name="ed" [(ngModel)]="demandModel.edId" [value]="Ed" required>
+                            <option [value]="Ed"   selected name="ed">Choose ED </option>       
                           <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>   
                         </select>
-                        <!-- <input list="employees1" class="form-control" placeholder="Select ED" [(ngModel)]="demandModel.edId" name="ed" />
-                        <datalist id="employees1">
+                        <!-- <input list="employees1" class="form-control" placeholder="Select ED" [(ngModel)]="demandModel.edId" name="ed" /> -->
+                        <!-- <datalist id="employees1">
                               <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>
                         </datalist> -->
                       </div>
                       <div class="col-sm-2"></div>
                       <div class="col-sm-5">
                         <label>Hiring Manager</label>
-                        <select class="custom-select" name="hiringManger" [(ngModel)]="demandModel.hmId" [value]="hm" required>
+                        <select class="custom-select" class="form-control" name="hiringManger" [(ngModel)]="demandModel.hmId" [value]="hm" required>
                           <option [value]="hm" selected name="hm">Choose Hiring Manger</option>  
                           <option *ngFor="let employee of employees | keyvalue" [value]="employee.value.empId">{{employee.value.empName}}</option>
                         </select>
@@ -38,8 +38,7 @@
                   
                     <div class="form-group">
                         <label>Location</label>
-                        <br>
-                      <select class="custom-select" name="location" [(ngModel)]="demandModel.lId" [value]="location" required>
+                      <select class="custom-select" class="form-control" name="location" [(ngModel)]="demandModel.lId" [value]="location" required>
                           <option [value]="location" selected name="loc">Choose Location </option> 
                                 <option *ngFor="let location of locations | keyvalue" [value]="location.value.location_ID">{{location.value.location_NAME}}</option>
                       </select>
@@ -62,8 +61,7 @@
                       </div>
                     </div>
                     <!-- <input type="text" class="form-control" name="comments" placeholder="comments"> -->
-
-                    <button style=" background-color: #337ab7" type="submit" class="save-btn"  (click)="onSubmitForm()"><font style = "color: white">Save Demand </font></button>
+                    <button type="submit" class="save-btn"  (click)="onSubmitForm()">Save Demand</button>
                   </form>
             </div>
         </div>

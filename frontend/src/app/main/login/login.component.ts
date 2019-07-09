@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   correctDetails:boolean;
 
 
-  constructor(private httpClient:HttpClient, private router:Router,private socialAuthService: AuthService) { 
+  constructor(private toastr:ToastrService,private httpClient:HttpClient, private router:Router,private socialAuthService: AuthService) { 
     if(this.loggedInStatus)
     {
           this.router.navigate(['home']);
@@ -123,6 +125,7 @@ export class LoginComponent implements OnInit {
                   {
                     this.correctDetails=false;
                     console.log("error");
+                    this.toastr.warning("Please signin before login","Warning")
                   }
 
       },

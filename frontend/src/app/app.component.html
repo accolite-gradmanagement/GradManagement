@@ -9,7 +9,7 @@
           <li  [ngClass]="arg=='home'? 'nav-link active':'nav-link'"><a routerLink='/home' style="color:white" (click)="activefunc('home')" >Home</a></li>
           
           <li [ngClass]="arg=='grad'? 'nav-link active':'nav-link'" class="nav-item dropdown">
-            <a  *ngIf = "admin|| grad" style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            <a  *ngIf = "admin|| grad" style="color:white" class="nav-link dropdown-toggle"  aria-haspopup="true"
              aria-expanded="false">
               Grad
             </a>
@@ -19,7 +19,7 @@
             </div>
           </li>   
           <li [ngClass]="arg=='course'? 'nav-link active':'nav-link'" class="nav-item dropdown">
-              <a  style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a  style="color:white" class="nav-link dropdown-toggle"  aria-haspopup="true" aria-expanded="false">
                 Course
               </a>
               <div (click)="activefunc('course')" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,7 +45,7 @@
   
             <li [ngClass]="arg=='score'? 'nav-link active':'nav-link'"><a   *ngIf="admin || trainer"  style="color:white" routerLink='/score' (click)="activefunc('score')">Score</a></li>
             <li [ngClass]="arg=='ed'? 'nav-link active':'nav-link'" class="nav-item dropdown">
-              <a *ngIf="admin "  style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a *ngIf="admin "  style="color:white" class="nav-link dropdown-toggle"  aria-haspopup="true" aria-expanded="false">
                 Employee Demand
               </a>
               <div (click)="activefunc('ed')" class="dropdown-menu" aria-labelledby="navbarDropdown">
