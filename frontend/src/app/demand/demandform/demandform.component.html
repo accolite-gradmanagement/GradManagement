@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 col-sm-offset-4">
+        <div class="card">
+            <div class="card-title">
+                Demand Form
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row ">
+                      <!-- <div class="col-sm-6">  -->
+                      <div class="col-sm-5">
+                        <label>Executive Director</label>
+                        <!-- <select class="custom-select" name="ed" [(ngModel)]="demandModel.edId" [value]="Ed" required>
+                            <option [value]="Ed" selected name="ed">Choose ED </option>       
+                          <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>   
+                        </select> -->
+                        <input list="employees1" class="form-control" placeholder="Select ED" [(ngModel)]="demandModel.edId" name="ed" />
+                        <datalist id="employees1">
+                              <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>
+                        </datalist>
+                      </div>
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-5">
+                        <label>Hiring Manager</label>
+                        <select class="custom-select" name="hiringManger" [(ngModel)]="demandModel.hmId" [value]="hm" required>
+                          <option [value]="hm" selected name="hm">Choose Hiring Manger</option>  
+                          <option *ngFor="let employee of employees | keyvalue" [value]="employee.value.empId">{{employee.value.empName}}</option>
+                        </select>
+                        <!-- <input list="employees1" class="form-control" placeholder="Select ED" [(ngModel)]="demandModel.edId" name="ed" />
+                        <datalist id="employees1">
+                              <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>
+                        </datalist> -->
+                      </div>
+                  </div>
+                  <br>
+                  
+                    <div class="form-group">
+                        <label>Location</label>
+                      <select class="custom-select" name="location" [(ngModel)]="demandModel.lId" [value]="location" required>
+                          <option [value]="location" selected name="loc">Choose Location </option> 
+                                <option *ngFor="let location of locations | keyvalue" [value]="location.value.location_ID">{{location.value.location_NAME}}</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                          <label>Demand</label>
+                          <input type="text" class="form-control" name="hmName" [(ngModel)] = "demandModel.demandCount"placeholder="Enter demand count" required>
+                      </div>
+                      <div class="col-sm-6">
+                          <label>Expected start date</label>
+                          <!-- <input type="date" name="start_date" [(ngModel)] = "demandModel.startTime" placeholder="Enter value" required>   -->
+                          <angular2-date-picker [settings]="settings" name="start_date" [(ngModel)] = "demandModel.startTime"></angular2-date-picker>  
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label for="">Comment</label>
+                        <textarea name="comments" id="" class="form-control" rows="4"  [(ngModel)]="demandModel.comments"></textarea>
+                      </div>
+                    </div>
+                    <!-- <input type="text" class="form-control" name="comments" placeholder="comments"> -->
+                    <button type="submit" class="save-btn"  (click)="onSubmitForm()">Save Demand</button>
+                  </form>
+            </div>
+        </div>
+       
+
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
