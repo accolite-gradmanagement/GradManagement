@@ -1,5 +1,5 @@
 <!-- <app-header select="View"></app-header> -->
-<div class="container">
+<div class="container" style="font-family: 'Times New Roman', Times, serif">
   <h2 class="text-center">Timesheets</h2><br>
 
   <div class="col-md-3" style="margin-left: -15px">
@@ -8,99 +8,67 @@
       <option value="" selected disabled>Select Batch</option>
       <option *ngFor="let x of batches; index as i" [value]="x.batchId">{{x.batchName}}</option>
     </select><br><br>
+    <h3>{{selectedBatchName}}</h3>
   </div><br>
 
   <div *ngIf="var1" style="margin-top: 50px">
-    <div style="overflow-y:auto; max-height: 350px; margin-top: 80px">
-    <table class="table table-bordered table-responsive tableFixHead">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Course</th>
-          <th>Start Time</th>
-          <th>End Time</th>
-          <th>Trainer</th>
-          <th>Back Up Trainer</th>
-          <th>Comments</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let key of datewiseSessions.keys()" style="text-transform: capitalize">
-          <td rowspan="datewiseSessions.get(key).length">{{key}}</td>
+    <div style="margin-top: 80px">
+      <table class="table table-bordered table-responsive tableFixHead">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Course</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Trainer</th>
+            <th>Back Up Trainer</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let key of datewiseSessions.keys()" style="text-transform: capitalize">
+            <td rowspan="datewiseSessions.get(key).length">{{key}}</td>
+            <td>
+          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+            <td>{{data.course.course_name}}</td>
+          </tr>
+          </td>
           <td>
-        <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
-          <td>{{data.course.course_name}}</td>
-        </tr>
-        </td>
-        <td>
-          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
-            <td>{{data.start_time|date:'h:mm a'}}</td>
+            <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+              <td>{{data.start_time|date:'hh:mm a'}}</td>
+            </tr>
+          </td>
+          <td>
+            <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+              <td>{{data.end_time|date:'hh:mm a'}}</td>
+            </tr>
+          </td>
+          <td>
+            <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+              <td>{{data.trainer.trainer_name}}</td>
+            </tr>
+          </td>
+          <td>
+            <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+              <td *ngIf="data.backup_trainer!=undefined;">{{data.backupTrainer.trainer_name}}</td>
+              <td *ngIf="data.backup_trainer==undefined;">NA</td>
+            </tr>
+          </td>
+          <td>
+            <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
+              <td><span *ngIf="data.comment!=''">{{data.comment}}</span> <span
+                  *ngIf="data.comment==''||data.comment==null">--</span></td>
+              <!-- <td *ngIf="data.comment==''||data.comment==null">--</td> -->
+            </tr>
+          </td>
           </tr>
-        </td>
-        <td>
-          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
-            <td>{{data.end_time|date:'h:mm a'}}</td>
-          </tr>
-        </td>
-        <td>
-          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
-            <td>{{data.trainer.trainer_name}}</td>
-          </tr>
-        </td>
-        <td>
-          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
-            <td *ngIf="data.backup_trainer!=undefined;">{{data.backupTrainer.trainer_name}}</td>
-            <td *ngIf="data.backup_trainer==undefined;">--</td>
+        </tbody>
 
-          </tr>
-        </td>
-        <td>
-          <tr *ngFor="let data of datewiseSessions.get(key); let i= index;">
-            <td *ngIf="data.comment!=''">{{data.comment}}</td>
-            <td *ngIf="data.comment==''">--</td>
-
-          </tr>
-        </td>
-        </tr>
-      </tbody>
-
-    </table><br>
-  </div>
+      </table><br>
+    </div>
   </div>
 
   <div *ngIf="var2">
-    <img class="select" src="../../../assets/Images/noData.jpg" 
-    alt="Responsive image" height="300" width="300">
-    </div>
+    <img class="select" src="../../../assets/Images/noData.jpg" alt="Responsive image" height="300" width="300">
+  </div>
 </div>
-
-<!-- <div class="container">
-    <div class="table-responsive">          
-       <table class="table">
-         <thead>
-           <tr>
-                   <th >UID</th>
-                   <th >FIRSTNAME</th>
-                   <th >LASTNAME</th>
-                   <th >ROLE</th>
-                   <th >GENDER</th>
-                   <th >MAILID</th>
-                   <th >MOBILENO</th>
-                   <th >DOB</th>  
-           </tr>
-         </thead>
-         <tbody>
-               <tr *ngFor="let data of datas" >
-                 <td>{{ data.userId }}</td>
-                 <td>{{ data.firstName }}</td>
-                 <td >{{ data.lastName }}</td>
-                 <td >{{data.role}}</td>
-                 <td >{{ data.gender }}</td>
-                 <td >{{ data.emailId }}</td>
-                 <td >{{data.mobileNo}}</td>
-                 <td >{{ data.dob }}</td> 
-               </tr>
-             </tbody>
-       </table>
-       </div>
-     </div> -->
