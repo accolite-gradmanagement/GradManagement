@@ -38,6 +38,7 @@
                   
                     <div class="form-group">
                         <label>Location</label>
+                        <br>
                       <select class="custom-select" name="location" [(ngModel)]="demandModel.lId" [value]="location" required>
                           <option [value]="location" selected name="loc">Choose Location </option> 
                                 <option *ngFor="let location of locations | keyvalue" [value]="location.value.location_ID">{{location.value.location_NAME}}</option>
@@ -61,7 +62,8 @@
                       </div>
                     </div>
                     <!-- <input type="text" class="form-control" name="comments" placeholder="comments"> -->
-                    <button type="submit" class="save-btn"  (click)="onSubmitForm()">Save Demand</button>
+
+                    <button style=" background-color: #337ab7" type="submit" class="save-btn"  (click)="onSubmitForm()"><font style = "color: white">Save Demand </font></button>
                   </form>
             </div>
         </div>

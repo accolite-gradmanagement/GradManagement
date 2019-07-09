@@ -21,17 +21,18 @@ export class StudentDetailsComponent implements OnInit {
   const name = this.route.snapshot.paramMap.get('name');
   console.log(id);
   console.log(name);
-  // if(id)
-  // {
-  //   this.getDetails(id);
-  // }
-  // else 
-  // {
-  //   this.getDetailsbyName(name);
-  // }
-   this.isLoaded=false;
-  this.getDetails(id);
+  this.isLoaded=false;
+  if(id)
+  {
+    this.getDetails(id);
+  }
+  else 
+  {
+    this.getStudentDetailsbyName(name);
+  }
    
+/*   this.getDetails(id);
+ */   
 }
 getDetails(id:string){
   
@@ -50,13 +51,7 @@ getStudentDetailsbyName(name:string){
     .subscribe(data=>{ 
       this.contents = data;
       console.log(this.contents);
-      // if(this.contents.length==0) 
-      // { 
-       
-      //   this.toastr.error('error','No record found for this input');
-      //   console.log(this.contents);
-      // }
-      
+      this.isLoaded=true; 
     }
       );
 
