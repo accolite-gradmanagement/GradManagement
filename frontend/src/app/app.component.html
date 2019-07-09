@@ -1,95 +1,80 @@
-<div *ngIf="loggedInStatus">
+<div *ngIf="loggedInStatus" >
   <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- <div class="navbar-header">
-        <a class="navbar-brand" style="color:darkgray">Grad Management</a>
-      </div> -->
-      <div class="title">
+      <div class="container-fluid">
+        <!-- <div class="navbar-header">
+          <a class="navbar-brand" style="color:darkgray">Grad Management</a>
+        </div> -->
+        <div class="title">
         <ul class="nav navbar-nav">
-          <li><a  routerLink='/home' style="color:white">Home</a></li>
-
-          <li class="nav-item dropdown">
-            <a *ngIf="admin|| grad" style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li  [ngClass]="arg=='home'? 'nav-link active':'nav-link'"><a routerLink='/home' style="color:white" (click)="activefunc('home')" >Home</a></li>
+          
+          <li [ngClass]="arg=='grad'? 'nav-link active':'nav-link'" class="nav-item dropdown">
+            <a  *ngIf = "admin|| grad" style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            (click)="activefunc('grad')" aria-expanded="false">
               Grad
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a *ngIf="admin" routerLink="/admin">Grad Details</a></li>
-          <li><a *ngIf="grad || admin" routerLink="/grads/fill">Add Details</a></li>
+                <li><a *ngIf = "admin"routerLink="/admin">Grad Details</a></li>
+                <li><a *ngIf="grad || admin" routerLink="/grads/fill">Add Details</a></li>
+            </div>
+          </li>   
+          <li [ngClass]="arg=='course'? 'nav-link active':'nav-link'" class="nav-item dropdown">
+              <a (click)="activefunc('course')" style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Course
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a  routerLink="/view">Timesheets</a></li>
+                  <li><a *ngIf="admin " routerLink="/course">Courses</a></li>
+                  <li><a *ngIf="admin" routerLink="/trainer">Trainers</a></li>
+                  <li><a *ngIf="admin" routerLink="/batch">Batches</a></li>
+              </div>
+              </li>     
+  
+              <!-- <li class="nav-item dropdown">
+                <a role="button" class="nav-link dropdown-toggle" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/view">Timesheets</a></li>
+                  <li><a routerLink="/course">Courses</a></li>
+                  <li><a routerLink="/trainer">Trainers</a></li>
+                  <li><a routerLink="/batch">Batches</a></li>
+                </ul>
+              </li> -->
+      
+  
+  
+            <li [ngClass]="arg=='score'? 'nav-link active':'nav-link'"><a   *ngIf="admin || trainer"  style="color:white" routerLink='/score' (click)="activefunc('score')">Score</a></li>
+            <li [ngClass]="arg=='ed'? 'nav-link active':'nav-link'" class="nav-item dropdown">
+              <a *ngIf="admin " (click)="activefunc('ed')" style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Employee Demand
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <!--                 <li><a  routerLink="/view">Timesheets</a></li>
+   -->                <li><a *ngIf="admin " routerLink="/demand/empform"> Add Employee</a></li>
+                  <li><a *ngIf="admin" routerLink="/demand/demandform">Add Demand</a></li>
+                  <li><a *ngIf="admin" routerLink="/demand/demanddetails">View Demand</a></li>
+              </div>
+              </li>           <li [ngClass]="arg=='admin'? 'nav-link active':'nav-link'"><a (click)="activefunc('admin')" routerLink='/admin-user'style="color:white" *ngIf="admin">Admin</a></li>
+          <li [ngClass]="arg=='profile'? 'nav-link active':'nav-link'" ><a (click)="activefunc('profile')" routerLink='/user' style="color:white">Profile</a></li>
+          
+    </ul>
+    <ul class="nav pull-right">
+        <!-- <li><button (click)="logout()"> Logout</button></li> -->
+        <button type="button" class="btn btn-default btn-lg" (click) = "logout()" >logout</button>
+  
+        </ul>
       </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Course
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <li><a routerLink="/view">Timesheets</a></li>
-      <li><a *ngIf="admin " routerLink="/course">Courses</a></li>
-      <li><a *ngIf="admin" routerLink="/trainer">Trainers</a></li>
-      <li><a *ngIf="admin" routerLink="/batch">Batches</a></li>
+      </div>
+    </nav>
+  <!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="title1">
+      <p>Welcome to Grad Management</p>
     </div>
-    </li>
-
-    <!-- <li class="nav-item dropdown">
-              <a role="button" class="nav-link dropdown-toggle" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a routerLink="/view">Timesheets</a></li>
-                <li><a routerLink="/course">Courses</a></li>
-                <li><a routerLink="/trainer">Trainers</a></li>
-                <li><a routerLink="/batch">Batches</a></li>
-              </ul>
-            </li> -->
-
-
-
-    <li><a *ngIf="admin || trainer" style="color:white" routerLink='/score'>Score</a></li>
-    <!-- <li class="nav-item dropdown">
-      <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Employee Demand
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <!--                 <li><a  routerLink="/view">Timesheets</a></li>
-
-    <li><a *ngIf="admin " routerLink="/demand/empform"> Add Employee</a></li>
-    <li><a *ngIf="admin" routerLink="/demand/demandform">Add Demand</a></li>
-    <li><a *ngIf="admin" routerLink="/demand/demanddetails">View Demand</a></li>
-</div> -->
-
-    <li class="nav-item dropdown" *ngIf="admin ">
-      <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Employee Demand
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <li><a routerLink="/demand/empform">Add Employee</a></li>
-    <li><a routerLink="/demand/demandform">Add demand</a></li>
-    <li><a routerLink="/demand/demanddetails">View Demand</a></li>
-</div>
-</li>
-
-<li><a routerLink='/admin-user' style="color:white" *ngIf="admin">Admin</a></li>
-<li><a routerLink='/user' style="color:white">Profile</a></li>
-
-</ul>
-<ul class="nav pull-right">
-  <!-- <li><button (click)="logout()"> Logout</button></li> -->
-  <button type="button" class="btn btn-default btn-lg" (click)="logout()">logout</button>
-
-</ul>
-</div>
-</div>
-</nav>
-<!-- <div class="container">
-<div class="row">
-  <div class="col-xs-12">
-    <div class="title1">
-    <p>Welcome to Grad Management</p>
+     </div>
   </div>
-   </div>
-</div>
-</div> -->
-</div>
-<router-outlet></router-outlet>
+  </div> -->
+  </div>
+  <router-outlet></router-outlet>
+  

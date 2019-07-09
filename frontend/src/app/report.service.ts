@@ -35,14 +35,13 @@ export class ReportService {
 
    public getbatches(name:number):Observable<string []>{
      console.log(name);
-    this.url_yearname+= "/scores/"+ name+"/batch";
-    return this.http.get<string[]>(this.url_yearname);
+    return this.http.get<string[]>(this._url+ "/scores/"+ name+"/batch");
      }
 
      public gettests(bname:string):Observable<Tests>{
        console.log(bname);
-      this.urlbname+= "/scores/"+bname+"/testname";
-      return this.http.get<Tests>(this.urlbname);
+      
+      return this.http.get<Tests>(this._url+"/scores/"+bname+"/testname");
        }
 
   public getList(somelist:string):Observable<IReport[]>{
@@ -51,22 +50,20 @@ export class ReportService {
   
   public getDetails(id:string):Observable<Student[]>{
     console.log(id);
-    this.studentdetailsurl+="/scores/"+id;
-    console.log(this.studentdetailsurl);
-    return this.http.get<Student []>(this.studentdetailsurl);
+    
+    
+    return this.http.get<Student []>(this._url+"/scores/"+id);
      }
      public getStudentDetailsbyName(name:string):Observable<Student[]>{
       console.log(name);
-      this.studentdetailsurl+="/scores/name/"+name;
-      console.log(this.studentdetailsurl);
-      return this.http.get<Student []>(this.studentdetailsurl);
+      return this.http.get<Student []>(this._url+"/scores/name/"+name);
        }
 
        public getDetailsinForm(id: number):Observable<Employee>{
         console.log(id);
-        this.formDetailsUrl+="/employee/"+id;
+        
         console.log(this.studentdetailsurl);
-        return this.http.get<Employee>(this.formDetailsUrl);
+        return this.http.get<Employee>(this._url+"/employee/"+id);
          }
 
        public addNewDetails(details: Details): Observable<Details> {

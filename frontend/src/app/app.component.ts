@@ -24,6 +24,11 @@ export class AppComponent {
     //   this.router.navigate(['login']);
     // }
   }
+  arg: any;
+  activefunc(a:string)
+  {
+    this.arg=a;
+  }
 
   ngOnInit() {
     
