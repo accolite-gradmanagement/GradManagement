@@ -13,9 +13,9 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class FrontComponent implements OnInit {
   nameSearch: string;
-  selectedyear: string = "Year";
-  selectedbatch: string ="Batch";
-  selectedtest: string ="Test";
+  selectedyear: string = "Select year...";
+  selectedbatch: string ="Select batch...";
+  selectedtest: string ="Select test...";
   years: number[];
   batches:string[];
   tests:Tests;
@@ -38,8 +38,10 @@ onChangeYear(name: number) {
   console.log(this.selectedyear);
   console.log(name)
   if (name) {
-    this.reportservice.getbatches(name).subscribe(data => {this.batches=data;
+    this.reportservice.getbatches(name).subscribe(data => {
+       this.batches=data;
        console.log(this.batches)});
+      //  this.onChangeBatch(this.batches[0]);
       }
       else {
     this.batches = null;
@@ -65,6 +67,9 @@ myfunc(){
   this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
     
     console.log(this.report)});
+    this.selectedyear="Select year...";
+    this.selectedbatch="Select batch...";
+    this.selectedtest="Select test...";
 
     // if(this.report==null){
     //   alert("No details to show");

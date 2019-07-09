@@ -1,6 +1,6 @@
 body{
-    background-color: rgb(230, 234, 240);
-    font-family: 'Times New Roman', Times, serif;
+     /* background-color: rgb(230, 234, 240);  */
+    /* font-family: 'Times New Roman', Times, serif; */
     /* overflow: scroll; */
 }
 .container {
@@ -15,7 +15,7 @@ body{
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: rgb(95, 93, 93);
+    background-color:#337ab7;
     border: none;
     border-radius: 5px;
     box-shadow: 0 1px #999;
@@ -34,8 +34,9 @@ th     { background:#eee; }
     padding: 6px 6px;
     margin: 5px 3px;
     box-sizing:border-box;
-    border: 4px ;
+    
     border-radius: 5px; 
+    border: 1px solid #cac8c8;
 }
 .spanclass{
 	white-space: pre;
