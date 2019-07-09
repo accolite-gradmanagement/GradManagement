@@ -43,16 +43,16 @@ public class GradScoreService {
 
 	public List<GradScore> calcRank(List<GradScore> gradScores){
 		int rank =1 ;
-		gradScores.get(0).setGradRank(rank);
-		for(int i=1;i<gradScores.size();i++)
-		{
-			if(gradScores.get(i).getScore()==gradScores.get(i-1).getScore())
-			{
-				gradScores.get(i).setGradRank(rank);
-			}
-			else
-			{
-				gradScores.get(i).setGradRank(++rank);
+		if(gradScores != null) {
+			gradScores.get(0).setGradRank(rank);
+			if(gradScores.size()>=2) {
+				for (int i = 1; i < gradScores.size(); i++) {
+					if (gradScores.get(i).getScore() == gradScores.get(i - 1).getScore()) {
+						gradScores.get(i).setGradRank(rank);
+					} else {
+						gradScores.get(i).setGradRank(++rank);
+					}
+				}
 			}
 		}
 		return gradScores;

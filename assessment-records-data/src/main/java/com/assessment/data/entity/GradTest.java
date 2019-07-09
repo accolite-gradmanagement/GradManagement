@@ -11,7 +11,7 @@ public class GradTest {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer testId;
 
-	@Column(unique = true, length = 50)
+//	@Column(unique = true, length = 50)
 	private String testName;
 	private String batchName;
 

@@ -20,8 +20,8 @@ public interface GradScoreRepository extends PagingAndSortingRepository<GradScor
 
     GradScore findByGradEmployeeAndGradTest(GradEmployee gradEmployee, GradTest gradTest);
 
-    @Query(value = "with grad_rank(employee_id,test_id,grad) as (select employee_id,test_id,rank() over(order by score desc) as grad " +
-			" from grad_score) " +
+    @Query(value = "with grad_rank(employee_id,test_id,grad) as (select employee_id,test_id,dense_rank() over(order by score desc) as grad " +
+			" from grad_score where test_id = ?2 ) " +
 			" select grad " +
 			" from grad_rank " +
 			" where employee_id = ?1 and test_id = ?2 ",nativeQuery = true)
