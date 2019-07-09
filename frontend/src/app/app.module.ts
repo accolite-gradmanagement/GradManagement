@@ -17,6 +17,7 @@ import { ConfirmationDialogComponent } from './gradManagement/confirmation-dialo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MatCardModule } from '@angular/material';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
     AppRoutingModule,
     MainModule,
     HttpClientModule,
