@@ -1,9 +1,9 @@
 {
-  "name": "frontend",
+  "name": "location-wise-demand-details-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.0.1",
+    "@angular/animations": "^8.0.3",
     "@angular/common": "~8.0.1",
     "@angular/compiler": "~8.0.1",
     "@angular/core": "~8.0.1",
@@ -19,6 +19,10 @@
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
+    "angular2-datetimepicker": "^1.1.1",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "ngx-toastr": "^10.0.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
