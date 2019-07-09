@@ -1,12 +1,14 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ReportModule} from './report/report.module';
+import { DemanddetailsComponent } from './demand/demanddetails/demanddetails.component';
+import { DemandformComponent } from './demand/demandform/demandform.component';
+import { EmpformComponent } from './demand/empform/empform.component';
 import { MainModule } from './main/main.module';
 import { CoursesModule } from './courses/courses.module';
 
 const routes: Routes = [
-
-{path:'', loadChildren: () => MainModule,pathMatch:'full'},
+    { path: 'demand', loadChildren: () => import('./demand/demand.module').then(mod => mod.DemandModule) },
+    {path:'', loadChildren: () => MainModule,pathMatch:'full'},
 {path:'', loadChildren: () => CoursesModule,pathMatch:'full'},
 {
 path : 'score',
@@ -23,7 +25,7 @@ loadChildren: () => import('./report/report.module').then(mod => mod.ReportModul
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

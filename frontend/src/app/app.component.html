@@ -43,8 +43,17 @@
 
 
           <li><a  *ngIf="admin || trainer"  style="color:white" routerLink='/score'>Score</a></li>
-        <li><a style="color:white">Ed</a></li>
-        <li><a routerLink='/admin-user'style="color:white" *ngIf="admin">Admin</a></li>
+          <li  class="nav-item dropdown">
+            <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Employee Demand
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!--                 <li><a  routerLink="/view">Timesheets</a></li>
+ -->                <li><a *ngIf="admin " routerLink="/demand/empform"> Add Employee</a></li>
+                <li><a *ngIf="admin" routerLink="/demand/demandform">Add Demand</a></li>
+                <li><a *ngIf="admin" routerLink="/demand/demanddetails">View Demand</a></li>
+            </div>
+            </li>           <li><a routerLink='/admin-user'style="color:white" *ngIf="admin">Admin</a></li>
         <li ><a routerLink='/user' style="color:white">Profile</a></li>
         
   </ul>
