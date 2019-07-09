@@ -12,14 +12,14 @@
                       <!-- <div class="col-sm-6">  -->
                       <div class="col-sm-5">
                         <label>Executive Director</label>
-                        <!-- <select class="custom-select" name="ed" [(ngModel)]="demandModel.edId" [value]="Ed" required>
+                        <select class="custom-select" name="ed" [(ngModel)]="demandModel.edId" [value]="Ed" required>
                             <option [value]="Ed" selected name="ed">Choose ED </option>       
                           <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>   
-                        </select> -->
-                        <input list="employees1" class="form-control" placeholder="Select ED" [(ngModel)]="demandModel.edId" name="ed" />
+                        </select>
+                        <!-- <input list="employees1" class="form-control" placeholder="Select ED" [(ngModel)]="demandModel.edId" name="ed" />
                         <datalist id="employees1">
                               <option *ngFor="let employee of employees | keyvalue" [value]= "employee.value.empId">{{employee.value.empName}}</option>
-                        </datalist>
+                        </datalist> -->
                       </div>
                       <div class="col-sm-2"></div>
                       <div class="col-sm-5">
