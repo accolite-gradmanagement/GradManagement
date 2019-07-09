@@ -24,7 +24,7 @@ export class AppComponent {
     //   this.router.navigate(['login']);
     // }
   }
-  arg: any;
+  arg:string="home";
   activefunc(a:string)
   {
     this.arg=a;
