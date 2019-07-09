@@ -19,25 +19,29 @@ export class StudentDetailsComponent implements OnInit {
   const name = this.route.snapshot.paramMap.get('name');
   console.log(id);
   console.log(name);
-  if(id)
-  {
-    this.getDetails(id);
-  }
-  else 
-  {
-    this.getDetailsbyName(name);
-  }
+  // if(id)
+  // {
+  //   this.getDetails(id);
+  // }
+  // else 
+  // {
+  //   this.getDetailsbyName(name);
+  // }
    
+  this.getDetails(id);
    
-  }
-  getDetails(id:string){
-    
-    this.reportService.getStudentDetails(id)
-      .subscribe(data=> this.contents = data);
-
+}
+getDetails(id:string){
+  
+  this.reportService.getDetails(id)
+    .subscribe(data=> {this.contents = data
       console.log(this.contents);
-  }
-  getDetailsbyName(name:string){
+      
+    });
+
+    
+}
+getStudentDetailsbyName(name:string){
     
     this.reportService.getStudentDetailsbyName(name)
     .subscribe(data=>{ 
