@@ -39,6 +39,7 @@
 
 .log:hover{
     background-color:darkgray;
+    
 }
 .title1{
     font-family: 'Times New Roman', Times, serif;
@@ -46,6 +47,8 @@
 }
 .nav-link:hover{
     background-color:lightblue;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 .nav-link{
     font-size: 20px;
@@ -55,7 +58,10 @@
 
 .navbar-nav > .active > a {
     // color: black;
-    background-color: lightblue ;    
+    background-color: lightblue ; 
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+   
   }
 //   .nav-item > a:hover {
 //     color: green;
@@ -63,4 +69,5 @@
 
 .dropdown:hover>.dropdown-menu{
     display: block;
+    
 }
