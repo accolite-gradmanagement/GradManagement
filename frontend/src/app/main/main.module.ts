@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import {MainRoutingModule} from './main-routing.module'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
- 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 const config = new AuthServiceConfig([
   {
@@ -38,6 +38,7 @@ const config = new AuthServiceConfig([
     ReactiveFormsModule,
     FormsModule,
     MainRoutingModule,
+    MDBBootstrapModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 1000,
       positionClass: "toast-top-right",
