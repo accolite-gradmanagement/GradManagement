@@ -19,6 +19,7 @@ export class ReportService {
   private url_yearname: string="/scores/name/batch";
   private urlbname: string="/scores/batch/testname";
   private studentdetailsurl: string=" ";
+  private studenturl: string=" ";
   private formDetailsUrl:string;
   private detailsUrl: string="/add/score";
 
@@ -47,21 +48,22 @@ export class ReportService {
     return this.http.get<IReport []>(somelist);
   }
   
-  public getStudentDetails(id: string):Observable<Student[]>{
-    console.log(id);
-    this.studentdetailsurl="/scores/"+id;
-    console.log(this.studentdetailsurl);
-    return this.http.get<Student []>(this.studentdetailsurl);
-     }
+  
 
 
-     public getStudentDetailsbyName(name: string):Observable<Student[]>{
-      console.log(name);
-      this.studentdetailsurl="/scores/name/"+name;
-      console.log(this.studentdetailsurl);
-      return this.http.get<Student []>(this.studentdetailsurl);
+    public getDetails(id:string):Observable<Student[]>{
+      console.log(id);
+      this.studenturl="/scores/"+id;
+      console.log(this.studenturl);
+      return this.http.get<Student []>(this.studenturl);
        }
-
+       public getStudentDetailsbyName(name:string):Observable<Student[]>{
+        console.log(name);
+        this.studentdetailsurl="/scores/name/"+name;
+        console.log(this.studentdetailsurl);
+        return this.http.get<Student []>(this.studentdetailsurl);
+         }
+  
 
        public getDetailsinForm(id: number):Observable<Employee>{
         console.log(id);
