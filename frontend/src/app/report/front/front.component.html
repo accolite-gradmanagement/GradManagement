@@ -100,7 +100,7 @@
                  
                   <tr *ngFor="let product of report; let i=index" [attr.data-index]="i">
                           
-                    <a routerLink="/detail/name/{{product.gradEmployee.employeeName}}"> <td>{{product.gradEmployee.employeeName}}</td> </a>
+                    <a routerLink="/detail/name/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeName}}</td> </a>
                     <td>{{product.score}}</td>
                    
                     <!-- <td>{{  ( (((i+1)*25)-1)/99 )*100      }}</td> -->
