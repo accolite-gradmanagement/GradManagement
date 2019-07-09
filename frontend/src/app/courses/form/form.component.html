@@ -1,27 +1,27 @@
 <!-- <app-header select="AddBatch"></app-header> -->
 
 
-<div class="container">
+<div class="container" style="font-family: 'Times New Roman', Times, serif">
 
   <div>
     <div *ngIf="var4" class="optionIcons">
-        <h2 style="text-align: center">Batches</h2><br>
-        <a (click)='newBatch()'>
+      <h2 style="text-align: center">Batches</h2><br>
+      <a (click)='newBatch()'>
         <div class="polaroid1">
-            <img class="iconImage" src="../../../assets/Images/add.svg" alt="Add Batch" style="width:100%">
-            <div class="textContainer">
+          <img class="iconImage" src="../../../assets/Images/add.svg" alt="Add Batch" style="width:100%">
+          <div class="textContainer">
             <p>Add A New Batch</p>
-            </div>
+          </div>
         </div>
-        </a>
-        <a (click)='existingBatch()'>
+      </a>
+      <a (click)='existingBatch()'>
         <div class="polaroid2">
-            <img class="iconImage"  src="../../../assets/Images/modify.svg" alt="Norther Lights" style="width:100%">
-            <div class="textContainer">
+          <img class="iconImage" src="../../../assets/Images/modify.svg" alt="Norther Lights" style="width:100%">
+          <div class="textContainer">
             <p>Modify Existing Batch</p>
-            </div>
+          </div>
         </div>
-        </a>
+      </a>
 
       <!-- <h3>Select your Option</h3><br> -->
       <!-- <a (click)='newBatch()'><img src="../../../assets/Images/add.png"></a>
@@ -30,30 +30,32 @@
       <button class="btn btn-sm center-block btn-primary" (click)='existingBatch()'>Existing Batch</button> -->
     </div>
 
-    <div  class="col-sm-4" style="margin-top: 60px; margin-left: 380px">
-    <div *ngIf="var5">
-      <h3 style="text-align: center">Select Batch</h3><br>
-      <select class="form-control" [(ngModel)]="selectedBatch" (change)='add()'>
-        <option value="" selected disabled>Select Batch</option>
-        <option *ngFor="let x of batches;index as i" [value]="x.batchId">{{x.batchName}}</option>
-      </select><br>
-      <button class="btn btn-sm btn-danger center-block " (click)='back1()'>Back</button>
+    <div class="col-sm-4" style="margin-top: 60px; margin-left: 380px">
+      <div *ngIf="var5">
+        <h3 style="text-align: center">Select Batch</h3><br>
+        <select class="form-control" [(ngModel)]="selectedBatch" (change)='add()'>
+          <option value="" selected disabled>Select Batch</option>
+          <option *ngFor="let x of batches;index as i" [value]="x.batchId">{{x.batchName}}</option>
+        </select><br>
+        <button class="btn btn-sm btn-danger center-block " (click)='back1()'>Back</button>
 
+      </div>
     </div>
-  </div>
-  <div  class="col-sm-4" style="margin-top: -30px; margin-left: 400px">
-    <div *ngIf="var1">
-      <h3 style="text-align: center">Batch Name</h3><br>
-      <input class="form-control" type="text" id="batchName" [(ngModel)]="batchName" placeholder="Enter the batch name"><br>
-      <button class="btn btn-sm center-block btn-primary" [disabled]='!batchName' (click)='addBatch()'>Add Batch</button><br>
-      <button class="btn btn-sm center-block btn-danger" (click)='back()'>Back</button>
+    <div class="col-sm-4" style="margin-top: -30px; margin-left: 400px">
+      <div *ngIf="var1">
+        <h3 style="text-align: center">Batch Name</h3><br>
+        <input class="form-control" type="text" id="batchName" [(ngModel)]="batchName"
+          placeholder="Enter the batch name"><br>
+        <button class="btn btn-sm center-block btn-primary" [disabled]='!batchName' (click)='addBatch()'>Add
+          Batch</button><br>
+        <button class="btn btn-sm center-block btn-danger" (click)='back()'>Back</button>
+      </div>
     </div>
-  </div>
   </div>
 
   <div *ngIf="var2">
     <form [formGroup]="TrainerAllocationForm">
-      <div class="row" style=" margin-top: -200px"> 
+      <div class="row" style=" margin-top: -200px">
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4" style="margin-top: -70px">
@@ -62,6 +64,7 @@
 
           <label>Course Name</label>
           <select class="form-control" formControlName="course_id" [(ngModel)]="cid" (change)='loadTrainers()'>
+            <option value="" selected disabled>Select the course</option>
             <option *ngFor="let x of courses" [value]=x.course_id>{{x.course_name|titlecase}}</option>
           </select>
 
@@ -86,11 +89,10 @@
           <label>Comments</label>
           <textarea formControlName="comment" class="md-textarea form-control" rows="3"></textarea><br><br>
           <div class="btn-group">
-          <button class="btn btn-primary" style="margin-left: 120px" 
-          [disabled]="(TrainerAllocationForm.value.course_id=='' || tid==0)" 
-          (click)='addRow()'>Add</button>
-          <button class="btn btn-danger" style="margin-left: 10px" (click)='back2()'>Back</button>
-        </div>
+            <button class="btn btn-primary" style="margin-left: 120px"
+              [disabled]="(TrainerAllocationForm.value.course_id=='' || tid==0)" (click)='addRow()'>Add</button>
+            <button class="btn btn-danger" style="margin-left: 10px" (click)='back2()'>Back</button>
+          </div>
         </div>
 
         <div class="col-sm-4">
@@ -99,7 +101,7 @@
     </form>
   </div>
   <div *ngIf="var3 && addToTable">
-    <h3  style="text-align: center">Available Sessions</h3>
+    <h3 style="text-align: center">Available Sessions</h3>
     <table class="table table-bordered table-responsive tableFixHead">
       <thead>
         <tr>
@@ -127,8 +129,8 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary center-block "   [disabled]="!TrainerAllocationForm.valid" 
-    (click)='callSubmit()'>Submit</button><br><br>
+    <button class="btn btn-primary center-block " [disabled]="!TrainerAllocationForm.valid"
+      (click)='callSubmit()'>Submit</button><br><br>
 
   </div>
 </div>
