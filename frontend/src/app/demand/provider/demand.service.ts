@@ -7,12 +7,12 @@ import { Demand, Employee } from '../model/hiring';
     providedIn: 'root'
 })
 export class DemandService {
-    private _url="";
-    private demandsUrl = 'DemandDetails/api/hiringDetails';
-    employeesUrl = 'DemandDetails/api/employees';
-    locationsUrl = 'DemandDetails/api/locations';
-    insertDemandUrl = 'DemandDetails/api/hiringDetails';
-    insertEmployeeUrl = 'DemandDetails/api/employee';
+    private _url="http://10.4.14.76:8083/";
+    private demandsUrl = this._url+'DemandDetails/api/hiringDetails';
+    employeesUrl =this._url+ 'DemandDetails/api/employees';
+    locationsUrl = this._url+'DemandDetails/api/locations';
+    insertDemandUrl = this._url+'DemandDetails/api/hiringDetails';
+    insertEmployeeUrl = this._url+'DemandDetails/api/employee';
     employees: any = {};
     locations: any = {};
     constructor(private http: HttpClient) {
