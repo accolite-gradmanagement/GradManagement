@@ -35,6 +35,7 @@
             <div class="col-md-2">
                 <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"
                 (click)="updateGrad()">
+                <input type="button" class="back-btn"  value="Back" *ngIf="adminRole" [routerLink]="['/admin']"  >
             </div>
         </div>
         <div class="row">
