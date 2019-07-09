@@ -14,25 +14,15 @@ import {Employee} from './employee';
 })
 
 export class ReportService {
-<<<<<<< Updated upstream
-  private url: string= "/assets/test.json";
-  private urlyear: string="/scores/year";
-  private url_yearname: string="/scores/name/batch";
-  private urlbname: string="/scores/batch/testname";
-  private studentdetailsurl: string=" ";
-  private studenturl: string=" ";
-  private formDetailsUrl:string;
-  private detailsUrl: string="/add/score";
-=======
   private _url ="http://10.4.14.76:8084";
 /*   private url: string= "/assets/test.json";
  */  private urlyear: string=this._url+"/scores/year";
   private url_yearname: string=this._url;
   private urlbname: string=this._url;
   private studentdetailsurl: string=this._url;
+  private studenturl: string=this._url;
   private formDetailsUrl:string=this._url;
   private detailsUrl: string=this._url+"/add/score";
->>>>>>> Stashed changes
 
  
   constructor(private http: HttpClient) { }
@@ -61,15 +51,9 @@ export class ReportService {
   
   public getDetails(id:string):Observable<Student[]>{
     console.log(id);
-<<<<<<< Updated upstream
-    this.studenturl="/scores/"+id;
-    console.log(this.studenturl);
-    return this.http.get<Student []>(this.studenturl);
-=======
     this.studentdetailsurl+="/scores/"+id;
     console.log(this.studentdetailsurl);
     return this.http.get<Student []>(this.studentdetailsurl);
->>>>>>> Stashed changes
      }
      public getStudentDetailsbyName(name:string):Observable<Student[]>{
       console.log(name);
