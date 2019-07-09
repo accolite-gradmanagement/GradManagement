@@ -11,7 +11,9 @@ import { Student } from '../../student';
 export class StudentDetailsComponent implements OnInit {
 
   contents:Student[];
+  private isLoaded:boolean=false;
   constructor(private reportService: ReportService,
+
     private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class StudentDetailsComponent implements OnInit {
   // {
   //   this.getDetailsbyName(name);
   // }
-   
+   this.isLoaded=false;
   this.getDetails(id);
    
 }
@@ -36,6 +38,7 @@ getDetails(id:string){
   this.reportService.getDetails(id)
     .subscribe(data=> {this.contents = data
       console.log(this.contents);
+      this.isLoaded=true;
       
     });
 
