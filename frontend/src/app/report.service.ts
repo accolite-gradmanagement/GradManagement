@@ -10,6 +10,7 @@ import { Details } from './details';
 import {Employee} from './employee';
 import { addTestinfo } from './addTestinfo';
 
+
 @Injectable({
   providedIn:'root'
 })
@@ -39,10 +40,10 @@ export class ReportService {
     return this.http.get<string[]>(this._url+ "/scores/"+ name+"/batch");
      }
 
-     public gettests(bname:string):Observable<Tests>{
+     public gettests(bname:string):Observable<Tests[]>{
        console.log(bname);
       
-      return this.http.get<Tests>(this._url+"/scores/"+bname+"/testname");
+      return this.http.get<Tests[]>(this._url+"/scores/"+bname+"/testname");
        }
 
   public getList(somelist:string):Observable<IReport[]>{
