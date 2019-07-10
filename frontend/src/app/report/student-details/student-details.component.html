@@ -10,7 +10,32 @@
          </button>
          
 
-
+       <div class="row" id="Search">
+        
+         <h4 align="center">Please enter Employee Name for details </h4>
+         <div class="col-md-4 col-md-offset-4">
+           <div class="panel panel-default">
+             <div class="panel-heading">Employee Search</div>
+             <div class="panel-body">
+               <form>
+                 <!-- <input type="text" class="form-control" placeholder="Email ID" title="Email ID"/><br/> -->
+                 <input type="text" id="searchByName" class="form-control" [(ngModel)]="nameSearch" name="searchByName" placeholder="Search By Employee Name"><br/>
+                 <button type="button" class="btn btn-primary login-btn" (click)="onSearch()" > 
+                    <span class="glyphicon glyphicon-search"></span> Search
+                  </button>
+                 <!-- <button class="btn btn-primary login-btn">Submit</button><br/> -->
+                 <!-- <div class="space-top-10">
+                   <p>By proceeding, You agree with our <a>Terms of Service</a> & <a>Privacy Policy</a></p>
+                 </div>
+                 <div class="width-per-100 space-top-10"> 
+                   <button class="btn btn-default login-btn login-btn-ga"><i class="fa fa-google-plus-square"></i> Connect with Google</button>
+                 </div> -->
+               </form>
+               <div class="space-top-20"></div>
+             </div>
+           </div>
+         </div>
+       </div>
 
 
 
