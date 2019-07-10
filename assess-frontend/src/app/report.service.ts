@@ -14,13 +14,15 @@ import {Employee} from './employee';
 })
 
 export class ReportService {
-  private url: string= "/assets/test.json";
-  private urlyear: string="/scores/year";
-  private url_yearname: string="/scores/name/batch";
-  private urlbname: string="/scores/batch/testname";
-  private studentdetailsurl: string=" ";
-  private formDetailsUrl:string;
-  private detailsUrl: string="/add/score";
+  private _url ="http://localhost:8080";
+/*   private url: string= "/assets/test.json";
+ */  private urlyear: string=this._url+"/scores/year";
+  private url_yearname: string=this._url;
+  private urlbname: string=this._url;
+  private studentdetailsurl: string=this._url;
+  private studenturl: string=this._url;
+  private formDetailsUrl:string=this._url;
+  private detailsUrl: string=this._url+"/add/score";
 
  
   constructor(private http: HttpClient) { }
@@ -33,41 +35,35 @@ export class ReportService {
 
    public getbatches(name:number):Observable<string []>{
      console.log(name);
-    this.url_yearname = "/scores/"+ name+"/batch";
-    return this.http.get<string[]>(this.url_yearname);
+    return this.http.get<string[]>(this._url+ "/scores/"+ name+"/batch");
      }
 
      public gettests(bname:string):Observable<Tests>{
        console.log(bname);
-      this.urlbname = "/scores/"+bname+"/testname";
-      return this.http.get<Tests>(this.urlbname);
+      
+      return this.http.get<Tests>(this._url+"/scores/"+bname+"/testname");
        }
 
   public getList(somelist:string):Observable<IReport[]>{
-    return this.http.get<IReport []>(somelist);
+    return this.http.get<IReport []>(this._url+somelist);
   }
   
-  public getStudentDetails(id: string):Observable<Student[]>{
+  public getDetails(id:string):Observable<Student[]>{
     console.log(id);
-    this.studentdetailsurl="/scores/"+id;
-    console.log(this.studentdetailsurl);
-    return this.http.get<Student []>(this.studentdetailsurl);
+    
+    
+    return this.http.get<Student []>(this._url+"/scores/"+id);
      }
-
-
-     public getStudentDetailsbyName(name: string):Observable<Student[]>{
+     public getStudentDetailsbyName(name:string):Observable<Student[]>{
       console.log(name);
-      this.studentdetailsurl="/scores/name/"+name;
-      console.log(this.studentdetailsurl);
-      return this.http.get<Student []>(this.studentdetailsurl);
+      return this.http.get<Student []>(this._url+"/scores/name/"+name);
        }
-
 
        public getDetailsinForm(id: number):Observable<Employee>{
         console.log(id);
-        this.formDetailsUrl="/employee/"+id;
+        
         console.log(this.studentdetailsurl);
-        return this.http.get<Employee>(this.formDetailsUrl);
+        return this.http.get<Employee>(this._url+"/employee/"+id);
          }
 
        public addNewDetails(details: Details): Observable<Details> {

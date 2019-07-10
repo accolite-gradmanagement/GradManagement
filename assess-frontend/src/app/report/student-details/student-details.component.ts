@@ -11,7 +11,9 @@ import { Student } from '../../student';
 export class StudentDetailsComponent implements OnInit {
 
   contents:Student[];
+  private isLoaded:boolean=false;
   constructor(private reportService: ReportService,
+
     private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -19,37 +21,37 @@ export class StudentDetailsComponent implements OnInit {
   const name = this.route.snapshot.paramMap.get('name');
   console.log(id);
   console.log(name);
+  this.isLoaded=false;
   if(id)
   {
     this.getDetails(id);
   }
   else 
   {
-    this.getDetailsbyName(name);
+    this.getStudentDetailsbyName(name);
   }
    
-   
-  }
-  getDetails(id:string){
-    
-    this.reportService.getStudentDetails(id)
-      .subscribe(data=> this.contents = data);
-
+/*   this.getDetails(id);
+ */   
+}
+getDetails(id:string){
+  
+  this.reportService.getDetails(id)
+    .subscribe(data=> {this.contents = data
       console.log(this.contents);
-  }
-  getDetailsbyName(name:string){
+      this.isLoaded=true;
+      
+    });
+
+    
+}
+getStudentDetailsbyName(name:string){
     
     this.reportService.getStudentDetailsbyName(name)
     .subscribe(data=>{ 
       this.contents = data;
       console.log(this.contents);
-      // if(this.contents.length==0) 
-      // { 
-       
-      //   this.toastr.error('error','No record found for this input');
-      //   console.log(this.contents);
-      // }
-      
+      this.isLoaded=true; 
     }
       );
 
