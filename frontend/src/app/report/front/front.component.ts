@@ -18,7 +18,7 @@ export class FrontComponent implements OnInit {
   selectedtest: string ="Select test...";
   years: number[];
   batches:string[];
-  tests:Tests;
+  tests:Tests[];
   report:IReport[];
   createAccountForm: FormGroup;
 

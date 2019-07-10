@@ -10,12 +10,14 @@ import { Details } from './details';
 import {Employee} from './employee';
 import { addTestinfo } from './addTestinfo';
 
+
 @Injectable({
   providedIn:'root'
 })
 
 export class ReportService {
-  private _url ="http://localhost:8080";
+  // private _url ="http://10.4.14.76:8084"; 
+private _url ="http://localhost:8080";
 /*   private url: string= "/assets/test.json";
  */  private urlyear: string=this._url+"/scores/year";
   private url_yearname: string=this._url;
@@ -39,10 +41,10 @@ export class ReportService {
     return this.http.get<string[]>(this._url+ "/scores/"+ name+"/batch");
      }
 
-     public gettests(bname:string):Observable<Tests>{
+     public gettests(bname:string):Observable<Tests[]>{
        console.log(bname);
       
-      return this.http.get<Tests>(this._url+"/scores/"+bname+"/testname");
+      return this.http.get<Tests[]>(this._url+"/scores/"+bname+"/testname");
        }
 
   public getList(somelist:string):Observable<IReport[]>{

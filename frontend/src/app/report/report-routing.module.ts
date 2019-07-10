@@ -8,6 +8,7 @@ const routes: Routes = [
  { path: '', component: FrontComponent,pathMatch:'full'},
  { path: 'detail/:id', component: StudentDetailsComponent,pathMatch:'full' },
  { path: 'detail/name/:name', component: StudentDetailsComponent,pathMatch:'full' },
+ { path: 'name', component:StudentDetailsComponent,pathMatch:'full'},
  { path: 'newDetails', component: NewDetailsComponent,pathMatch:'full'}
 ];
 
