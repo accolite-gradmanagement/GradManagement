@@ -144,6 +144,16 @@ public class GradScoreController {
 		if(gradScores == null){
 			return new ResponseEntity<List<GradScore>>(HttpStatus.NOT_FOUND);
 		}
+
+		// Calculating rank of employee for each test
+		int testId,employeeId;
+
+		for(GradScore gs: gradScores){
+			testId = gs.getGradTest().getTestId();
+			employeeId = gs.getGradEmployee().getEmployeeId();
+			gs.setGradRank(calculateRank(employeeId,testId));
+		}
+
 		return new ResponseEntity<List<GradScore>>(gradScores,HttpStatus.OK);
 	}
 
