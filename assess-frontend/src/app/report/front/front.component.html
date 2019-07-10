@@ -14,7 +14,7 @@
       <body>
         <!-- <div class="panel panel-default"> -->
             <div class="panel-heading">
-                <h1 align="center">Assessment Management</h1>
+                <h2>Assessment Management</h2>
             </div>
       
             
@@ -24,7 +24,7 @@
                 <span class="glyphicon glyphicon-search"></span> Search
               </button>
               
-              <button type="button" class="btn btn-default" routerLink="/newDetails"> 
+              <button type="button" class="btn btn-default"  (click)="sample()" routerLink="newDetails"> 
                 <span class="glyphicon glyphicon-plus"></span>Add Details
               </button>
                 <!-- <button type="button" class="button"  routerLink="/newDetails">Add Details</button>      -->
@@ -100,7 +100,7 @@
                  
                   <tr *ngFor="let product of report; let i=index" [attr.data-index]="i">
                           
-                    <a routerLink="/detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeName}}</td> </a>
+                    <a routerLink="detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeName}}</td> </a>
                     <td>{{product.score}}</td>
                    
                     <!-- <td>{{  ( (((i+1)*25)-1)/99 )*100      }}</td> -->
@@ -148,11 +148,11 @@
                               <a routerLink="/detail/{{product.gradEmployee.employeeId}}"> <td>{{product.gradEmployee.employeeId}}</td> </a>
                               <td>{{product.gradEmployee.employeeName}}</td> 
                               <td>{{product.score}}</td>
-      <!--                          
+                         
                                <td>{{product.correct}}</td>
-                               <td>{{product.incorrect}}</td> -->
+                               <td>{{product.incorrect}}</td> 
                                
-                              <!-- <td>{{i+1}}</td>
+                              <td>{{i+1}}</td>
                           </tr>
                           
                       

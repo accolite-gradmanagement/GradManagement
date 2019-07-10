@@ -89,7 +89,17 @@ onSearch()
       {
         this.router.navigate(["/detail/name",this.nameSearch]);
       }
-    })
+    });
+    this.selectedyear="Select year...";
+    this.selectedbatch="Select batch...";
+    this.selectedtest="Select test...";
+}
+
+sample(){
+  this.selectedyear="Select year...";
+  this.selectedbatch="Select batch...";
+  this.selectedtest="Select test...";
+
 }
 
 }
