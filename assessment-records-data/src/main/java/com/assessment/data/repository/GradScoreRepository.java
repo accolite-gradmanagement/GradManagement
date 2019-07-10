@@ -24,7 +24,7 @@ public interface GradScoreRepository extends PagingAndSortingRepository<GradScor
 			" from grad_score where test_id = ?2 ) " +
 			" select grad " +
 			" from grad_rank " +
-			" where employee_id = ?1 and test_id = ?2 ",nativeQuery = true)
+			" where employee_id = ?1 ",nativeQuery = true)
 	public  int calculateRank(int employeeId, int testId);
 
 

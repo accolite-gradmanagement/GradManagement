@@ -6,5 +6,5 @@ export class Student{
  score: number;
  correctQuestions: number;
  incorrectQuestions: number;
-   
+   gradRank:number;
 }
