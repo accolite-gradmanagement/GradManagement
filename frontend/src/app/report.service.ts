@@ -8,13 +8,14 @@ import { Tests } from './Tests';
 import { Student } from './student';
 import { Details } from './details';
 import {Employee} from './employee';
+import { addTestinfo } from './addTestinfo';
 
 @Injectable({
   providedIn:'root'
 })
 
 export class ReportService {
-  private _url ="http://10.4.14.76:8084";
+  private _url ="http://localhost:8080";
 /*   private url: string= "/assets/test.json";
  */  private urlyear: string=this._url+"/scores/year";
   private url_yearname: string=this._url;
@@ -65,7 +66,13 @@ export class ReportService {
         console.log(this.studentdetailsurl);
         return this.http.get<Employee>(this._url+"/employee/"+id);
          }
-
+         public gettestDetailsinForm(tId: number):Observable<addTestinfo>{
+          console.log(tId);
+          this.formDetailsUrl="/gradTests/"+tId;
+         
+          return this.http.get<addTestinfo>(this.formDetailsUrl);
+           }
+  
        public addNewDetails(details: Details): Observable<Details> {
         console.log(details);
         return this.http.post<Details>(this.detailsUrl, details);

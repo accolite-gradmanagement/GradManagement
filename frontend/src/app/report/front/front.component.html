@@ -55,7 +55,7 @@
                   
                   <select formControlName="tests" class="form-control" [(ngModel)]="selectedtest">
                     <option>Select test...</option>
-                    <option *ngFor="let test of tests" [value]="test">{{test}}</option>
+                    <option *ngFor="let test of tests" [value]="test.testName">{{test.testName}}</option>
                   </select>
                 </div>
                  <div class="col-sm-3">

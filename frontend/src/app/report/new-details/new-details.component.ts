@@ -7,6 +7,7 @@ import {Details} from '../../details';
 import { Student } from 'src/app/student';
 import {ToastrService} from 'ngx-toastr';
 import {Employee} from '../../employee';
+import{addTestinfo} from '../../addTestinfo';
 
 @Component({
   selector: 'app-new-details',
@@ -17,6 +18,7 @@ export class NewDetailsComponent implements OnInit {
   submitted=false;
   details: Details;
   formDetails: Employee;
+  formtestDetails:addTestinfo;
   
   selectedyear: string;
   years: number[];
@@ -68,9 +70,15 @@ export class NewDetailsComponent implements OnInit {
     }
   }
 
-  onChangeTest(tname: string){
-    this.details.testName=tname;
-  }
+  onChangeTest(tId:number){
+    this.reportservice.gettestDetailsinForm(tId)
+        .subscribe(data =>{
+          this.formtestDetails = data;
+          console.log(this.formtestDetails);
+          this.details.totalQuestions=this.formtestDetails.totalQuestions;
+  })
+}
+ 
  
 onSubmit(){
   this.submitted = true;

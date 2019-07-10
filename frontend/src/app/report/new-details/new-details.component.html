@@ -102,49 +102,15 @@
             <div class="form-group row">
                 <label for="testname" class="col-sm-3 col-form-label">Test Name</label>
                 <div class="col-sm-9">
-                        <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="details.test">
+                        <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="details.testName">
                                 <option [disabled]="true" [selected]= "true">Select test...</option>
-                                <option *ngFor="let test of tests" [value]="test">{{test}}</option>
+                                <option *ngFor="let test of tests" [value]="test.testId">{{test.testName}}</option>
                               </select>
                    
                 </div>
             </div>
            
-            <!-- <div class="form-group row">
-              <label for="year" class="col-sm-3 col-form-label">Year</label>
-              <div class="col-sm-9">
-                    <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
-                            <option >Select year...</option>
-                            
-                            <option *ngFor="let year of years" [value]="year">{{year}}</option>
-                          </select>   
-               
-              </div>
-          </div>
-         
-          <div class="form-group row">
-            <label for="batch" class="col-sm-3 col-form-label">Batch</label>
-            <div class="col-sm-9">
-                    <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="details.batch">
-                            <option [disabled]="true" [selected]= "true">Select batch...</option>
-                            <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
-                          </select>
-                
-            </div>
-        </div>
-        
-  
            
-            <div class="form-group row">
-                <label for="testname" class="col-sm-3 col-form-label">Test Name</label>
-                <div class="col-sm-9">
-                        <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="details.test">
-                                <option [disabled]="true" [selected]= "true">Select test...</option>
-                                <option *ngFor="let test of tests" [value]="test">{{test}}</option>
-                              </select>
-                   
-                </div>
-            </div> -->
             <!-- total ques -->
             <div class="form-group row">
               <label for="totalquestions" class="col-sm-3 col-form-label">Total Questions</label>
@@ -158,44 +124,21 @@
               <label for="correctquestions" class="col-sm-3 col-form-label">Correct Questions</label>
               <div class="col-sm-9">
                   <input placeholder="Correct Questions" type="text" class="form-control" id="correctquestions"
-                      [(ngModel)]="details.correctQuestions" name="testname"  />
+                      [(ngModel)]="details.correctQuestions" name="correctname"  />
               </div>
           </div>
             
-           <!-- incorrect ques -->
-           <!-- <div class="form-group row">
-            <label for="incorrectquestions" class="col-sm-3 col-form-label">Incorrect Questions</label>
-            <div class="col-sm-9">
-                <input placeholder="Incorrect Questions" type="text" class="form-control" id="incorrectquestions"
-                    [(ngModel)]="details.incorrectQuestions" name="testname"  required />
-            </div> -->
-        <!-- </div> -->
-         <!-- success % -->
-         <!-- <div class="form-group row">
-          <label for="successperc" class="col-sm-3 col-form-label">Success Percentage</label>
-          <div class="col-sm-9">
-              <input  placeholder="Success Percentage" type="text" class="form-control" id="successperc"
-                  [(ngModel)]="details.successPercentage" name="testname"  required />
-          </div>
-      </div> -->
+          
   
       <div class="form-group row">
         <label for="score" class="col-sm-3 col-form-label">Score</label>
         <div class="col-sm-9">
             <input placeholder="Score" type="text" class="form-control" id="score"
-                [(ngModel)]="details.score" name="testname"  required />
+                [(ngModel)]="details.score" name="scorename"  required />
         </div>
     </div>
   
-     <!-- <div class="form-group row">
-      <label for="rank" class="col-sm-3 col-form-label">Rank</label>
-      <div class="col-sm-9">
-          <input placeholder="Rank" type="text" class="form-control" id="rank"
-              [(ngModel)]="details.rank" name="testname"  required />
-      </div>
-  </div>  -->
-      
-        
+     
             
             <div class="form-group row">
                 <div class="col-sm-9">
@@ -206,5 +149,3 @@
         <div class="alert alert-info" role="alert"  *ngIf="submitted">
             Submitted
         </div>
-
-
