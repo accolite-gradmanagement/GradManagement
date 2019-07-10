@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {ReportService} from '../../report.service';
+import { ReportService } from '../../report.service';
 import { Student } from '../../student';
 
 @Component({
@@ -9,7 +9,8 @@ import { Student } from '../../student';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
-
+  istable: boolean=false;
+  nameSearch: string;
   contents:Student[];
   private isLoaded:boolean=false;
   constructor(private reportService: ReportService,
@@ -25,11 +26,9 @@ export class StudentDetailsComponent implements OnInit {
   if(id)
   {
     this.getDetails(id);
+    this.istable=true;
   }
-  else 
-  {
-    this.getStudentDetailsbyName(name);
-  }
+  
    
 /*   this.getDetails(id);
  */   
@@ -45,16 +44,27 @@ getDetails(id:string){
 
     
 }
-getStudentDetailsbyName(name:string){
-    
-    this.reportService.getStudentDetailsbyName(name)
-    .subscribe(data=>{ 
-      this.contents = data;
-      console.log(this.contents);
-      this.isLoaded=true; 
-    }
-      );
 
-  }
+
+  onSearch()
+{
+  this.reportService.getStudentDetailsbyName(this.nameSearch).subscribe(data=>
+    {
+      if(data.length==0)
+      {
+        //this.toastr.error("No record for this data ");
+        alert('No such data present');
+      }
+      else
+      {
+        // this.router.navigate(["score/detail/name",this.nameSearch]);
+        this.contents = data;
+        console.log(this.contents);
+        this.isLoaded=true; 
+        this.istable=true;
+      }
+    });
+    
+}
 
 }
