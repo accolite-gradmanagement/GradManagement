@@ -17,10 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private router:Router) {  
   
     document.body.style.backgroundImage = null;
-    if(this.loggedInStatus==false)
-    {
-      this.router.navigate(['login']);
-    }
+    // if(this.loggedInStatus==false)
+    // {
+    //   this.router.navigate(['login']);
+    // }
   }
 
   ngOnInit() {

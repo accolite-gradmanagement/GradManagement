@@ -7,15 +7,16 @@ import { AdminComponent } from './admin/admin.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { UserComponent } from './user/user.component';
+import { AdminguardGuard } from '../adminguard.guard';
 
 const routes: Routes = [
   
   {path:'signup',component:SignupComponent},
   {path:'login',component:LoginComponent},
-  {path:'home',component:HomeComponent},
-  {path:'admin-user',component:AdminComponent},
+  {path:'home',component:HomeComponent,canActivate: [AdminguardGuard]},
+  {path:'admin-user',component:AdminComponent,canActivate: [AdminguardGuard]},
   {path:'front',component:FrontpageComponent},
-  {path: 'user', component: UserComponent},
+  {path: 'user', component: UserComponent,canActivate: [AdminguardGuard]},
   {path:'resetpassword',component:ResetpasswordComponent},
   {path:'',redirectTo:'front',pathMatch:'full'}
   

@@ -33,7 +33,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSelectModule,
     MultiSelectAllModule,
     AngularDateTimePickerModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     ToastrModule.forRoot(
       {
         timeOut:3000,

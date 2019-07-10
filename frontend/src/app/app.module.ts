@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmpformComponent } from './demand/empform/empform.component';
 import { CommonModule } from '@angular/common';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { AdminguardGuard } from './adminguard.guard';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
   ],
 
   exports: [ConfirmationDialogComponent],
-  providers: [GradService],
+  providers: [GradService,AdminguardGuard],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent],
 })
