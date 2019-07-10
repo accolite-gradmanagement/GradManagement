@@ -43,7 +43,21 @@
       
   
   
-            <li [ngClass]="arg=='score'? 'nav-link active':'nav-link'"><a   *ngIf="admin || trainer"  style="color:white" routerLink='/score' (click)="activefunc('score')">Score</a></li>
+            <li [ngClass]="arg=='score'? 'nav-link active':'nav-link'">
+                <a *ngIf="admin || trainer "  style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Score
+                  </a>
+
+                  <div (click)="activefunc('ed')" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <!--                 <li><a  routerLink="/view">Timesheets</a></li>
+                       -->                <li><a *ngIf="admin || trainer " routerLink="/score"> Display Details</a></li>
+                                      <li><a *ngIf="admin || trainer" routerLink="/score/newDetails">Add Details</a></li>
+                                      
+                                  </div>
+                
+                </li>
+
+
             <li [ngClass]="arg=='ed'? 'nav-link active':'nav-link'" class="nav-item dropdown">
               <a *ngIf="admin "  style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Employee Demand
