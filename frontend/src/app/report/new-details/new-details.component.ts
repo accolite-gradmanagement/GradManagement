@@ -23,7 +23,7 @@ export class NewDetailsComponent implements OnInit {
   selectedyear: string;
   years: number[];
    batches:string[];
-   tests:Tests;
+   tests:Tests[];
    report:IReport[];
   createAccountForm: FormGroup;
   
