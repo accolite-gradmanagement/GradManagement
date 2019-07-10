@@ -10,17 +10,25 @@
      
                 
         
-        <div class="panel-body">
+        <!-- <div class="panel-body">
             <input class="filter" type="text" id="searchByName" [(ngModel)]="nameSearch" name="searchByName" placeholder="Search By Name">
             <input class="filter" type="text" id="searchById" [(ngModel)]="empCodeSearch" name="searchById" placeholder="Search By Employee Code">
             <span class="glyphicon glyphicon-search"></span>
 
-        </div>
+        </div> -->
         
 
         <div class="tableFixHead panel-body" >
-
-            <table class="table table-striped" matSort (matSortChange)="sortData($event)">
+            <ag-grid-angular 
+                style="width: 100%;" 
+                class="ag-theme-balham"
+                [rowData]="rowData" 
+                [columnDefs]="columnDefs"
+                [multiSortKey]="multiSortKey"
+                domLayout='autoHeight'
+                >
+            </ag-grid-angular>
+            <!-- <table class="table table-striped" matSort (matSortChange)="sortData($event)">
                 <thead >
                     <tr>
                         <th mat-sort-header="Employee Code">Employee Code</th>
@@ -72,7 +80,7 @@
                             <i class="fa fa-trash-o" style="color:red;font-size:25px"></i></button></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
     <!-- </div> -->
 <!-- </body> -->
