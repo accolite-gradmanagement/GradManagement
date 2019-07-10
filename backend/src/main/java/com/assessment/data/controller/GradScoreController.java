@@ -101,18 +101,19 @@ public class GradScoreController {
 
 
 	@RequestMapping(value="/scores/{batch}/testname",method=RequestMethod.GET)
-	public ResponseEntity<List<String>> getTestName(@PathVariable String batch){
-		List<String> testnames = new ArrayList<>();
+	public ResponseEntity<List<GradTest>> getTestName(@PathVariable String batch){
 		List<GradTest> gradTests = gradTestService.findByBatchName(batch);
-		Set<String> testNameSet = new HashSet<>();
+		List<GradTest> gradTestsUnique = new ArrayList<>();
+		Set<GradTest> gradTestSet = new HashSet<>();
 		for(GradTest gt: gradTests){
-			testNameSet.add(gt.getTestName());
+			gradTestSet.add(gt);
 		}
-		testnames.addAll(testNameSet);
-		if (testnames.isEmpty()){
-			return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
+
+		gradTestsUnique.addAll(gradTestSet);
+		if (gradTestsUnique.isEmpty()){
+			return new ResponseEntity<List<GradTest>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<String>>(testnames,HttpStatus.OK);
+		return new ResponseEntity<List<GradTest>>(gradTestsUnique,HttpStatus.OK);
 	}
 
 
