@@ -30,6 +30,7 @@ export class FrontComponent implements OnInit {
 
   this.batches=[];
   this.report=null;
+  this.noData=false;
   this.createAccountForm = new FormGroup({
     years: new FormControl(''),
     batches: new FormControl(''),
