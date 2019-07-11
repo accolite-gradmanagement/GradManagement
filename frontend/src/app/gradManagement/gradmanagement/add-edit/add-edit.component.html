@@ -181,13 +181,11 @@
             <div class="alert alert-info" role="alert">
                 Fields marked with (*) are compulsory
             </div>
-            <button style="float: right;" type="submit" class="btn btn-success btn-lg">Submit</button>
+            <button style="float: right;margin: 5px;" type="submit" class="btn btn-success btn-lg">Submit</button>
+            <button style="float: right; margin: 5px;" type="button" class="btn btn-danger btn-lg" (click)="onCancelClick()">Cancel</button>
         </form>
-     
-         
-            
-        
-    
         <div class="alert alert-success" role="alert" [hidden]="!submitted">
-            You submitted successfully!
-        </div>
+                You submitted successfully!
+            </div>
+    </div>
+        

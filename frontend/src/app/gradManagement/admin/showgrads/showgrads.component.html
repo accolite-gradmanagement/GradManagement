@@ -1,34 +1,39 @@
 <!-- <p>showgrads works!</p> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <!-- <body> -->
-    <!-- <div class="panel panel-default"> -->
-        <!-- <div class="panel-heading">
+<!-- <div class="panel panel-default"> -->
+<!-- <div class="panel-heading">
             <h1>Grad Management</h1>
         </div> -->
-        <!-- <h1>Grad Management</h1> -->
-        <!-- <i style="font-size:24px;color:rgba(54, 53, 53, 0.644)" class="fa">&#xf002;</i> -->
-     
-                
-        
-        <!-- <div class="panel-body">
+<!-- <h1>Grad Management</h1> -->
+<!-- <i style="font-size:24px;color:rgba(54, 53, 53, 0.644)" class="fa">&#xf002;</i> -->
+
+
+
+<!-- <div class="panel-body">
             <input class="filter" type="text" id="searchByName" [(ngModel)]="nameSearch" name="searchByName" placeholder="Search By Name">
             <input class="filter" type="text" id="searchById" [(ngModel)]="empCodeSearch" name="searchById" placeholder="Search By Employee Code">
             <span class="glyphicon glyphicon-search"></span>
 
         </div> -->
-        
 
-        <div class="tableFixHead panel-body" >
-            <ag-grid-angular 
-                style="width: 100%;" 
-                class="ag-theme-balham"
-                [rowData]="rowData" 
-                [columnDefs]="columnDefs"
-                [multiSortKey]="multiSortKey"
-                domLayout='autoHeight'
-                >
-            </ag-grid-angular>
-            <!-- <table class="table table-striped" matSort (matSortChange)="sortData($event)">
+<div class="tableFixHead panel-body">
+    <button type="button" class="btn btn-primary" (click)="deleteGrads()">
+        Delete
+    </button>
+    <p style="position: relative;"><small>Select the rows to delete</small></p>
+    <ag-grid-angular style="width: 100%;" 
+        class="ag-theme-balham" 
+        [rowData]="rowData" 
+        [columnDefs]="columnDefs"
+        [rowSelection]="rowSelection" 
+        [rowMultiSelectWithClick]="true" 
+        [multiSortKey]="multiSortKey"
+        domLayout='autoHeight' 
+        (gridReady)="onGridReady($event)">
+
+    </ag-grid-angular>
+    <!-- <table class="table table-striped" matSort (matSortChange)="sortData($event)">
                 <thead >
                     <tr>
                         <th mat-sort-header="Employee Code">Employee Code</th>
@@ -81,6 +86,6 @@
                     </tr>
                 </tbody>
             </table> -->
-        </div>
-    <!-- </div> -->
+</div>
+<!-- </div> -->
 <!-- </body> -->

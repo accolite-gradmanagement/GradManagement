@@ -3,8 +3,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!---------------------------------------------------------------------------------------------------->
 
-<div class="container emp-profile" >
-    <form method="post">
+<div class="container grad-profile" >
+    <!-- <form method="post"> -->
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
@@ -19,12 +19,12 @@
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        {{graduate.name}}
+                            {{graduate?.name}}
                     </h5>
                     <h6>
                         Software Developement Engineer(B7)
                     </h6>
-                    <p class="proile-rating">Employee Code : <span>{{graduate.employeeCode}}</span></p>
+                    <p class="proile-rating">Employee Code : <span>{{graduate?.employeeCode}}</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="about-tab" role="tab" aria-selected="true">About</a>
@@ -60,7 +60,7 @@
                                 <label>College </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.college}}</p>
+                                <p>{{graduate?.college}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -68,7 +68,7 @@
                                 <label>Location Preference </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.location}}</p>
+                                <p>{{graduate?.location}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -76,7 +76,7 @@
                                 <label>Date Of Joining </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.joiningDate}}</p>
+                                <p>{{graduate?.joiningDate}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -84,7 +84,7 @@
                                 <label>Batch </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.batch}}</p>
+                                <p>{{graduate?.batch}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -92,7 +92,7 @@
                                 <label>Course </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.course}}</p>
+                                <p>{{graduate?.course}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -100,7 +100,7 @@
                                 <label>Branch </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.branch}}</p>
+                                <p>{{graduate?.branch}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -108,7 +108,7 @@
                                 <label>Current Percent(%) or CGPA </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.cgpa}} </p>
+                                <p>{{graduate?.cgpa}} </p>
                             </div>
                         </div>
                         <div class="row">
@@ -116,7 +116,7 @@
                                 <label>Contact Number </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.personalNumber}}</p>
+                                <p>{{graduate?.personalNumber}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -124,7 +124,7 @@
                                 <label>Email ID </label>
                             </div>
                             <div class="col-md-6">
-                                <a href="mailto:{{graduate.personalEmail}} ">{{graduate.personalEmail}}</a>
+                                <a href="mailto:{{graduate?.personalEmail}} ">{{graduate?.personalEmail}}</a>
                             </div>
                         </div>
                         <div class="row">
@@ -132,7 +132,7 @@
                                     <label>Date of Birth </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{graduate.dob}}</p>
+                                    <p>{{graduate?.dob}}</p>
                                 </div>
                             </div>
                         <div class="row">
@@ -140,7 +140,7 @@
                                 <label>NativePlace </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.nativePlace}}</p>
+                                <p>{{graduate?.nativePlace}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -148,7 +148,7 @@
                                 <label>Current Place </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.currentPlace}}</p>
+                                <p>{{graduate?.currentPlace}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -156,7 +156,7 @@
                                 <label>Parent Contact </label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.parentContact}}</p>
+                                <p>{{graduate?.parentContact}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -164,14 +164,14 @@
                                 <label>Parent Postal Address</label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{graduate.parentAddress}}</p>
+                                <p>{{graduate?.parentAddress}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 </div>
 
 <!-- <ng-template #elseBlock>
