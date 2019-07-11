@@ -6,7 +6,7 @@
  */    color:white;
 }
 .container-fluid{
-    height : 60px;
+    // height : 60px;
     background-color:#337ab7;
 }
 
@@ -33,7 +33,7 @@
  */    color:white;
 }
 .container-fluid{
-    height : 60px;
+    // height : 60px;
     background-color:#337ab7;
 }
 
@@ -47,8 +47,13 @@
 }
 .nav-link:hover{
     background-color:lightblue;
+<<<<<<< HEAD
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+=======
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; 
+>>>>>>> a98c6464bdc282be46220016cac2475662e14e10
 }
 .nav-link{
     font-size: 20px;
@@ -58,10 +63,17 @@
 
 .navbar-nav > .active > a {
     // color: black;
+<<<<<<< HEAD
     background-color: lightblue ; 
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
    
+=======
+    background-color: lightblue ;  
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;  
+
+>>>>>>> a98c6464bdc282be46220016cac2475662e14e10
   }
 //   .nav-item > a:hover {
 //     color: green;

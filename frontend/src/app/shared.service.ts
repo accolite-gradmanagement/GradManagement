@@ -129,4 +129,10 @@ export class SharedService {
   {
     return this.http.get<Batch>(this.viewTimesheetForBatch+batchId);
   }
+
+  loggedInRouterGuard(){
+    return !!localStorage.getItem('loggedIn')
+  }
+
+
 }

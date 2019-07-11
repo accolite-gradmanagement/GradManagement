@@ -4,7 +4,7 @@ import { GradService } from 'src/app/grad.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from 'src/app/gradManagement/confirmation-dialog/confirmation-dialog.component';
 import {Sort} from '@angular/material/sort';
-
+import { MyLinkRendererComponent } from './my-link-renderer.component';
 
 @Component({
   selector: "app-showgrads",
@@ -17,33 +17,59 @@ export class ShowgradsComponent implements OnInit {
     
   }
 
-  // columnDefs = [
-  //   {headerName: "Employee Code", field: "employeeCode", sortable:true, filter:true},
-  //   {headerName: "Name", field: "name", sortable:true, filter:true},
-  //   {headerName: "Email", field: "email", filter:true},
-  //   {headerName: "College", field: "college", filter:true},
-  //   {headerName: "Location", field: "location", filter:true},
-  //   {headerName: "Date of Joining", field: "dateOfJoining", sortable:true, filter:true},
-  //   {headerName: "Batch", field: "batch", filter:true},
-  //   {headerName: "Date of Joining Reconfirmation", field: "dateOfJoiningReconfirmation", filter:true},
-  //   {headerName: "Remarks", field: "remarks"},
-  //   {headerName: "Course", field: "course", filter:true},
-  //   {headerName: "Branch", field: "branch", filter:true},
-  //   {headerName: "Current CGPA", field: "cgpa", sortable:true},
-  //   {headerName: "Personal Number", field: "personalNumber"},
-  //   {headerName: "Personal Email", field: "personalEmail"},
-  //   {headerName: "Date of Birth", field: "dob", sortable:true},
-  //   {headerName: "Native Place", field: "nativePlace"},
-  //   {headerName: "Current Place", field: "currentPlace", filter:true},
-  //   {headerName: "Parent Contact", field: "parentContact"},
-  //   {headerName: "Parent Address", field: "parentAddress"},
-  //   {headerName: "CV", field: "cvLink"},
-  // ]
+  emailRenderer =  function(params) {
+    return `<a href="mailto:${params.value}">${params.value}</a>`
+  }
+
+  linkRenderer =  function(params) {
+    return `<a href="${params.value}">${params.value}</a>`
+  }
+
+  columnDefs = [
+    {
+      headerName: "Employee Code", field: "employeeCode", 
+      sortable:true, filter:true, comparator:empComparator,
+      cellRendererFramework: MyLinkRendererComponent,
+      cellRendererParams: {
+        inRouterLink: "/grads",
+      }
+    },
+    {headerName: "Name", field: "name", sortable:true, filter:true},
+    {
+      headerName: "Email", field: "email", filter:true,
+      cellRenderer: this.emailRenderer
+    },
+    {headerName: "College", field: "college", filter:true},
+    {headerName: "Location", field: "location", filter:true},
+    {headerName: "Date of Joining", field: "dateOfJoining", sortable:true, filter:true},
+    {headerName: "Batch", field: "batch", filter:true},
+    {headerName: "Date of Joining Reconfirmation", field: "dateOfJoiningReconfirmation", filter:true},
+    {headerName: "Remarks", field: "remarks"},
+    {headerName: "Course", field: "course", filter:true},
+    {headerName: "Branch", field: "branch", filter:true},
+    {headerName: "Current CGPA", field: "cgpa", sortable:true},
+    {headerName: "Personal Number", field: "personalNumber"},
+    {
+      headerName: "Personal Email", field: "personalEmail",
+      cellRenderer: this.emailRenderer
+    },
+    {headerName: "Date of Birth", field: "dob", sortable:true},
+    {headerName: "Native Place", field: "nativePlace"},
+    {headerName: "Current Place", field: "currentPlace", filter:true},
+    {headerName: "Parent Contact", field: "parentContact"},
+    {headerName: "Parent Address", field: "parentAddress"},
+    {
+      headerName: "CV", field: "cvLink",
+      cellRenderer: this.linkRenderer
+    },
+  ]
 
   // searchText = '';
   nameSearch = '';
   empCodeSearch ='';
   sortedGrads: Grad[];
+  rowData: Grad[];
+  multiSortKey = "ctrl";
 
   ngOnInit() {
     this.reloadData();
@@ -54,7 +80,7 @@ export class ShowgradsComponent implements OnInit {
 
   reloadData() {
     this.gradService.getGradsList()
-      .subscribe(data => this.sortedGrads = data._embedded.gradList);
+      .subscribe(data => this.rowData = data._embedded.gradList);
   }
 
   deleteGrad(id: number) {
@@ -111,5 +137,11 @@ function compareEmp(a:string, b:string, isAsc: boolean) {
   var emp1 = parseInt(a);
   var emp2 = parseInt(b);
   return (emp1 - emp2) * (isAsc ? 1 : -1);
+}
+
+function empComparator(a:string, b:string) {
+  var emp1 = parseInt(a);
+  var emp2 = parseInt(b);
+  return (emp1 - emp2);
 }
 
