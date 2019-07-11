@@ -15,7 +15,7 @@ import{addTestinfo} from '../../addTestinfo';
   styleUrls: ['./new-details.component.css']
 })
 export class NewDetailsComponent implements OnInit {
-  submitted=false;
+  submitted: boolean=false;
   details: Details;
   formDetails: Employee;
   formtestDetails:addTestinfo;
@@ -35,6 +35,7 @@ export class NewDetailsComponent implements OnInit {
    }
 
   ngOnInit(){
+    this.submitted=false;
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});
 
@@ -82,8 +83,7 @@ export class NewDetailsComponent implements OnInit {
  
  
 onSubmit(){
-  this.submitted = true;
-  console.log(this.submitted);
+  
   
   this.details.successPercentage=(this.details.correctQuestions*100)/this.details.totalQuestions;
   console.log(this.details);
@@ -94,7 +94,11 @@ onSubmit(){
           console.log("sentDetails:", this.details);
           this.details = data;
           console.log("sentDetails:", this.details);
+          this.submitted = true;
+          console.log(this.submitted);
           alert("Submitted successfully");
+          
+          console.log(this.submitted);
         },err=>
           {
             alert("Error in creating entry.")
