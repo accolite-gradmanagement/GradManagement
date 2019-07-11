@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   
-<div *ngIf="istable"> 
+<div *ngIf="!istable"> 
     <div class="row" id="login">
       <h4 align="center">Please enter employee name for details </h4>
          <div class="col-md-4 col-md-offset-4">
@@ -29,16 +29,16 @@
     </div>
 </div>
 
-<div *ngIf="!istable">
+<div *ngIf="istable">
             <div *ngIf="isLoaded" class=" panel-body" width=vw; height=vh;>
                  <table class=" table-striped ">
                     <thead class="thead-dark">
                      </thead>
                       <tbody>
                         <tr>
-                            <td><b>Name:</b> {{contents[0].gradEmployee.employeeName}} <br> <b>Year:</b> {{contents[0].gradEmployee.year}}</td>
-                            <td><b>Emp Id:</b> {{contents[0].gradEmployee.employeeId}}<br><b>Contact:</b> {{contents[0].gradEmployee.contactNo}}</td>
-                            <td><b>Batch:</b> {{contents[0].gradEmployee.batchName}}<br> <b>Location:</b> {{contents[0].gradEmployee.location}}</td>
+                            <td><b>Name:</b> {{rowData[0].gradEmployee.employeeName}} <br> <b>Year:</b> {{rowData[0].gradEmployee.year}}</td>
+                            <td><b>Emp Id:</b> {{rowData[0].gradEmployee.employeeId}}<br><b>Contact:</b> {{rowData[0].gradEmployee.contactNo}}</td>
+                            <td><b>Batch:</b> {{rowData[0].gradEmployee.batchName}}<br> <b>Location:</b> {{rowData[0].gradEmployee.location}}</td>
                         </tr> 
                       </tbody>
                     </table>
@@ -47,7 +47,7 @@
              <div>  
                     <ag-grid-angular style="width: 100%; height: 500px" 
                           class="ag-theme-balham"
-                          [rowData]="rowData | async" 
+                          [rowData]="rowData" 
                           [columnDefs]="columnDefs"
                     >
                       

@@ -12,10 +12,10 @@ import { HttpClient } from '@angular/common/http';
 export class StudentDetailsComponent implements OnInit {
   
   columnDefs = [
-    {headerName: 'TestId', field: 'testId' },
-    {headerName: 'Test Name', field: 'testName' },
+    {headerName: 'TestId', field: 'score_id' },
+    {headerName: 'Test Name', field: 'gradTest.testName' },
     {headerName: 'Score', field: 'score'},
-    {headerName: 'Rank', field: 'rank'}
+    {headerName: 'Rank', field: 'gradRank'}
    ];
    rowData: Student[];
 
