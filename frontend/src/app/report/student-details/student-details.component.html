@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   
-<div *ngIf="istable"> 
+<div *ngIf="!istable"> 
     <div class="row" id="login">
       <h4 align="center">Please enter employee name for details </h4>
          <div class="col-md-4 col-md-offset-4">
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div *ngIf="!istable">
+<div *ngIf="istable">
             <div *ngIf="isLoaded" class=" panel-body" width=vw; height=vh;>
                  <table class=" table-striped ">
                     <thead class="thead-dark">
@@ -49,7 +49,6 @@
                           class="ag-theme-balham"
                           [rowData]="rowData" 
                           [columnDefs]="columnDefs"
-                          (gridReady)="onGridReady($events)"
                     >
                       
                     </ag-grid-angular>

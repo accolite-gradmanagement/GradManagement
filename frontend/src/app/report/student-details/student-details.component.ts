@@ -19,13 +19,13 @@ export class StudentDetailsComponent implements OnInit {
     {headerName: 'Rank', field: 'gradRank', resizable: true}
    ];
    rowData: Student[];
-   onGridReady(params)
-   {
-    this.columnApi=params.columnApi;
-    this.gridApi=params.api;
-    params.api.sizeColumnsToFit()
+  //  onGridReady(params)
+  //  {
+  //   this.columnApi=params.columnApi;
+  //   this.gridApi=params.api;
+  //   params.api.sizeColumnsToFit()
     
-   }
+  //  }
 
   istable: boolean=false;
   nameSearch: string;
@@ -36,10 +36,11 @@ export class StudentDetailsComponent implements OnInit {
     private route:ActivatedRoute,private http: HttpClient) { }
 
   ngOnInit() {
+  this.istable=false;
   const id = this.route.snapshot.paramMap.get('id');
   const name = this.route.snapshot.paramMap.get('name');
   console.log(id);
-  console.log(name);
+  console.log(name);  
   this.isLoaded=false;
   if(id)
   {
@@ -54,8 +55,8 @@ export class StudentDetailsComponent implements OnInit {
 getDetails(id:string){
   
   this.reportService.getDetails(id)
-    .subscribe(data=> {this.contents = data
-      console.log(this.contents);
+    .subscribe(data=> {this.rowData = data
+      console.log(this.rowData);
       this.isLoaded=true;
       
     });
