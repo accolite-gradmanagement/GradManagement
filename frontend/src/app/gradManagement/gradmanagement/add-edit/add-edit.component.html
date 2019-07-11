@@ -8,7 +8,7 @@
     <!--Card content-->
 
     <div class="card-body px-lg-5">
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-info" role="alert">
             Fields marked with (*) are compulsory
         </div>
         
@@ -63,6 +63,7 @@
                 <div class="col-sm-8">
                     <input placeholder="Date of Joining" type="date" class="form-control" id="doj"
                         [(ngModel)]="grad.joiningDate" name="doj" [readonly]="!adminRole&&!gradRole" />
+                        
                 </div>
             </div>
             <!-- Batch -->
@@ -177,16 +178,14 @@
                 </div>
             </div>
 
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-info" role="alert">
                 Fields marked with (*) are compulsory
             </div>
-
-            <div class="form-group row">
-                <div class="col-sm-8">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </div>
-            </div>
+            <button style="float: right;margin: 5px;" type="submit" class="btn btn-success btn-lg">Submit</button>
+            <button style="float: right; margin: 5px;" type="button" class="btn btn-danger btn-lg" (click)="onCancelClick()">Cancel</button>
         </form>
         <div class="alert alert-success" role="alert" [hidden]="!submitted">
-            You submitted successfully!
-        </div>
+                You submitted successfully!
+            </div>
+    </div>
+        

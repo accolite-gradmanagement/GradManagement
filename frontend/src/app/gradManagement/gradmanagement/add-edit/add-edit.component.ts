@@ -20,7 +20,7 @@ export class AddEditComponent implements OnInit {
 
   constructor(private gradService: GradService, private route: ActivatedRoute, private router: Router) {
     this.grad = new Grad();
-    console.log("from add edit: "+ JSON.stringify(sessionStorage));
+    console.log("from add edit: " + JSON.stringify(sessionStorage));
   }
 
   ngOnInit() {
@@ -36,9 +36,10 @@ export class AddEditComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.gradId = parseInt(params.get('id'));
     });
-    this.route.queryParams.subscribe(params => {
-      this.grad = JSON.parse(params.grad);
-    });
+    if (this.gradId)
+      this.route.queryParams.subscribe(params => {
+        this.grad = JSON.parse(params.grad);
+      });
   }
 
   // newGrad(): void {
@@ -54,13 +55,20 @@ export class AddEditComponent implements OnInit {
     else {
       this.gradService.createGrad(this.grad)
         .subscribe(data => this.grad = data, error => console.log(error));
+        this.gradId=this.grad.id;
     }
-    this.router.navigate(["/grads", this.grad.id])
+    if (this.grad.id)
+      this.router.navigate(["/grads", this.gradId]);
     //this.grad = new Grad();
   }
 
   onSubmit() {
     this.submitted = true;
     this.save();
+  }
+  onCancelClick() {
+    if (this.grad.id)
+      this.router.navigate(["/grads", this.grad.id]);
+
   }
 }

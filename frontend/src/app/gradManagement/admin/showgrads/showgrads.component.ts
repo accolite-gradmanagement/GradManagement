@@ -3,7 +3,7 @@ import { Grad } from 'src/app/gradManagement/gradmanagement/Grad';
 import { GradService } from 'src/app/grad.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from 'src/app/gradManagement/confirmation-dialog/confirmation-dialog.component';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { MyLinkRendererComponent } from './my-link-renderer.component';
 
 @Component({
@@ -12,64 +12,70 @@ import { MyLinkRendererComponent } from './my-link-renderer.component';
   styleUrls: ["./showgrads.component.scss"]
 })
 export class ShowgradsComponent implements OnInit {
+  private rowSelection;
+  private gridApi;
 
-  constructor(private gradService: GradService,public dialog: MatDialog,) { 
-    
+  constructor(private gradService: GradService, public dialog: MatDialog, ) {
+   
   }
 
-  emailRenderer =  function(params) {
+  emailRenderer = function (params) {
     return `<a href="mailto:${params.value}">${params.value}</a>`
   }
 
-  linkRenderer =  function(params) {
+  linkRenderer = function (params) {
     return `<a href="${params.value}">${params.value}</a>`
   }
 
+
   columnDefs = [
     {
-      headerName: "Employee Code", field: "employeeCode", 
-      sortable:true, filter:true, comparator:empComparator,
+      headerName: "Employee Code", field: "employeeCode",
+      sortable: true, filter: true, comparator: empComparator,
       cellRendererFramework: MyLinkRendererComponent,
       cellRendererParams: {
         inRouterLink: "/grads",
       }
     },
-    {headerName: "Name", field: "name", sortable:true, filter:true},
+    { headerName: "Name", field: "name", sortable: true, filter: true },
     {
-      headerName: "Email", field: "email", filter:true,
+      headerName: "Email", field: "email", filter: true,
       cellRenderer: this.emailRenderer
     },
-    {headerName: "College", field: "college", filter:true},
-    {headerName: "Location", field: "location", filter:true},
-    {headerName: "Date of Joining", field: "dateOfJoining", sortable:true, filter:true},
-    {headerName: "Batch", field: "batch", filter:true},
-    {headerName: "Date of Joining Reconfirmation", field: "dateOfJoiningReconfirmation", filter:true},
-    {headerName: "Remarks", field: "remarks"},
-    {headerName: "Course", field: "course", filter:true},
-    {headerName: "Branch", field: "branch", filter:true},
-    {headerName: "Current CGPA", field: "cgpa", sortable:true},
-    {headerName: "Personal Number", field: "personalNumber"},
+    { headerName: "College", field: "college", filter: true },
+    { headerName: "Location", field: "location", filter: true },
+    { headerName: "Date of Joining", field: "joiningDate", sortable: true, filter: true },
+    { headerName: "Batch", field: "batch", filter: true },
+    { headerName: "Date of Joining Reconfirmation", field: "dateOfJoiningReconfirmation", filter: true },
+    { headerName: "Remarks", field: "remarks" },
+    { headerName: "Course", field: "course", filter: true },
+    { headerName: "Branch", field: "branch", filter: true },
+    { headerName: "Current CGPA", field: "cgpa", sortable: true },
+    { headerName: "Personal Number", field: "personalNumber" },
     {
       headerName: "Personal Email", field: "personalEmail",
       cellRenderer: this.emailRenderer
     },
-    {headerName: "Date of Birth", field: "dob", sortable:true},
-    {headerName: "Native Place", field: "nativePlace"},
-    {headerName: "Current Place", field: "currentPlace", filter:true},
-    {headerName: "Parent Contact", field: "parentContact"},
-    {headerName: "Parent Address", field: "parentAddress"},
+    { headerName: "Date of Birth", field: "dob", sortable: true },
+    { headerName: "Native Place", field: "nativePlace" },
+    { headerName: "Current Place", field: "currentPlace", filter: true },
+    { headerName: "Parent Contact", field: "parentContact" },
+    { headerName: "Parent Address", field: "parentAddress" },
     {
       headerName: "CV", field: "cvLink",
       cellRenderer: this.linkRenderer
     },
+
   ]
 
   // searchText = '';
-  nameSearch = '';
-  empCodeSearch ='';
-  sortedGrads: Grad[];
+  // nameSearch = '';
+  // empCodeSearch ='';
+  // sortedGrads: Grad[];
+
   rowData: Grad[];
   multiSortKey = "ctrl";
+
 
   ngOnInit() {
     this.reloadData();
@@ -77,69 +83,98 @@ export class ShowgradsComponent implements OnInit {
     //   console.log("not filled yet");
     // }
   }
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.rowSelection = "multiple";
+
+  }
+  deleteGrads() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '390px',
+      disableClose: true,
+      data: "Do you really want to delete... ?"
+    });
+
+    var selectedData = this.gridApi.getSelectedNodes();
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        for (var i = 0; i < selectedData.length; i++) {
+          this.gradService.deleteGrad(selectedData[i].data.id)
+            .subscribe(
+              data => {
+                console.log(data);
+                this.reloadData();
+              },
+              error => console.log(error));
+        }
+      }
+    });
+  }
 
   reloadData() {
     this.gradService.getGradsList()
       .subscribe(data => this.rowData = data._embedded.gradList);
   }
 
-  deleteGrad(id: number) {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '390px',
-      disableClose: true,
-      data: "Do you really want to delete... ?"
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Yes clicked');
-        this.gradService.deleteGrad(id)
-          .subscribe(
-            data => {
-              console.log(data);
-              this.reloadData();
-            },
-            error => console.log(error));
-      }
-    });
+  // deleteGrad(id: number) {
+  //   const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+  //     width: '390px',
+  //     disableClose: true,
+  //     data: "Do you really want to delete... ?"
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       console.log('Yes clicked');
+  //       this.gradService.deleteGrad(id)
+  //         .subscribe(
+  //           data => {
+  //             console.log(data);
+  //             this.reloadData();
+  //           },
+  //           error => console.log(error));
+  //     }
+  //   });
 
-  }
+  // }
 
-  sortData(sort: Sort) {
-    const data = this.sortedGrads.slice();
-    if (!sort.active || sort.direction === '') {
-      this.sortedGrads = data;
-      return;
-    }
+  // sortData(sort: Sort) {
+  //   const data = this.sortedGrads.slice();
+  //   if (!sort.active || sort.direction === '') {
+  //     this.sortedGrads = data;
+  //     return;
+  //   }
 
-    this.sortedGrads = data.sort((a, b) => {
-      const isAsc = sort.direction === 'asc';
-      switch (sort.active) {
-        case 'Employee Code': return compareEmp(a.employeeCode, b.employeeCode, isAsc);
-        case 'Name': return compare(a.name, b.name, isAsc);
-        case 'College': return compare(a.college, b.college, isAsc);
-        case 'Location': return compare(a.location, b.location, isAsc);
-        case 'Date of Joining': return compare(a.joiningDate, b.joiningDate, isAsc);
-        case 'CGPA': return compare(a.cgpa, b.cgpa, isAsc);
-        case 'DoB': return compare(a.dob, b.dob, isAsc);
-        case 'Current Place': return compare(a.currentPlace, b.currentPlace, isAsc);
-        default: return 0;
-      }
-    });
-  }
+  //   this.sortedGrads = data.sort((a, b) => {
+  //     const isAsc = sort.direction === 'asc';
+  //     switch (sort.active) {
+  //       case 'Employee Code': return compareEmp(a.employeeCode, b.employeeCode, isAsc);
+  //       case 'Name': return compare(a.name, b.name, isAsc);
+  //       case 'College': return compare(a.college, b.college, isAsc);
+  //       case 'Location': return compare(a.location, b.location, isAsc);
+  //       case 'Date of Joining': return compare(a.joiningDate, b.joiningDate, isAsc);
+  //       case 'CGPA': return compare(a.cgpa, b.cgpa, isAsc);
+  //       case 'DoB': return compare(a.dob, b.dob, isAsc);
+  //       case 'Current Place': return compare(a.currentPlace, b.currentPlace, isAsc);
+  //       default: return 0;
+  //     }
+  //   });
+  // }
 
 }
 
-function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
+// function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
+//   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+// }
 
-function compareEmp(a:string, b:string, isAsc: boolean) {
-  var emp1 = parseInt(a);
-  var emp2 = parseInt(b);
-  return (emp1 - emp2) * (isAsc ? 1 : -1);
-}
+// function compareEmp(a:string, b:string, isAsc: boolean) {
+//   var emp1 = parseInt(a);
+//   var emp2 = parseInt(b);
+//   return (emp1 - emp2) * (isAsc ? 1 : -1);
+// }
 
-function empComparator(a:string, b:string) {
+function empComparator(a: string, b: string) {
   var emp1 = parseInt(a);
   var emp2 = parseInt(b);
   return (emp1 - emp2);
