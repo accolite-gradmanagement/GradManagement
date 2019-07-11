@@ -43,7 +43,7 @@ public class GradScoreService {
 
 	public List<GradScore> calcRank(List<GradScore> gradScores){
 		int rank =1 ;
-		if(gradScores != null) {
+		if(gradScores != null && gradScores.size() != 0) {
 			gradScores.get(0).setGradRank(rank);
 			if(gradScores.size()>=2) {
 				for (int i = 1; i < gradScores.size(); i++) {
