@@ -104,7 +104,7 @@
                 <div class="col-sm-9">
                         <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="details.testName">
                                 <option [disabled]="true" [selected]= "true">Select test...</option>
-                                <option *ngFor="let test of tests" [value]="test.testId">{{test.testName}}</option>
+                                <option *ngFor="let test of tests" [value]="test.testId" name="testname" id="testid">{{test.testName}}</option>
                               </select>
                    
                 </div>

@@ -70,7 +70,7 @@ private _url ="http://localhost:8080";
          }
          public gettestDetailsinForm(tId: number):Observable<addTestinfo>{
           console.log(tId);
-          this.formDetailsUrl="/gradTests/"+tId;
+          this.formDetailsUrl=this._url+"/gradTests/"+tId;
          
           return this.http.get<addTestinfo>(this.formDetailsUrl);
            }

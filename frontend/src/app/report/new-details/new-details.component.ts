@@ -70,11 +70,12 @@ export class NewDetailsComponent implements OnInit {
     }
   }
 
-  onChangeTest(tId:number){
-    this.reportservice.gettestDetailsinForm(tId)
+  onChangeTest(testId:number){
+    this.reportservice.gettestDetailsinForm(testId)
         .subscribe(data =>{
           this.formtestDetails = data;
           console.log(this.formtestDetails);
+          this.details.testName=this.formtestDetails.testName;
           this.details.totalQuestions=this.formtestDetails.totalQuestions;
   })
 }
