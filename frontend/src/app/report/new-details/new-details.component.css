@@ -3,3 +3,43 @@
     margin-top: 1%;
     text-align: left;   
 }
+#login .panel{
+    margin-top: 70px;
+}
+#login .panel-heading {
+    text-align: left;
+    background-color:#337ab7; 
+}
+#login .panel-body{
+    
+}
+h4 {
+    text-align: center;
+}
+#login input:active {
+    border: 1px solid indianred;
+    width: 100%;
+}
+.login-btn {
+    width: 30%;
+    border: 1px solid;
+
+}
+.fa-facebook-square {
+    font-size: 20px;
+    color: darkblue;
+}
+.login-btn-fa {
+    width: 100%;
+    border: 1px solid darkblue; 
+}
+.fa-google-plus-square {
+    font-size: 20px;
+    color: indianred;
+}
+.space-top-10 {
+    margin-top: 10px;
+}
+.space-top-20 {
+    margin-top: 20px;
+}

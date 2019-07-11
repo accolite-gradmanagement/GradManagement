@@ -6,76 +6,115 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-      </head>
-<form [formGroup]="createAccountForm">  
-    <!-- <div class="container">
-        
-      <div class="row"> 
-         
-        <div class="col-sm-3">
-             
-            <select formControlName="years" class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
-              <option [disabled]="true" [selected]= "true">Select year...</option>
-              
-              <option *ngFor="let year of years" [value]="year">{{year}}</option>
-            </select> 
+ </head>
+ <div class="row" id="login">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Add Details</div>
+        <div class="panel-body">
+          <p>Fields marked with (*) are compulsory</p>
+          <form class="form-horizontal" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="Employee">Employee Id*</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input placeholder="Employee Code" type="text" (change)="onChangeId($event.target.value)"class="form-control" id="employeeCode"
+                    [(ngModel)]="details.employeeId" name="employeeCode"  required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Name*</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input placeholder="Name"  type="text" class="form-control" id="Name" [(ngModel)]="details.employeeName"
+                    name="Name" id="Name" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="year">Year*</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input  type="text" class="form-control" [(ngModel)]="details.year"
+                      name="year" id="year" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="batch">Batch*</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input  type="text" class="form-control" [(ngModel)]="details.batchName"
+                        name="batch" id="batch" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="testname">Test Name</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <select formControlName="tests" class="form-control" (change)="onChangeTest($event.target.value)" [(ngModel)]="details.testName">
+                        <option [disabled]="true" [selected]= "true">Select test...</option>
+                        <option *ngFor="let test of tests" [value]="test.testId" name="testname" id="testid">{{test.testName}}</option>
+                      </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="totalquestions">Total Questions</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input placeholder="Total Questions" type="text" class="form-control" id="totalquestions"
+                    [(ngModel)]="details.totalQuestions" name="testname" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="correctquestion">Correct Question</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input placeholder="Correct Questions" type="text" class="form-control" id="correctquestions"
+                    [(ngModel)]="details.correctQuestions" name="correctname"  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="score">Score</label>
+                <div class="col-sm-8 col-md-offset-1">
+                    <input placeholder="Score" type="text" class="form-control" id="score"
+                     [(ngModel)]="details.score" name="scorename"  required />
+                </div>
+              </div>
+            <button class="btn btn-primary login-btn" align="right">Submit</button><br/>
+            <div class="alert alert-info" role="alert"  *ngIf="submitted">
+                Submitted
+            </div>
+          </form>
+          <div class="space-top-20"></div>
         </div>
-        <div class="col-sm-3">
-          
-          <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="selectedbatch">
-            <option [disabled]="true" [selected]= "true">Select batch...</option>
-            <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
-          </select>
-       
-        </div>
-        <div class="col-sm-3">
-          
-          <select formControlName="tests" class="form-control" [(ngModel)]="selectedtest">
-            <option [disabled]="true" [selected]= "true">Select test...</option>
-            <option *ngFor="let test of tests" [value]="test">{{test}}</option>
-          </select>
-        </div>
-         <div class="col-sm-3">
-            <button type="button" class="button" (click)="myfunc()" >Search</button>     
-        </div>
-        
       </div>
+    </div>
+  </div>
+
+
+
+
+
+<!-- <form [formGroup]="createAccountForm">  
     
-    
-    </div> -->
-  <!-- </form> -->
-  
-
-
-
-
-
   <div class="card">
         <h3 class="card-header text-center py-4" style="background-color: rgba(124, 171, 241, 0.473); 
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
-            <!-- <strong>Add/Edit Grad</strong> -->
+             <strong>Add/Edit Grad</strong> 
         </h3>
       
-        <!--Card content-->
+        Card content-->
       
-        <div class="card-body px-lg-5">
+        <!-- <div class="card-body px-lg-5">
             <div class="alert alert-primary" role="alert">
                 Fields marked with (*) are compulsory
-            </div>
+            </div> -->
             <!-- Form -->
-            <form (ngSubmit)="onSubmit()">
+            <!-- <form (ngSubmit)="onSubmit()">
       
-                <!-- EmployeeId -->
+                 EmployeeId
                 <div class="form-group row">
                     <label for="employeeCode"  class="col-sm-3 col-form-label">Employee Id*</label>
                     <div class="col-sm-9">
                         <input placeholder="Employee Code" type="text" (change)="onChangeId($event.target.value)"class="form-control" id="employeeCode"
                             [(ngModel)]="details.employeeId" name="employeeCode"  required />
                     </div>
-                </div>
+                </div> -->
       
                <!-- Name -->
-               <div class="form-group row">
+               <!-- <div class="form-group row">
                 <label for="Name" class="col-sm-3 col-form-label">Name*</label>
                 <div class="col-sm-9">
                     <input placeholder="Name"  type="text" class="form-control" id="Name" [(ngModel)]="details.employeeName"
@@ -111,16 +150,16 @@
             </div>
            
            
-            <!-- total ques -->
+             total ques 
             <div class="form-group row">
               <label for="totalquestions" class="col-sm-3 col-form-label">Total Questions</label>
               <div class="col-sm-9">
                   <input placeholder="Total Questions" type="text" class="form-control" id="totalquestions"
                       [(ngModel)]="details.totalQuestions" name="testname" required />
-              </div>
+              </div> 
           </div>
-             <!-- correct ques -->
-             <div class="form-group row">
+              correct ques -->
+             <!-- <div class="form-group row">
               <label for="correctquestions" class="col-sm-3 col-form-label">Correct Questions</label>
               <div class="col-sm-9">
                   <input placeholder="Correct Questions" type="text" class="form-control" id="correctquestions"
@@ -149,3 +188,7 @@
         <div class="alert alert-info" role="alert"  *ngIf="submitted">
             Submitted
         </div>
+        </div>
+        </div>
+        </form>
+         -->
