@@ -10,7 +10,15 @@ public class ScoreDetails {
     private  String batchName;
     private String testName;
     private int score;
-   
+    private int testId;
+
+    public int getTestId() {
+        return testId;
+    }
+
+    public void setTestId(int testId) {
+        this.testId = testId;
+    }
 
     public int getEmployeeId() {
         return employeeId;

@@ -167,6 +167,7 @@ public class GradScoreController {
 
 			GradEmployee gradEmployee = gradEmployeeService.getGradEmployee(scoreDetails.getEmployeeId());
 			if(gradEmployee == null){
+				System.out.println("empl*****************************");
 				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 			}
 //			gradScore.getGradEmployees().add(gradEmployee);
@@ -174,14 +175,16 @@ public class GradScoreController {
 
 
 
-			GradTest gradTest = gradTestService.findByTestName(scoreDetails.getTestName());
+			GradTest gradTest = gradTestService.findByTestNameAndBatchName(scoreDetails.getTestName(),scoreDetails.getBatchName());
 			if(gradTest ==  null){
+				System.out.println("test*****************************");
 				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 			}
 
 			// Check if score of emloyee in test is already added
 			GradScore gradScoreExist = gradScoreService.findByGradEmployeeAndGradTest(gradEmployee,gradTest);
 			if(gradScoreExist != null){
+				System.out.println("score*****************************");
 				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 			}
 
