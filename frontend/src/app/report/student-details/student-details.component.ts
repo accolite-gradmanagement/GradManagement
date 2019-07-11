@@ -10,14 +10,22 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
-  
+  gridApi :any;
+  columnApi: any;
   columnDefs = [
-    {headerName: 'TestId', field: 'score_id' },
-    {headerName: 'Test Name', field: 'gradTest.testName' },
-    {headerName: 'Score', field: 'score'},
-    {headerName: 'Rank', field: 'gradRank'}
+    {headerName: 'TestId', field: 'score_id', resizable: true },
+    {headerName: 'Test Name', field: 'gradTest.testName' , resizable: true},
+    {headerName: 'Score', field: 'score', resizable: true},
+    {headerName: 'Rank', field: 'gradRank', resizable: true}
    ];
    rowData: Student[];
+   onGridReady(params)
+   {
+    this.columnApi=params.columnApi;
+    this.gridApi=params.api;
+    params.api.sizeColumnsToFit()
+    
+   }
 
   istable: boolean=false;
   nameSearch: string;
