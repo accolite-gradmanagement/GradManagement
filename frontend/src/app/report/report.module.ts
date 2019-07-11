@@ -7,7 +7,7 @@ import { ReportRoutingModule } from './report-routing.module';
 import { FrontComponent } from './front/front.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { NewDetailsComponent } from './new-details/new-details.component';
-
+import { AgGridModule } from 'ag-grid-angular';
 //import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -17,6 +17,7 @@ import { NewDetailsComponent } from './new-details/new-details.component';
     ReportRoutingModule,
     FormsModule  ,
     ReactiveFormsModule,  
+    AgGridModule.withComponents([StudentDetailsComponent]),
     //BrowserAnimationsModule,
 	  
   ]

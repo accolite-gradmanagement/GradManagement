@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class FrontComponent implements OnInit {
   nameSearch: string;
+  noData: boolean=false;
   selectedyear: string = "Select year...";
   selectedbatch: string ="Select batch...";
   selectedtest: string ="Select test...";
@@ -27,7 +28,9 @@ export class FrontComponent implements OnInit {
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});
 
-  
+  this.batches=[];
+  this.report=null;
+  this.noData=false;
   this.createAccountForm = new FormGroup({
     years: new FormControl(''),
     batches: new FormControl(''),
@@ -61,15 +64,19 @@ onChangeBatch(bname: string) {
 }
 
 
-myfunc(){
+retrieveTable(){
   let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
   console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
   this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
+
+    if(this.report==null){
+     this.noData=true;
+    }
     
     console.log(this.report)});
-    this.selectedyear="Select year...";
-    this.selectedbatch="Select batch...";
-    this.selectedtest="Select test...";
+    // this.selectedyear="Select year...";
+    // this.selectedbatch="Select batch...";
+    // this.selectedtest="Select test...";
 
     // if(this.report==null){
     //   alert("No details to show");
