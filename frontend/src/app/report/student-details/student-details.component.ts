@@ -85,5 +85,12 @@ getDetails(id:string){
     });
     
 }
+onBack()
+{
+  if(this.istable)
+  {
+    this.istable=false;
+  }
+}
 
 }

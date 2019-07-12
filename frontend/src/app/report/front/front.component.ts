@@ -15,7 +15,7 @@ export class FrontComponent implements OnInit {
   gridApi :any;
   columnApi: any;
   columnDefs = [
-    {headerName: 'Employee Name', field: 'gradEmployee.gradName', resizable: true },
+    {headerName: 'Employee Name', field: 'gradEmployee.employeeName', resizable: true },
     {headerName: 'Score', field: 'score' , resizable: true},
     {headerName: 'Success %', field: 'successPercentage', resizable: true},
     {headerName: 'Rank', field: 'gradRank', resizable: true}
