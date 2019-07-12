@@ -5,7 +5,7 @@ import {IReport} from '../../IReport';
 import{Tests} from '../../Tests';
 import {Router} from '@angular/router'
 import {ToastrService} from 'ngx-toastr';
-
+import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-front',
   templateUrl: './front.component.html',
@@ -32,7 +32,7 @@ export class FrontComponent implements OnInit {
   report:IReport[];
   createAccountForm: FormGroup;
 
-  constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService ) { }
+  constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService, private http: HttpClient) { }
   ngOnInit(){
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});

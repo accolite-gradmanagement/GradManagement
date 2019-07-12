@@ -12,24 +12,75 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
   <body>
-        <!-- <div class="panel panel-default"> -->
-    <div class="panel-heading">
-        <h3>Assessment Management</h3>
-    </div>
-      
-               
     <form [formGroup]="createAccountForm">  
+      <div class="row" id="login">
+          <h3 align="center">Assessment Management </h3>
+              <div class="col-md-8 col-md-offset-2">
+                  <div class="panel panel-default">
+                       <!-- <div class="panel-heading">Employee Search</div> -->
+                       <div class="panel-body">
+                            <div class="col-sm-3">
+                                <select formControlName="years"  class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
+                                  <option>Select year...</option>
+                                  <!-- <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> -->
+                                  <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                                </select> 
+                            </div>
+                            <div class="col-sm-3">
+                                <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="selectedbatch">
+                                  <option >Select batch...</option>
+                                  <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-3">
+                                  <select formControlName="tests" class="form-control" [(ngModel)]="selectedtest">
+                                    <option>Select test...</option>
+                                    <option *ngFor="let test of tests" [value]="test.testName">{{test.testName}}</option>
+                                  </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="button" (click)="retrieveTable()" >Search</button>     
+                                </div>
+                                
+                                <div class="space-top-20"></div>
+                                
+                       </div>
+                   </div>
+              </div>
+      </div>
+      </form>
+      <div class="row" id="login">
+        
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+               <div class="panel-body">
+                   <div>  
+                     <ag-grid-angular style="width: 100%; height:500px" 
+                           class="ag-theme-balham"
+                           [rowData]="rowData" 
+                           [columnDefs]="columnDefs"
+                     >  
+                     </ag-grid-angular>
+                 </div>  
+               <div class="space-top-20"></div>
+              </div>
+            </div>
+          </div>
+       </div>
+    </body>        
+       
+    <!-- <form [formGroup]="createAccountForm">  
       <div class="container">   
           <div class="row">  
                 <div class="col-sm-3">
                     <select formControlName="years"  class="form-control" (change)="onChangeYear($event.target.value)" [(ngModel)]="selectedyear">
                       <option>Select year...</option>
-                      <!-- <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> -->
+                       <option *ngFor="let year of years" [value]="year.name">{{year.name}}</option> 
                       <option *ngFor="let year of years" [value]="year">{{year}}</option>
                     </select> 
-                </div>
+                </div> -->
 
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                   <select formControlName="batches" class="form-control" (change)="onChangeBatch($event.target.value)" [(ngModel)]="selectedbatch">
                     <option >Select batch...</option>
                     <option *ngFor="let batchinfo of batches" [value]="batchinfo">{{batchinfo}}</option>
@@ -59,7 +110,7 @@
           >
             
           </ag-grid-angular>
-    </div>  
+    </div>   -->
           <!-- <div class="tableFixHead panel-body" width=vw; height=vh;>
               <div >
 
@@ -111,10 +162,10 @@
                 <!-- </tr>
                 </tbody>
             </table> -->
-          <div *ngIf="noData">
+          <!-- <div *ngIf="noData">
               No data found...
-          </div>
-        </body>
+          </div> -->
+       
             
                   <!-- <table *ngIf="report">
                       <thead>
