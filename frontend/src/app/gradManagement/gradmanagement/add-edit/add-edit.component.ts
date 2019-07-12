@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GradService } from 'src/app/grad.service';
 import { Grad } from '../Grad';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
+import { DatePicker } from 'angular2-datetimepicker';
 
 @Component({
   selector: 'app-add-edit',
@@ -18,9 +19,21 @@ export class AddEditComponent implements OnInit {
   gradId: number;
   submitted = false;
 
+  settings = {
+    bigBanner: false,
+    timePicker: false,
+    format: 'dd/mm/yyyy',
+    defaultOpen: false,
+    closeOnSelect: true,
+}
+
   constructor(private gradService: GradService, private route: ActivatedRoute, private router: Router) {
     this.grad = new Grad();
     console.log("from add edit: " + JSON.stringify(sessionStorage));
+    DatePicker.prototype.ngOnInit = function() {
+      // this.settings = Object.assign(this.defaultSettings, this.settings);
+      this.date = new Date();
+      }
   }
 
   ngOnInit() {
