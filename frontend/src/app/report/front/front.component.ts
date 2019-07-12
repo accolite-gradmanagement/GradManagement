@@ -12,6 +12,15 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./front.component.css']
 })
 export class FrontComponent implements OnInit {
+  gridApi :any;
+  columnApi: any;
+  columnDefs = [
+    {headerName: 'Employee Name', field: 'gradEmployee.gradName', resizable: true },
+    {headerName: 'Score', field: 'score' , resizable: true},
+    {headerName: 'Success %', field: 'successPercentage', resizable: true},
+    {headerName: 'Rank', field: 'gradRank', resizable: true}
+   ];
+   rowData: IReport[];
   nameSearch: string;
   noData: boolean=false;
   selectedyear: string = "Select year...";
@@ -67,13 +76,13 @@ onChangeBatch(bname: string) {
 retrieveTable(){
   let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
   console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
-  this.reportservice.getList(selectedlist).subscribe(data => {this.report=data;
+  this.reportservice.getList(selectedlist).subscribe(data => {this.rowData=data;
 
-    if(this.report==null){
+    if(this.rowData==null){
      this.noData=true;
     }
     
-    console.log(this.report)});
+    console.log(this.rowData)});
     // this.selectedyear="Select year...";
     // this.selectedbatch="Select batch...";
     // this.selectedtest="Select test...";

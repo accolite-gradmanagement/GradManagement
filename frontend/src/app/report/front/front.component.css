@@ -20,6 +20,10 @@ body{
     border-radius: 5px;
     box-shadow: 0 1px #999;
   }
+  .panel-heading
+  {
+    margin-top: 0px;
+  }
   
   .button:hover {background-color: #464747}
   .tableFixHead          { overflow-y: auto; height: 500px; }
