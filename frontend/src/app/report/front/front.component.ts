@@ -12,7 +12,9 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./front.component.css']
 })
 export class FrontComponent implements OnInit {
-  gridApi :any;
+  gridApi: any;
+  gridOptions: any;
+  
   columnApi: any;
   columnDefs = [
     {headerName: 'Employee Name', field: 'gradEmployee.employeeName', resizable: true },
@@ -20,6 +22,8 @@ export class FrontComponent implements OnInit {
     {headerName: 'Success %', field: 'successPercentage', resizable: true},
     {headerName: 'Rank', field: 'gradRank', resizable: true}
    ];
+
+  
    rowData: IReport[];
   nameSearch: string;
   noData: boolean=false;
@@ -34,9 +38,10 @@ export class FrontComponent implements OnInit {
 
   constructor(private reportservice:ReportService,private router:Router ,private toastr: ToastrService, private http: HttpClient) { }
   ngOnInit(){
+    
     this.reportservice.getyear().subscribe(data => {this.years=data;
       console.log(this.years)});
-
+      
   this.batches=[];
   this.report=null;
   this.noData=false;
@@ -45,6 +50,10 @@ export class FrontComponent implements OnInit {
     batches: new FormControl(''),
     tests: new FormControl('')
   });
+//   if (this.gridOptions.api) {
+//     this.gridOptions.api.hideOverlay();
+// }
+  
 }
 onChangeYear(name: number) {
   console.log(this.selectedyear);
@@ -76,8 +85,10 @@ onChangeBatch(bname: string) {
 retrieveTable(){
   let selectedlist = "/scores/"+Number(this.selectedyear)+"/"+this.selectedbatch+"/"+this.selectedtest;
   console.log(this.selectedyear + this.selectedbatch + this.selectedtest);
-  this.reportservice.getList(selectedlist).subscribe(data => {this.rowData=data;
-
+  this.reportservice.getList(selectedlist).subscribe(data => {
+    
+    this.rowData=data;
+   
     if(this.rowData==null){
      this.noData=true;
     }
@@ -92,24 +103,7 @@ retrieveTable(){
     // }
 
 }
-onSearch()
-{
-  this.reportservice.getStudentDetailsbyName(this.nameSearch).subscribe(data=>
-    {
-      if(data.length==0)
-      {
-        //this.toastr.error("No record for this data ");
-        alert('No such data present');
-      }
-      else
-      {
-        this.router.navigate(["score/detail/name",this.nameSearch]);
-      }
-    });
-    this.selectedyear="Select year...";
-    this.selectedbatch="Select batch...";
-    this.selectedtest="Select test...";
-}
+
 
 sample(){
   this.selectedyear="Select year...";
